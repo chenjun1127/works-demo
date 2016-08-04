@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>angularJs指令1--指令的复用</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+    var myModule=angular.module('my_app',[]);
+    myModule.controller('myCtrl_1',function($scope){
+        $scope.loadData_1=function(){
+            console.log("正在加载中...11")
+        }
+    });
+    myModule.controller('myCtrl_2',function($scope){
+        $scope.loadData_2=function(){
+            console.log("正在加载中...22")
+        }
+    });
+    myModule.directive('loader',function(){
+        return {
+            restrict:"AE",
+            link:function(scope,element,attrs){
+                element.bind('mouseover',function(){
+                   scope.$apply(attrs.howload);//注意这是有小坑，howload前面用了驼峰式命名，这里要变成小写的
+                })
+            }
+        }
+    })
+    </script>
+</head>
+<body ng-app="my_app">
+    <div class="box" ng-controller="myCtrl_1">
+        <loader howLoad="loadData_1()">滑动加载数据</loader>
+    </div>
+    <div class="box" ng-controller="myCtrl_2">
+        <loader howLoad="loadData_2()">滑动加载数据</loader>
+    </div>
+</body>
+</html>

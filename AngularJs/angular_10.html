@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>angularJs指令1</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+        var my_module=angular.module('myApp',[]);
+        my_module.controller('myCtrl',function($scope){
+            $scope.loader=function(){
+                console.log("正在加载中。。。")
+            }
+        })
+        my_module.directive('loader',function(){
+            return {
+                restrict:"E",//
+                template:"<div>欢迎您<h1 ng-transclude></h1></div>",
+                replace:true,
+                transclude:true,
+                link:function(scope,element,attrs){
+                    element.bind('mouseenter',function(){
+                        //scope.loader();
+                        scope.$apply("loader()")
+                    })
+                }
+            }
+        })
+//        注：
+//        1，restrict匹配模式
+//        2，template模板;
+//        3，templateUrl，模板地址;
+//        4、templateCatch缓存transclude;
+//        5、transclude
+    </script>
+</head>
+<body ng-app="myApp">
+    <div class="box" ng-controller="myCtrl">
+        <loader>
+            <h1>我是中国人</h1>
+        </loader>
+    </div>
+</body>
+</html>

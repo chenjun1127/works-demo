@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>js声明对象、构造对象，原型方法</title>
+	<link rel="stylesheet" href="">
+	<script>
+	
+	window.onload=function(){
+		//声明对象
+		var obj={
+			name:'jone',
+			age:'30',
+			hello:function(obj){
+				alert( obj );
+			}
+		}
+		document.body.innerHTML=obj.name ;
+		obj.hello('why not?')
+		//构造对象；
+		function myObj(person){
+			//对象方法
+			this.name=person;
+			this.say=function(){
+				alert('hello,my name is'+'\''+this.name+'\'');
+			};
+			//原型方法
+			myObj.prototype.hello = function () {
+				alert("Hello, " + this.name);
+			};
+		}
+		var objA=new myObj('jack');//创建新的对象
+		objA.say();
+		objA.hello();
+	 
+
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

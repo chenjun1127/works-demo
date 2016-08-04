@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas之旅--运动的小球 </title>
+    <style>
+        .box{width: 1200px; height: 800px; position: relative;margin: 0 auto;}
+        .tips{position: absolute; width: 200px; height: 100px; background: rgba(0,100,150,0.6);left:10px;top: 10px; z-index: 100;}
+        .tips h1{font-size: 16px;font-family: microsoft yahei;font-weight: normal;padding-left: 10px; color: #fff;}
+        .tips a{display: inline-block; height: 30px; width: 60px; float:left;margin: 3px;border-radius: 5px; background: red;font-size: 12px;font-family: microsoft yahei;text-align: center;color: #fff;text-decoration: none; line-height: 30px;}
+        .tips a.action{background: #f90}
+        .tips a.bg_1{background: #fff}
+        .tips a.bg_2{background: #000}
+    </style>
+    <script>
+        var balls = [];
+        var isMoving = true;
+        var themeColor = 'white';
+        window.onload = function () {
+            var canvas = document.querySelector('canvas');
+            var ext = canvas.getContext('2d');
+            canvas.width = 1200;
+            canvas.height = 800;
+            canvas.style.cssText = 'border:1px solid #ccc;background:white;margin:0 auto;display:block;';
+            for (var i = 0; i < 100; i++) {
+                var radius=Math.random() * 50 + 20;
+                var aBall = {
+                    x: Math.random() * (canvas.width - 2 * radius) + radius,
+                    y: Math.random() * (canvas.height - 2 * radius) + radius,
+                    radius:radius,
+                    color: color(),
+                    vx: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 100)),
+                    vy: (Math.random() * 5 + 5) * Math.pow(-1, Math.floor(Math.random() * 100))
+                }
+                balls[i] = aBall;
+            }
+            setInterval(function () {
+                draw(ext);
+                if(isMoving){
+                    update(canvas.width,canvas.height);
+                }
+            }, 40);
+            //事件；
+            document.querySelector('.action').onclick=function(){
+                if(isMoving){
+                    isMoving=false;
+                    this.text='开始运动'
+                }else{
+                    isMoving=true;
+                    this.text='停止运动'
+                }
+                return false;
+            }
+            document.querySelector('.bg_1').onclick=function(){
+                themeColor="white";
+                return false;
+            }
+            document.querySelector('.bg_2').onclick=function(){
+                themeColor="black";
+                return false;
+            }
+        }
+        function draw(cxt) {
+            var canvas=cxt.canvas;
+            cxt.clearRect(0,0,canvas.width,canvas.height);
+            canvas.style.background=themeColor;
+            for (var i = 0; i < balls.length; i++) {
+                cxt.beginPath();
+                cxt.fillStyle = balls[i].color;
+                cxt.arc(balls[i].x, balls[i].y, balls[i].radius, 0, Math.PI * 2);
+                cxt.closePath();
+                cxt.fill();
+            }
+        }
+        function update(canvasWidth, canvasHeight) {
+            for(var i=0; i<balls.length; i++){
+                balls[i].x += balls[i].vx;
+                balls[i].y += balls[i].vy;
+                if (balls[i].x - balls[i].radius <= 0) {
+                    balls[i].vx = -balls[i].vx;
+                    balls[i].x = balls[i].radius;
+                }
+                if (balls[i].x + balls[i].radius >= canvasWidth) {
+                    balls[i].vx = -balls[i].vx;
+                    balls[i].x = canvasWidth - balls[i].radius;
+                }
+                if (balls[i].y - balls[i].radius <= 0) {
+                    balls[i].vy = -balls[i].vy;
+                    balls[i].y = balls[i].radius;
+                }
+                if (balls[i].y + balls[i].radius > canvasHeight) {
+                    balls[i].vy = -balls[i].vy;
+                    balls[i].y = canvasHeight - balls[i].radius;
+                }
+            }
+        }
+        function color() {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            var rgb = 'rgb' + '(' + r + ',' + g + ',' + b + ')';
+            return rgb;
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <canvas class="canvas">
+        <p>您的浏览器不支持canvas标签，请更新最新的chrome或firefox浏览器！</p>
+    </canvas>
+    <div class="tips">
+        <h1>canvas之旅--运动的小球</h1>
+        <p>
+            <a href="#" class="action">运动</a>
+            <a href="#" class="bg_1"></a>
+            <a href="#" class="bg_2"></a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

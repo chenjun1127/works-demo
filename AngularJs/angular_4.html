@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>利用directive实现view的复用</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+    var myapp=angular.module('myAPP',[]);
+        myapp.directive('hello',function(){
+            return {
+                restrict:"AMEC",//restrice:"AEMC",A表示attribute属性，E表示element元素，M表示注释，C表示class;
+                template:"<div>欢迎您！</div>",
+                replace:true
+            }
+        })
+    </script>
+</head>
+<body ng-app="myAPP">
+    <hello></hello>
+    <div class="hello"></div>
+    <div hello></div>
+    <!-- directive:hello -->
+</body>
+</html>

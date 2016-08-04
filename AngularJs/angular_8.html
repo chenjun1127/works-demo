@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ng-class</title>
+	<style>
+	.error{background: red;color: #fff;}
+	.success{background: green;color: #fff;}
+	</style>
+</head>
+<body ng-controller="bodyCtrl">
+	<div class="box" ng-bind="text" ng-class="{error:isError,success:isSucess}">
+		
+	</div>
+	<input type="button" value="成功" ng-click="success()">
+	<input type="button" value="失败" ng-click="error()">
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+	<script>
+	var my_app=angular.module('myApp',[]);
+	my_app.controller('bodyCtrl',function($scope){
+		$scope.isError=false;
+		$scope.isSucess=false;
+		$scope.text='这是一段文字！'
+		$scope.success=function(){
+			$scope.text='我成功了，颜色是绿色！';
+			$scope.isError=false;
+			$scope.isSucess=true;
+		}
+		$scope.error=function(){
+			$scope.text='我失败了，颜色是红色！';
+			$scope.isError=true;
+			$scope.isSucess=false;
+		}
+	})
+	</script>
+</body>
+</html>

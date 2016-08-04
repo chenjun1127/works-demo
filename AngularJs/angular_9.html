@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ng-show、ng-hide---显示与隐藏</title>
+</head>
+<body ng-controller="bodyCtrl">
+	<input type="button" value="Toggle Menu" ng-click="showHide()">
+	<ul ng-show="menu.show">
+		<li>菜单一</li>
+		<li>菜单二</li>
+		<li>菜单三</li>
+	</ul>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+	<script>
+	var my_app=angular.module('myApp',[]);
+	my_app.controller('bodyCtrl',function($scope){
+		$scope.menu={show:false};
+		$scope.showHide=function(){
+			$scope.menu.show=!$scope.menu.show;
+		}
+	})
+	</script>
+</body>
+</html>

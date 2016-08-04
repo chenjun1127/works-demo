@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>globalAlpha </title>
+    <script>
+        window.onload=function(){
+            var canvas=document.querySelector('.canvas');
+            var ext=canvas.getContext('2d');
+            canvas.width=800;
+            canvas.height=800;
+            ext.globalAlpha=0.6; //默认值是1；
+            for(var i=0; i<100; i++){
+                ext.fillStyle=color();
+                ext.beginPath();
+                ext.arc(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*50,0,Math.PI*2);
+                ext.fill();
+            }
+            function color(){
+                var r=Math.floor(Math.random()*255);
+                var g=Math.floor(Math.random()*255);
+                var b=Math.floor(Math.random()*255);
+                var rgb='rgb'+'('+r+','+g+','+b+')';
+                return rgb;
+            }
+        }
+    </script>
+</head>
+<body>
+    <canvas class="canvas" style="border: 1px solid gray; margin: 0 auto; display: block"  >
+
+    </canvas>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五角星</title>
+	<style>	
+		body{padding:0;margin:0}
+		canvas{float: left; display: block}
+	</style>
+	<script>
+		window.onload=function(){
+			var canvas=document.querySelector('#canvas');
+			var ext=canvas.getContext('2d');
+			canvas.style.background='hsl'+color();
+			ext.save();
+			ext.translate(300,300);
+			ext.lineWidth='5';
+			ext.strokeStyle="red";
+			drawStar(ext,200,100);
+			ext.restore();
+			//第二个五角星；
+			var obj=document.querySelector('#canvas2').getContext("2d");
+			obj.canvas.width=obj.canvas.height=600;
+			obj.canvas.style.background='#f90';
+			drawStar1(obj,300,300,200,100,30);
+		}
+		//五角星函数
+		function drawStar(cxt,R,r){
+			cxt.beginPath();
+			for(var i=0; i<5; i++){
+				cxt.lineTo(Math.cos((18+i*72)*Math.PI/180)*R,-Math.sin((18+i*72)*Math.PI/180)*R);
+				cxt.lineTo(Math.cos((54+i*72)*Math.PI/180)*r,-Math.sin((54+i*72)*Math.PI/180)*r);
+			}
+			cxt.closePath();
+			cxt.stroke();
+		}
+
+		//HSL模式颜色随机；
+		var color=function(){
+			var hsl='';
+			var h,s,l='';
+			h=radom(0,360);
+			s=radom(0,100)+'%';
+			l=radom(0,100)+'%';
+			hsl='('+h+','+s+','+l+')';
+			return hsl;
+			console.log(hsl);
+		}
+		function radom(min,max){
+			var x=min+Math.round(Math.random()*(max-min));
+			return x;
+		};
+		//五星角函数
+		function drawStar1(cxt,x,y,R,r,rot){
+			cxt.lineWidth='5';
+			cxt.strokeStyle='white';
+			cxt.beginPath();
+			for(var i=0; i<5; i++){
+				cxt.lineTo(Math.cos((18+i*72-rot)*Math.PI/180)*R+x,-Math.sin((18+i*72-rot)*Math.PI/180)*R+y);
+				cxt.lineTo(Math.cos((54+i*72-rot)*Math.PI/180)*r+x,-Math.sin((54+i*72-rot)*Math.PI/180)*r+y);
+			}
+			cxt.closePath();
+			cxt.stroke();
+		}
+	</script>
+</head>
+<body>
+	<canvas width='600' height='600' id='canvas'>
+		<p>您的浏览器不支持html5新标签</p>
+	</canvas>
+	<canvas width='600' height='600' id='canvas2'>
+		<p>您的浏览器不支持html5新标签</p>
+	</canvas>
+
+</body>
+</html>

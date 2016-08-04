@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>绑定策略&</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+	<script>
+	var my_module=angular.module("myApp",[]);
+	my_module.controller('myCtrl', function($scope){
+		$scope.sayHello=function(name){
+			alert("hello,"+name)
+		}
+		$scope.sayYes=function(name){
+			alert("This is yes,"+name)
+		}
+		$scope.sayNo=function(name){
+			alert("This is no,"+name)
+		}
+	});
+	my_module.directive("greeting",function(){
+		return {
+			restrict:"AE",
+			scope:{
+				greet:"&"
+			},
+			template:'<input type=\'text\' ng-model=\'userName\'><br/>'+'<input type=\'button\' ng-click=\'greet({name:userName})\' value=\'click\'>'+'<br/>'
+		}
+	})
+	</script>
+</head>
+<body ng-app="myApp">
+	<div class="box" ng-controller="myCtrl">
+		<greeting greet="sayHello(name)"></greeting>
+		<greeting greet="sayYes(name)"></greeting>
+		<greeting greet="sayNo(name)"></greeting>
+	</div>
+</body>
+</html>

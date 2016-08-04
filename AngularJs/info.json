@@ -1,0 +1,22 @@
+{
+  "info":[
+    { "name": "Wake up" },
+    { "name": "Brush teeth" },
+    { "name": "Shower" },
+    { "name": "Have breakfast" },
+    { "name": "Go to work" },
+    { "name": "Write a Nettuts article" },
+    { "name": "Go to the gym" },
+    { "name": "Meet friends" },
+    { "name": "Go to bed" }
+  ],
+  "records":[
+    {"Name":"jack","Money":1200},
+    {"Name":"jone","Money":1500},
+    {"Name":"eric","Money":200},
+    {"Name":"alex","Money":4000},
+    {"Name":"lucy","Money":35000},
+    {"Name":"honey","Money":1800},
+    {"Name":"bob","Money":300}
+  ]
+}

@@ -1,0 +1,10 @@
+.box {
+    margin: 3px;
+    background: #c92222;
+    background: red;
+    color: aqua;
+    font-size: 12px;
+    transition: all 0.3 s 0s;
+    background: red;
+    background: red;
+}

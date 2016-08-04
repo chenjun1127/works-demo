@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>form表单双向绑定</title>
+	<!-- bootstrap css -->
+	<link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body ng-app="myAPP">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<form   role="form" ng-controller="formCtrl">
+					<legend>双向数据绑定</legend>
+					<div class="form-group">
+						<label for="">邮箱</label>
+						<input type="email" class="form-control" id="" placeholder="推荐使用126邮箱" ng-model="info.email">
+					</div>
+					<div class="form-group">
+						<label for="">密码</label>
+						<input type="password" class="form-control" id="" placeholder="只允许字母、数字、下划线" ng-model="info.password">
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="" ng-model="info.antoLogin">
+							自动登录
+						</label>
+					</div>
+					<button type="button" class="btn btn-primary" ng-click="consoleInfo()">输出个人信息</button>
+					<button type="button" class="btn btn-primary" ng-click="getInfo()">获取个人信息</button>
+					<button type="button" class="btn btn-primary" ng-click="setInfo()">设置个人信息</button>
+				</form>
+			</div>
+			<div class="col-md-12 box">
+			</div>
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+	<script>
+	var my_app=angular.module('myAPP',[]);
+	my_app.controller('formCtrl',function($scope){
+		$scope.info={
+			email:'402074940@qq.com',
+			password:'123456.com',
+			antoLogin:true
+		};
+		$scope.consoleInfo=function(){
+			document.querySelector('.box').innerHTML=$scope.info.email+'<br/>'+$scope.info.password+'<br/>'+$scope.info.antoLogin;
+		};
+		$scope.getInfo=function(){
+			$scope.info={
+				email:'402074940@qq.com',
+				password:'123456.com',
+				antoLogin:false	
+			}
+		};
+		$scope.setInfo=function(){
+			$scope.info={
+				email:'402074940@126.com',
+				password:'402074940.com',
+				antoLogin:true	
+			}
+		}
+
+	})
+	</script>
+</body>
+</html>

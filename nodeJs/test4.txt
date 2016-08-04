@@ -1,0 +1,1 @@
+Welcome To Nodejs ,这是一个被打开读取写入的文件

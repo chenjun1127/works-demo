@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>form表单自动校验！</title>
+    <style>
+        *{padding: 0; margin: 0;}
+        body{padding: 50px 100px;}
+        input{font-family: monospace;font-size: 14px; height: 40px;line-height: 40px;  width: 200px;border: 1px solid #ccc;margin-bottom: 10px;}
+        p{position: relative;}
+        p::before{content: attr(data-title);position: absolute;width: 80px; height: 40px;line-height: 40px;left: -85px;text-align: right;}
+    </style>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+        angular.module("MyApp",[]).controller("formCtrl",function($scope){
+            $scope.info={
+                userName:"jone-chen",
+                psd:""
+            };
+            $scope.save=function(){
+                alert("已经保存！")
+            }
+        })
+    </script>
+</head>
+<body>
+<form ng-submit="save()" ng-controller="formCtrl" name="myForm">
+    <p data-title="用户名:">
+        <input type="text" ng-model="info.userName" required />
+    </p>
+    <p data-title="密码:">
+       <input type="password" ng-model="info.psd" required />
+    </p>
+    <p><input type="submit"  ng-disabled="myForm.$invalid"/></p>
+</form>
+</body>
+</html>

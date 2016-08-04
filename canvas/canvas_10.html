@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>绘制月亮函数</title>
+    <style>
+        body{padding: 0; margin: 0}
+    </style>
+</head>
+<body>
+    <canvas class="canvas"></canvas>
+    <script>
+        window.onload=function(){
+            var canvas=document.querySelector('.canvas');
+            var ext=canvas.getContext('2d');
+            canvas.style.display='block';
+            canvas.width=document.body.clientWidth || document.documentElement.clientWidth;
+            canvas.height=document.documentElement.clientHeight || document.documentElement.clientHeight;
+            canvas.style.background='hsl'+randomColor();
+            drawMoon(ext,2,400,400,300,15)
+
+        }
+        //随机颜色
+        function randomColor(){
+            var hsl='';
+            var h,s,l='';
+            h=randomNm(0,360);
+            s=randomNm(0,100)+'%';
+            l=randomNm(0,100)+'%';
+            hsl='('+h+','+s+','+l+')';
+            return hsl
+        }
+        //随机大小
+        function randomNm(min,max){
+            return min+Math.floor(Math.random()*(max-min));
+        }
+        function drawMoon(cxt,d,x,y,R,rot){
+            cxt.save();
+            cxt.translate(x,y);
+            cxt.scale(R,R);
+            cxt.rotate(Math.PI/180*rot);
+            pathMoon(cxt,d);
+            cxt.fillStyle='hsl'+randomColor();
+            cxt.fill();
+            cxt.restore();
+
+        }
+        //画路径
+        function pathMoon(cxt,d){
+            //D表示控制点的横坐标；
+            cxt.beginPath();
+            cxt.arc(0,0,1,Math.PI*0.5,Math.PI*1.5,true);
+            cxt.moveTo(0,-1);
+            cxt.arcTo(d,0,0,1,dis(0,-1,d,0)*1/d)
+            cxt.closePath();
+        }
+        function dis(x1,y1,x2,y2){
+            return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+        }
+    </script>
+</body>
+</html>

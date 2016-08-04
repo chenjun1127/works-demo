@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG-animateMotion</title>
+</head>
+<body>
+	<svg viewBox="-600 -400 1200 800 " preserveAspectRadio="xMidYmid slice" width="1200" height="800">
+	 	<rect x="-25" y="-25" width="50" height="50" fill="red" id="rect"/>
+	 	<animateMotion xlink:href="#rect" rotate="auto" path="M0 0 L100 100 A200 200 0 1 0 0 -100" dur="5s" fill="freeze">
+	 	</animateMotion>
+	 	<path d="M0 0 L100 100 A200 200 0 1 0 1 -100" stroke-width="1" stroke="black" fill="none"/>
+		 
+	</svg>
+</body>
+</html>

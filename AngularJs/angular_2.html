@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>angrularjs获取json</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <style>
+        .box{border-bottom: dashed 1px darkgray; padding: 10px 0}
+    </style>
+</head>
+<body>
+    <div ng-app="myApp"  ng-controller="ActivitiesListCtrl">
+        <h1>Today's activities</h1>
+        <ul>
+            <li  class="box" ng-repeat="activity in activities">
+                {{activity.name}}
+            </li>
+        </ul>
+    </div>
+    <script>
+//        function ActivitiesListCtrl($scope){
+//            $scope.activities = [
+//                { "name": "Wake up" },
+//                { "name": "Brush teeth" },
+//                { "name": "Shower" },
+//                { "name": "Have breakfast" },
+//                { "name": "Go to work" },
+//                { "name": "Write a Nettuts article" },
+//                { "name": "Go to the gym" },
+//                { "name": "Meet friends" },
+//                { "name": "Go to bed" }
+//            ];
+//        }
+//        //还可以把数据存放在服务器上，通过ajax获取;
+//        function ActivitiesListCtrl($scope,$http){
+//            $http.get("info.json").success(function (data) {
+//                $scope.activities=data;
+//            })
+//        }
+        var my_App=angular.module('myApp',[]);
+        my_App.controller('ActivitiesListCtrl',function($scope,$http){
+            $http.get("info.json").success(function (data) {
+                $scope.activities=data.info;
+            })
+        })
+    </script>
+</body>
+</html>

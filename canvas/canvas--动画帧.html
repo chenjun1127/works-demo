@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas帧--实现动画</title>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:white}
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+    var imgPic = new Image();
+    imgPic.src = 'http://www.cj365.cc/demo/bird/bird.png';
+    var canvas = document.querySelector('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext('2d');
+    imgPic.onload = function () {
+        drawImg()
+    }
+    var i = 0;
+    var lastTime = new Date().getTime();
+    var delatime;
+    var timer = 0;
+    function drawImg() {
+        window.requestAnimationFrame(drawImg);
+        var now = new Date().getTime();
+        delatime = now - lastTime;
+        lastTime = now;
+        timer += delatime;
+        if (timer > 200) {
+            i++;
+            if (i > 7) i = 0;
+            timer = 0
+        }
+        console.log(delatime)
+        ctx.drawImage(imgPic, i * 140, 0, 140, 85, (canvas.width - 140) / 2, (canvas.height - 85) / 2, 140, 85);
+    }
+
+</script>
+</body>
+</html>

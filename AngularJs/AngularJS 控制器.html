@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>angularjs模块化</title>
+</head>
+<body>
+<div ng-controller="HelloAngular">
+   <p>
+   	{{greeting.text}}
+   </p>
+    <p ng-bind="greeting.text"></p>
+</div>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+<script>
+    var myAPP=angular.module('myapp',[]);
+     myAPP.controller('HelloAngular',function($scope){
+        $scope.greeting={text:'jone'};
+    })
+</script>
+</body>
+</html>
+			

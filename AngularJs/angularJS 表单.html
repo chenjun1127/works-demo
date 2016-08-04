@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <title>angularJS表单</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+    angular.module("myApp",[]).controller("myCtrl",function($scope){
+        $scope.info={
+            id:"jonechen",
+            psd:"cj123456"
+        };
+        $scope.reset=function(){
+        	$scope.newInfo=angular.copy($scope.info)
+        };
+        $scope.reset();
+    })
+    </script>
+
+</head>
+<body>
+<div class="container" ng-app="myApp">
+    <div class="row" ng-controller="myCtrl">
+        <form novalidate > <!--novalidate 属性是在 HTML5 中新增的。禁用了使用浏览器的默认验证。-->
+            <div class="form-group">
+                <label for="">ID</label>
+                <input type="text" class="form-control" id="" placeholder="请输入ID" ng-model="newInfo.id">
+            </div>
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="text" class="form-control" id="" placeholder="请输入用户名" ng-model="newInfo.psd">
+            </div>
+            <button type="button" class="btn btn-primary" ng-click="reset()">Reset</button>
+            <p>
+            	我的个人信息是：{{newInfo}}
+            </p>
+            <p>
+            	我的个人信息是：{{info}}
+            </p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

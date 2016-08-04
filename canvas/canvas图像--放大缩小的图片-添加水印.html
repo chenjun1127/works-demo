@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas图片--放大缩小的图片-添加水印.html</title>
+    <script>
+        window.onload=function(){
+            var canvas=document.querySelector('#canvas');
+            var ext=canvas.getContext('2d');
+            //水印canvas
+            var waterCanvas=document.querySelector('#watercanvas');
+            var cxt=waterCanvas.getContext('2d');
+            canvas.width=550;
+            canvas.height=366;
+            canvas.style.cssText='border:1px solid #000;display:block;margin:0 auto;';
+            var img=new Image();
+            img.src="img_3.jpg";
+            var slider=document.querySelector('input');
+            var scale=slider.value;
+            img.onload=function(){
+                drawImg(scale);
+                slider.onmousemove=function(){
+                    scale=slider.value;
+                    drawImg(scale);
+                }
+            }
+            var drawImg=function(scale){
+                var imageWidth=canvas.width*scale;
+                var imageHeight=canvas.height*scale;
+                var dx=canvas.width/2-imageWidth/2;
+                var dy=canvas.height/2-imageHeight/2;
+                console.log(dx+","+dy);
+                console.log(imageWidth+","+imageHeight);
+                ext.clearRect(0,0,canvas.width,canvas.height);
+                ext.drawImage(img,dx,dy,imageWidth,imageHeight);
+                //添加水印
+                ext.drawImage(waterCanvas,canvas.width-waterCanvas.width,canvas.height-waterCanvas.height);
+            }
+            //绘制水印
+            waterCanvas.width=180;
+            waterCanvas.height=70;
+            cxt.font="bold 36px microsoft yahei";
+            cxt.fillStyle="rgba(240,15,85,0.68)";
+            cxt.fillText("cj365.cc",10,50);
+
+
+        }
+    </script>
+</head>
+<body style="background: #f90">
+    <canvas id="canvas"></canvas>
+    <canvas id="watercanvas" style="display: none"></canvas>
+    <input type="range" min="0.5" max="3" value="1.5" step="0.1" style="display: block; width: 550px;margin: 20px auto;"/>
+</body>
+</html>

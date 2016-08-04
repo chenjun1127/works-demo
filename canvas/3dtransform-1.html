@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <style>
+        #my3dspace {
+            perspective: 800;
+            -webkit-perspective: 800;
+            perspective-origin: 50% 50%;
+            -webkit-perspective-origin: 50% 50%;
+            position: relative;
+            overflow: hidden;
+        }
+        #pagegroup {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            transform-style:preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            overflow: hidden;
+        }
+        .page {
+            background: black;
+            width: 400px;
+            height: 400px;
+            font-size: 300px;
+            text-align: center;
+            line-height: 400px;
+            color: #fff;
+            font-weight: bold;
+            font-family: "microsoft yahei";
+            position: absolute;
+            transition: transform 0.8s ease 0s;
+            -webkit-transform-origin: left;
+            -moz-transform-origin: left;
+            -ms-transform-origin: left;
+            -o-transform-origin: left;
+            transform-origin: left;
+        }
+        #page2, #page3, #page4, #page5, #page6 {
+            -webkit-transform: rotateY(90deg);
+            -moz-transform: rotateY(90deg);
+            -ms-transform: rotateY(90deg);
+            -o-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+        }
+        #op {
+            text-align: center;
+            width: 400px;
+            margin: 0 auto;
+            height: 30px;
+            position: relative;
+        }
+        #op a{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-family: "simSun";
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 100%;
+            border: solid 2px #333;
+            text-decoration: none;
+            position: absolute;
+        }
+        #op a.next {
+            left: -42px;
+            top: -220px;
+        }
+        #op a.prev {
+            right: -42px;
+            top: -220px;
+        }
+    </style>
+</head>
+<body>
+<div id="my3dspace">
+    <div id="pagegroup">
+        <div class="page" id="page1">1</div>
+        <div class="page" id="page2">2</div>
+        <div class="page" id="page3">3</div>
+        <div class="page" id="page4">4</div>
+        <div class="page" id="page5">5</div>
+        <div class="page" id="page6">6</div>
+    </div>
+</div>
+<div id="op">
+    <a href="javascript:;" class="next"> &lt; </a>
+    <a href="javascript:;" class="prev"> &gt; </a>
+</div>
+<script>
+    var index=1;
+    var a=document.getElementById("op").getElementsByTagName("a");
+    a[0].onclick=function(){
+        next();
+    };
+    a[1].onclick=function(){
+        prev();
+    };
+    function next(){
+        if(index==6){
+            return
+        };
+        var curPage=document.getElementById("page"+index);
+        curPage.style.transform="rotateY(-90deg)";
+        index++;
+        var nextPage=document.getElementById("page"+index);
+        nextPage.style.transform="rotateY(0)";
+    }
+    function prev(){
+        if(index==1){
+            return
+        };
+        var curPage=document.getElementById("page"+index);
+        curPage.style.transform="rotateY(90deg)";
+        index--;
+        var nextPage=document.getElementById("page"+index);
+        nextPage.style.transform="rotateY(0)";
+    }
+</script>
+
+</body>
+</html>

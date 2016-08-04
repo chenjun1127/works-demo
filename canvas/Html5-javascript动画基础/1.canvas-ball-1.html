@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas三角函数的应用</title>
+</head>
+<body>
+    <canvas width="500" height="500" style="background: palevioletred; display: block;margin: 0 auto;"></canvas>
+    <script src="ball.js"></script>
+    <script>
+        var ball=new Ball();
+        var canvas=document.querySelector('canvas');
+        var ctx=canvas.getContext('2d');
+        ball.x=canvas.width/2,ball.y=canvas.height/2;
+        var angle=0;
+        var speed=0.05;
+        var range=50;
+
+        (function drawFrame () {
+            requestAnimationFrame(drawFrame,canvas);
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ball.y=canvas.height/2+Math.sin(angle) * range;
+            angle+=speed;
+            ball.draw(ctx);
+        }())
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <title>$rootScope根作用域</title>
+    <script>
+        var my_App=angular.module('myApp',[]);
+        my_App.controller('control_1',function($scope,$rootScope){
+            $scope.name='jone';
+            $rootScope.data='China';
+        })
+        my_App.controller('control_2',function($scope){
+            $scope.names=['jone','eric','susan'];
+            $scope.red=function(){
+                var ali=document.getElementsByTagName('li');
+                for(var i=0; i<ali.length; i++){
+                    ali[i].style.color='red';
+                }
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp">
+    <div class="box">
+        <div class="title" ng-controller="control_1">
+            name:{{name}}
+        </div>
+        <ul ng-controller="control_2">
+            <li ng-repeat="name in names" ng-click="red()">
+                {{name}} come from {{data}};
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

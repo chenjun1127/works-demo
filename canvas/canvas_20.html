@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>运动的小球</title>
+    <script>
+        var ball = {
+            x: 500,
+            y: 100,
+            radius: 20,
+            vx: -4,
+            vy: -10,
+            g: 2,
+            color: 'red'
+        }
+        window.onload = function () {
+            var canvas = document.querySelector('canvas');
+            var cxt = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 800;
+            canvas.style.background = '#f90';
+            setInterval(function () {
+                renter(cxt);
+                update();
+            }, 50)
+        }
+        function update() {
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            ball.vy += ball.g;
+            if (ball.y >= 800 - ball.radius) {
+                ball.y = 800 - ball.radius;
+                ball.vy = -ball.vy * 0.5
+            }
+        }
+        function renter(ext) {
+            ext.clearRect(0, 0, 800, 800)
+            ext.fillStyle = ball.color;
+            ext.beginPath();
+            ext.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ext.closePath();
+            ext.fill();
+        }
+    </script>
+</head>
+<body>
+<canvas></canvas>
+</body>
+</html>

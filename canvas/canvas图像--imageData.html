@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas图像--imageData</title>
+    <style>
+        *{padding: 0;margin: 0}
+        #canvas-a{ float:left;border: 1px solid #333333; display: block;}
+        #canvas-b{float: right; border: 1px solid #333333; display: block;}
+        .btn{display: block;text-align: center;padding: 15px 0;text-indent: -290px;clear: both;}
+    </style>
+</head>
+<body>
+<canvas id="canvas-a"></canvas>
+<canvas id="canvas-b"></canvas>
+<div class="btn"><a id="btn-a" href="javascript:;">click</a></div>
+<script>
+    window.onload=function(){
+        var canvasA=document.querySelector('#canvas-a');
+        var contextA=canvasA.getContext('2d');
+        var canvasB=document.querySelector('#canvas-b');
+        var contextB=canvasB.getContext('2d');
+        var image=new Image();
+        image.src="img_2.jpg";
+        canvasA.width=document.documentElement.clientWidth/2-5;
+        canvasA.height=600;
+        canvasB.width=document.documentElement.clientWidth/2-5;
+        canvasB.height=600;
+        image.onload=function(){
+            contextA.drawImage(image,0,0,canvasA.width,canvasA.height);
+        };
+        document.querySelector('#btn-a').onclick=function(){
+            var imgdata=contextA.getImageData(0,0,canvasA.width,canvasA.height);
+            console.log(imgdata);
+            contextB.putImageData(imgdata,50,50,400,200,200,200)
+
+            //contextB.putImageData(imgdata,0,0,0,0,canvasB.width,canvasB.height);
+
+        }
+    }
+</script>
+</body>
+</html>

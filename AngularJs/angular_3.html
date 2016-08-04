@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>angularJs模块化</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+	<script>
+	var my_app=angular.module('myApp',[]);//构建一个模块
+	my_app.controller("UserController",function($scope){
+		$scope.user={
+			name:"jone",
+			email:"402074940@qq.com",
+			age:"28",
+			subscribe:function(){
+				document.querySelector('.box').innerHTML="您的用户名是"+$scope.user.name+'，您的年龄是：'+$scope.user.age+'，您订阅的新闻将会被发到：'+$scope.user.email;
+			}
+		};
+		
+	})
+	</script>
+</head>
+<body>
+	<div ng-controller="UserController">
+		<p>
+			用户名：{{ user.name}}	
+		</p>
+		<p>
+			E-mail：{{ user.email}}	
+		</p>
+		<p>
+			年龄：{{ user.age}}	
+		</p>
+		<p>
+			<button ng-click="user.subscribe()">订阅</button>
+		</p>
+	</div>
+	<div class="box">
+	</div>
+</body>
+</html>

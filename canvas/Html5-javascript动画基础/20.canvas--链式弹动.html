@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--链式弹动 ；</title>
+    <script src="ball.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:black; margin: 0 auto;}
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+    window.onload = function () {
+        var canvas = document.querySelector('canvas');
+        canvas.width = window.innerWidth * 0.8;
+        canvas.height = window.innerHeight * 0.8;
+        var ctx = canvas.getContext('2d');
+        var balls = [];
+        var numBalls = 5;
+        var mouse = utils.captureMouse(canvas)
+        var friction = 0.90; //摩擦力
+        var spring = 0.03;//弹动系数；
+        var gravity = 2; //重力
+        while (numBalls--) {
+            balls.push(new Ball(20))
+        }
+        function move(ball, targetX, targetY) {
+            ball.vx += (targetX - ball.x) * spring;
+            ball.vy += (targetY - ball.y) * spring;
+            ball.vy += gravity;
+            ball.vx *= friction;
+            ball.vy *= friction;
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+        }
+
+        function draw(ball_0, i) {
+            ctx.strokeStyle = 'white'
+            ctx.beginPath();
+            if (i === 0) {
+                move(ball_0, mouse.x, mouse.y);
+                ctx.moveTo(mouse.x, mouse.y)
+            } else {
+                var nextBall = balls[i - 1];
+                move(ball_0, nextBall.x, nextBall.y);
+                ctx.moveTo(nextBall.x, nextBall.y);
+            }
+            ctx.lineTo(ball_0.x, ball_0.y);
+            ctx.stroke();
+            ball_0.draw(ctx)
+        }
+
+        (function drawFrame() {
+            window.requestAnimationFrame(drawFrame);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'red';
+            ctx.beginPath();
+            ctx.arc(mouse.x, mouse.y, 5, 0, Math.PI * 2);
+            ctx.fill()
+            balls.forEach(draw)
+        })();
+    }
+
+</script>
+</body>
+</html>

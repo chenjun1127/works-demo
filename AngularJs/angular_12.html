@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="my_app">
+<meta charset="UTF-8"/>
+<title>$timeout定时器</title>
+<head>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="MyController_1">
+    <h1>Hello,当前的秒数是： {{ clock }}!</h1>
+</div>
+<div ng-controller="MyController_2">
+    <h1>Hello,当前的秒数是： {{ clock.now }}!</h1>
+</div>
+<script type="text/javascript">
+    var myApp=angular.module("my_app",[]);
+    //每秒钟都更新$scope.clock
+    myApp.controller("MyController_1",function($scope,$timeout){
+        var updateClock=function(){
+            $scope.clock=getNumber(new Date().getSeconds());
+            $timeout(function(){
+                updateClock();
+            },1000)
+        };
+        updateClock();
+    })
+    //相比上面每秒钟都更新$scope.clock，更新clock.now的值会是更好的选择。
+    myApp.controller("MyController_2",function($scope){
+        $scope.clock={
+            now:getNumber(new Date().getSeconds())
+        };
+        var updateClock=function(){
+            $scope.clock.now=getNumber(new Date().getSeconds())
+        };
+        setInterval(function(){
+            $scope.$apply(updateClock);
+        },1000)
+        updateClock();
+    })
+    function getNumber(m){
+        return m<10? "0"+m:m;
+    }
+</script>
+</body>
+</html>

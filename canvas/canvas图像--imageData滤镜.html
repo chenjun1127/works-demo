@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas图像--imageData</title>
+    <style>
+        #canvas-a{ float:left;border: 1px solid #333333}
+        #canvas-b{float: right; border: 1px solid #333333}
+        .btn{display: block;text-align: center;padding: 15px 0;clear: both;text-align: center}
+        .btn a{display: 0 15px;margin: 0 5px;}
+    </style>
+</head>
+<body>
+<canvas id="canvas-a"></canvas>
+<canvas id="canvas-b"></canvas>
+<div class="btn">
+    <a href="javascript:;" id="a_1">ChangeColor</a>
+    <a href="javascript:;" id="a_2">GrayEffect</a>
+    <a href="javascript:;" id="a_3">Black and White Effect</a>
+    <a href="javascript:;" id="a_4">Reverse Effect</a>
+</div>
+<script>
+    window.onload=function(){
+        var canvasA=document.querySelector('#canvas-a');
+        var contextA=canvasA.getContext('2d');
+        var canvasB=document.querySelector('#canvas-b');
+        var contextB=canvasB.getContext('2d');
+        var image=new Image();
+        image.src="img_2.jpg";
+        canvasA.width=document.body.clientWidth/2-5;
+        canvasA.height=600;
+        canvasB.width=document.body.clientWidth/2-5;
+        canvasB.height=600;
+        image.onload=function(){
+            contextA.drawImage(image,0,0,canvasA.width,canvasA.height);
+        };
+        document.querySelector('#a_1').onclick=function(){
+            var imgdata=contextA.getImageData(0,0,canvasA.width,canvasA.height);
+            var pixelData=imgdata.data;
+            for(var i=0; i<canvasA.width*canvasA.height; i++){
+                pixelData[4*i+0]=0
+            }
+            contextB.putImageData(imgdata,0,0,0,0,canvasB.width,canvasB.height);
+        };
+        document.querySelector('#a_2').onclick=function(){
+            var imgdata=contextA.getImageData(0,0,canvasA.width,canvasA.height);
+            var pixelData=imgdata.data;
+            for(var i=0; i<canvasA.width*canvasA.height; i++){
+                var r=pixelData[4*i+0]
+                var g=pixelData[4*i+0]
+                var b=pixelData[4*i+0];
+                var gray=r*0.3+g*0.56+b*0.11;//最佳的黑白图像模式；
+                pixelData[4*i+0]=gray;
+                pixelData[4*i+1]=gray;
+                pixelData[4*i+2]=gray;
+            }
+            contextB.putImageData(imgdata,0,0,0,0,canvasB.width,canvasB.height);
+        }
+        document.querySelector('#a_3').onclick=function(){
+            var imgdata=contextA.getImageData(0,0,canvasA.width,canvasA.height);
+            var pixelData=imgdata.data;
+            for(var i=0; i<canvasA.width*canvasA.height; i++){
+                var r=pixelData[4*i+0]
+                var g=pixelData[4*i+0]
+                var b=pixelData[4*i+0];
+                var gray=r*0.3+g*0.56+b*0.11;
+                var v;
+                v=gray>(255/2)?255:0
+                pixelData[4*i+0]=v;
+                pixelData[4*i+1]=v;
+                pixelData[4*i+2]=v;
+            }
+            contextB.putImageData(imgdata,0,0,0,0,canvasB.width,canvasB.height);
+        };
+        document.querySelector('#a_4').onclick=function(){
+            var imgdata=contextA.getImageData(0,0,canvasA.width,canvasA.height);
+            var pixelData=imgdata.data;
+            for(var i=0; i<canvasA.width*canvasA.height; i++){
+                var r=pixelData[4*i+0]
+                var g=pixelData[4*i+0]
+                var b=pixelData[4*i+0];
+                pixelData[4*i+0]=255-r;
+                pixelData[4*i+1]=255-g;
+                pixelData[4*i+2]=255-b;
+            }
+            contextB.putImageData(imgdata,0,0,0,0,canvasB.width,canvasB.height);
+        }
+    }
+</script>
+</body>
+</html>

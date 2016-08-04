@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>angularJS表单验证</title>
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.2.1/css/amazeui.min.css">
+    <style>
+        .error{font-size: 12px;padding-top: 10px ;color: red;}
+    </style>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+    var myApp=angular.module("my_app",[]);
+    myApp.controller('formCtrl',function($scope){
+        $scope.info={
+            id:"jone-chen",
+            email:"402074940@qq.com",
+            psd:"cj123456.com"
+        } 
+    })
+    </script>
+
+
+    <!-- 
+
+    $dirty - 规定值已被改变。
+
+    $invalid- 该值的状态是无效的。
+
+    $error- 指出确切的错误。 
+
+    -->
+
+</head>
+<body ng-app="my_app">
+<div class="am-g am-g-fixed" >
+    <div class="am-u-lg-12">
+        <form novalidate  class="am-form"  name="myform" ng-controller="formCtrl">
+            <div class="am-form-group">
+                <label for="">用户名</label>
+                <input type="text" name="user" ng-model="info.id" placeholder="输入你的姓名" required pattern="[A-Za-z,0-9]{4,10}"  >
+                <span class="error" ng-show="myform.user.$dirty && myform.user.$invalid">
+                <span ng-show="myform.user.$error.required">用户名是必须的。</span>
+                <span ng-show="myform.user.$error.pattern">用户名必须是4到10位数字或字母</span>
+            </div>
+            <div class="am-form-group">
+                <label for="">邮箱</label>
+                <input type="email" name="email" ng-model="info.email" placeholder="输入你的邮箱" required>
+                <span class="error" ng-show="myform.email.$dirty && myform.email.$invalid">
+                <span ng-show="myform.email.$error.required">邮箱是必须的。</span>
+                <span ng-show="myform.email.$error.email">非法的邮箱地址。</span>
+            </div>
+            <div class="am-form-group">
+                <label for="">密码</label>
+                <input type="password" name="psd" ng-model="info.psd" placeholder="输入你的密码" required pattern="[A-Za-z].*[0-9]|[0-9].*[A-Za-z]{6-12}">
+                <span class="error" ng-show="myform.psd.$dirty && myform.psd.$invalid">
+                <span ng-show="myform.psd.$error.required">密码是必须的。</span>
+                <span ng-show="myform.psd.$error.pattern">密码必须是6-12位数组与字母组合。</span>
+            </div>
+            <button type="submit" class="am-btn am-btn-primary" ng-disabled="myform.user.$dirty &&  myform.user.$invalid || myform.email.$dirty &&  myform.email.$invalid || myform.psd.$dirty &&  myform.psd.$invalid">提交</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

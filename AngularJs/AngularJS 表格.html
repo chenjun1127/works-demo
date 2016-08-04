@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AngularJs操作表格</title>
+    <style>
+        table {border-collapse: collapse; font-family: "microsoft yahei"; margin: 30px auto;}
+        table tr td{border: 1px solid #ccc;  padding: 15px;}
+        table thead{background: #f1f1f1;font-weight: 800;}
+        table tbody tr:nth-child(even){background: #f9f9f9}
+    </style>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+        var my_app=angular.module("myApp",[]);
+        my_app.controller("ctrl",function($scope,$http){
+            $scope.theadTxt={
+                "id":"序号",
+                "name":"姓名",
+                "money":"财富"
+            };
+            $http.get("info.json").success(function(response){
+                $scope.infos=response.records;
+            })
+        })
+    </script>
+</head>
+<body ng-app="myApp">
+<table cellspacing="0" cellpadding="0" width="90%" border="0" ng-controller="ctrl">
+    <thead >
+    <tr>
+        <td>{{theadTxt.id}}</td>
+        <td>{{theadTxt.name}}</td>
+        <td>{{theadTxt.money}}</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in infos|orderBy:'Money'">
+        <td>{{ $index+ 1 }}</td>
+        <td>{{ x.Name | uppercase }}</td>
+        <td>{{ x.Money | currency }}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

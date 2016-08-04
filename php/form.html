@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url: 'demo1.php',
+                    type: 'POST',
+                    async: false, //异步，默认为true;
+                    data: $('#form').serialize(),
+                    error: function (request) {
+                        alert("Connection error");
+                    },
+                    success: function (data) {
+                        $("#box").html(data);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <form id="form">
+        <p>
+            用户名：
+            <input type="text" name="userName">
+        </p>
+        <p>
+            密码：
+            <input type="password" name="password">
+        </p>
+        <p>
+            <input type="button" value="提交" id="btn">
+        </p>
+    </form>
+    <box id="box"></box>
+
+</body>
+
+</html>

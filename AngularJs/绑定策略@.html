@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>绑定策略@</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+	<script>
+	var my_module=angular.module("myApp",[]);
+	my_module.controller('myCtrl', function($scope){
+		$scope.ctrlLove="百威"	
+	});
+	my_module.directive("drink",function(){
+		return {
+			restrict:"AE",
+			replace:true,
+			scope:{
+				love:'@'
+			},
+			template:"<div>{{love}}</div>",
+			// link:function(scope,element,attrs){
+			// 	scope.love=attrs.love;
+			// }
+		}
+	})
+	</script>
+</head>
+<body ng-app="myApp">
+	<div class="box" ng-controller="myCtrl">
+		<drink love="{{ctrlLove}}"></drink>
+	</div>
+</body>
+</html>

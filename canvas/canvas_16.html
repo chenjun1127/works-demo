@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+
+</head>
+<body>
+<canvas class="canvas"></canvas>
+<script>
+    var balls = [];
+    var canvas = document.querySelector('.canvas');
+    var cxt = canvas.getContext('2d');
+    window.onload = function () {
+        canvas.width = 800;
+        canvas.height = 800;
+        canvas.style.cssText = 'border:1px solid #ccc;background:white;margin:0 auto;display:block;';
+        for (var i = 0; i < 10; i++) {
+            var aBall = {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 50 + 20,
+                color: '#f90'
+            }
+            balls[i] = aBall;
+        }
+        drawBall();
+        canvas.addEventListener('mouseup', dettch)
+    }
+    function drawBall() {
+        for (var i = 0; i < balls.length; i++) {
+            cxt.beginPath();
+            cxt.fillStyle = balls[i].color;
+            cxt.arc(balls[i].x, balls[i].y, balls[i].r, 0, Math.PI * 2);
+            cxt.fill();
+        }
+    }
+    function dettch(event) {
+        var x = event.clientX - canvas.getBoundingClientRect().left;
+        var y = event.clientY - canvas.getBoundingClientRect().top;
+        for (var i = 0; i < balls.length; i++) {
+            cxt.beginPath();
+            cxt.arc(balls[i].x, balls[i].y, balls[i].r, 0, Math.PI * 2);
+            if (cxt.isPointInPath(x, y)) {
+                cxt.fillStyle = 'red';
+                cxt.fill();
+            } else {
+                cxt.fillStyle = 'green';
+                cxt.fill();
+            }
+        }
+    }
+</script>
+</body>
+</html>

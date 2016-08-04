@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>利用arc、actTo绘制月亮</title>
+    <style>
+        body{padding: 0;margin: 0}
+        canvas{display: block}
+    </style>
+</head>
+<body>
+    <canvas class="canvas"></canvas>
+    <script>
+        window.addEventListener('onload',canvas(),false)
+        function canvas(){
+            var canvas=document.querySelector('.canvas');
+            var context=canvas.getContext('2d');
+            canvas.width=document.body.clientWidth || document.documentElement.clientWidth;
+            canvas.height=document.documentElement.clientHeight || document.documentElement.clientHeight;
+            canvas.style.background='gold';
+            context.beginPath();
+            context.arc(400,400,200,Math.PI*0.5,Math.PI*1.5,true);
+            context.moveTo(400,200);
+            context.arcTo(800,400,400,600,200*Math.sqrt(200*200+(800-400)*(800-400))/(800-400)) //用到数学里面的三角函数，勾股定理
+            context.stroke();
+
+        }
+//        function dis(){
+//
+//        }
+    </script>
+</body>
+</html>

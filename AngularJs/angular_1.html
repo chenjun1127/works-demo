@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>angularJs 基本--初始化指令</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+    <script>
+        angular.module("my_app",[]).controller("myCtrl",function($scope){
+            $scope.info={
+                quantity:2,
+                price:2
+            }
+        })
+    </script>
+</head>
+<style>
+	.ng-binding{color: red;}
+</style>
+<body  ng-app="my_app">
+	<div ng-init="quantity=1;price=5">
+        <!--使用ng-init 不是很常见,见下面例子-->
+		<h2>价格计算器</h2>
+		数量： <input type="number" ng-model="quantity">
+		价格： <input type="number" ng-model="price">
+		<p><b>总价：</b> {{ quantity * price | currency}}</p>
+	</div>
+    <hr/>
+    <div ng-controller="myCtrl">
+        <h2>价格计算器</h2>
+        数量： <input type="number" ng-model="info.quantity">
+        价格： <input type="number" ng-model="info.price">
+        <p><b>总价：</b> {{ info.quantity * info.price | currency}}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>angularjs过滤器</title>
+    <style>
+        .box{border-bottom: dashed 1px darkgray; padding: 10px 0}
+    </style>
+</head>
+<body>
+<h5>大小写</h5>
+<div ng-controller="myctrl">
+    <p>我的名字：{{firstName|uppercase}}</p>
+    <p>我的性氏：{{lastName}}</p>
+    <button ng-click="allName()" value="我的全名">我的全名</button>
+</div>
+<h5>orderBy-根据某个表达式排列数组。</h5>
+<ul ng-controller="smCtrl">
+    <li ng-repeat="x in number|orderBy:'number'" class="box">
+        {{x.number+"--"+x.name}}
+    </li>
+</ul>
+<h5>filter-从数组项中选择一个子集。</h5>
+<div ng-controller="filterCtrl">
+    <input type="text" ng-model="test"/>
+    <p ng-repeat="x in number|filter:test|orderBy:name" >
+        {{x.number+'--'+x.name}}
+    </p>
+</div>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js"></script>
+<script>
+/*
+    currency 	格式化数字为货币格式。
+    filter 	从数组项中选择一个子集。
+    lowercase 	格式化字符串为小写。
+    orderBy 	根据某个表达式排列数组。
+    uppercase 	格式化字符串为大写。
+*/
+    var myAPP = angular.module('myapp', []);
+    myAPP.controller('myctrl', function ($scope) {
+        $scope.firstName = "jone";
+        $scope.lastName = "chen";
+        $scope.allName = function () {
+            alert($scope.firstName + '' + $scope.lastName)
+        }
+    });
+    myAPP.controller('smCtrl', function ($scope) {
+        $scope.number = [
+            {"number": 120,"name":"jack"},
+            {"number": 140,"name":"eric"},
+            {"number": 0,"name":"alpha"},
+            {"number": -20,"name":"jone"},
+            {"number": 1500,"name":"alex"},
+            {"number": 2365,"name":"yuki"},
+            {"number": 150,"name":"lucy"},
+            {"number": 65,"name":"sindy"},
+            {"number": 22,"name":"james"}
+        ];
+    })
+    myAPP.controller('filterCtrl', function ($scope) {
+        $scope.number = [
+            {"number": 120,"name":"jack"},
+            {"number": 140,"name":"eric"},
+            {"number": 0,"name":"alpha"},
+            {"number": -20,"name":"jone"},
+        ];
+    })
+</script>
+</body>
+</html>
+			
