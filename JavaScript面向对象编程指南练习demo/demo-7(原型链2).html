@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链--只继承原型</title>
+</head>
+<body>
+	<script> 
+		function Shape() {};
+		Shape.prototype.name = 'shape';
+		Shape.prototype.toString = function () {
+			return this.name;
+		}
+		function TwoDShape() {};
+		TwoDShape.prototype = Shape.prototype;
+		TwoDShape.prototype.constructor = TwoDShape;
+		TwoDShape.prototype.name = "2D Shape";
+		function Triangle(side, height) {
+			this.side = side;
+			this.height = height;
+		}
+		Triangle.prototype = TwoDShape.prototype;
+		Triangle.prototype.constructor = Triangle;
+		Triangle.prototype.name = 'Triangle';
+		Triangle.prototype.getArea = function () {
+			return this.side * this.height / 2
+		};
+
+		var my = new Triangle(5, 10);
+		console.log(my.getArea());          //==> 25
+		console.log(my.toString());         //==> Triangle
+		console.log(Shape.prototype.name)   //==> "Triangle"  
+		/*存在的问题：
+		这种简单地拷贝原型从效率上来说固然会好一些，但会出现它的副作用。由于子对象和父对象指向的是一个对象，所以一旦子对象及其原型了做了修改，父对象也随即做了改变，所有的继承关系都如此，上面的Shape.prototype.name已经被修改了；
+		要解决这个问题，就必须利用某个中介来打破这种连锁关系，我们可以用一个临时构造器来充当中介；
+		*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承部分封装成函数</title>
+</head>
+<body>
+	<script> 
+		function extend(Child, Parent) {
+			var F = function () {};
+			F.prototype = Parent.prototype;
+			Child.prototype = new F();
+			Child.prototype.constructor = Child;
+			Child.uber = Parent.prototype; //uber指向父对象的原型。方便子对象调用父对象原型中的重写的方法。
+		}
+		function Shape() {};
+		Shape.prototype.name = 'Shape';
+		Shape.prototype.toString = function () {
+			return this.name
+		}
+
+		function TwoDShape() {}
+		extend(TwoDShape, Shape);
+		TwoDShape.prototype.name = '2d Shape';
+
+		function Triangle(side, height) {
+			this.side = side;
+			this.height = height;
+		}
+		extend(Triangle, TwoDShape);
+		Triangle.prototype.name = 'Triangle';
+		Triangle.prototype.getArea = function () {
+			return this.side * this.height / 2
+			
+		};
+
+		var my = new Triangle(5, 10)
+			
+		console.log(my.getArea())
+		console.log(my.toString())
+	 
+		 
+	</script>
+</body>
+</html>

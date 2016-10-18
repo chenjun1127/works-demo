@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script> 
+		var a = 1;
+		function f() {
+			console.log(a);
+			var a = 1;
+			console.log(a)
+		}
+		f()
+		// ==>> undefined
+		// ==>> 1
+		// 回调函数
+		function multiplyByTwo(a, b, c, callback) {
+			var i,
+			arr = [];
+			for (var i = 0; i < 3; i++) {
+				arr[i] = callback(arguments[i] * 2)
+			}
+			return arr;
+		}
+		console.log(multiplyByTwo(10, 20, 30, function (a) {
+				return a + 2
+			}));
+		var a = function () {
+
+			function someSetup() {
+				var setup = "done";
+			}
+			function actWork() {
+				alert("worky")
+			}
+
+			return actWork;
+
+		}();
+		// 闭包；
+		function f() {
+			var i = 0,
+			arr = [];
+			for (; i < 3; i++) {
+				arr[i] = (function (x) {
+					return x
+				}(i))
+			}
+			return arr;
+		}
+		var n = f();
+		console.log(n[0]);
+		console.log(n[1]);
+		console.log(n[2]);
+		// getter setter;
+		var getValue, setValue;
+		(function () {
+			var secret = 0;
+			getValue = function () {
+				return secret
+			};
+			setValue = function (v) {
+				secret = v;
+			}
+		})()
+		console.log(getValue());
+		console.log(setValue(123))
+		console.log(getValue());
+		// 迭代器;
+		function setUp(x) {
+			var i = 0;
+			return function () {
+				return x[i++];
+			}
+		}
+		var next = setUp(['a', 'b', 'c']);
+		console.log(next()) //==> "a"
+		console.log(next()) //==> "b"
+		console.log(next()) //==> "c"
+		// 练习题
+		// 1，编写一个16进制值转换为颜色的函数
+		function getRGB(color) {
+			var r,g,b;
+			r = parseInt(color.substr(1, 2), 16);
+			g = parseInt(color.substr(3, 2), 16);
+			b = parseInt(color.substr(5, 2), 16);
+			return 'rgb(' + r + ',' + g + ',' + b + ')';
+		}
+		console.log(getRGB("#ff9900"))
+		// 2,这个结果是多少？
+		var t = 1;
+		function fun() {
+			var t = 2;
+			function n() {
+				alert(t)
+			}
+			n();
+		}
+		fun() //==>> 2
+	</script>
+</body>
+</html>

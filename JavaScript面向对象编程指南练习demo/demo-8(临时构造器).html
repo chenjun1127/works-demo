@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>临时构造器</title>
+</head>
+<body>
+	<script> 
+		function Shape() {}
+		Shape.prototype.name = 'shape';
+		Shape.prototype.toString = function () {
+			return this.name;
+		}
+		function TwoDShape() {};
+		var F = function () {};
+		F.prototype = Shape.prototype;
+		TwoDShape.prototype = new F();
+		TwoDShape.prototype.constructor = TwoDShape;
+		TwoDShape.prototype.name = '2d Shape'
+		 
+		function Triangle(side,height){
+			this.side=side;
+			this.height=height;
+		}
+		var F = function () {};
+		F.prototype = TwoDShape.prototype;
+		Triangle.prototype = new F();
+		Triangle.prototype.constructor = Triangle;
+		Triangle.prototype.name = 'Triangle';
+		Triangle.prototype.getArea = function () {
+			return this.side * this.height / 2
+		};
+		
+		var my = new Triangle(5, 10);
+		console.log(my.getArea());          //==> 25
+		console.log(my.toString());         //==> Triangle
+		console.log(my.__proto__.__proto__.__proto__); 
+		 
+		
+		
+	</script>
+</body>
+</html>

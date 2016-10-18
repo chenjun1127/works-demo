@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模式</title>
+</head>
+<body>
+	<script> 
+		/**基本四种模式：
+		单件模式
+		工厂模式
+		装饰器模式
+		观察者模式
+		*/
+		// 单件模式
+		function Logger() {
+			if (typeof global_log === 'undefined') {
+				global_log = this
+			}
+			return global_log;
+			this.name='Logger';
+			this.type='String';
+		}
+		var t1=new Logger();
+		var t2=new Logger();
+		console.log(t1==t2)
+		// 工厂模式
+		var myApp = {};
+		myApp.dom = {};
+		myApp.dom.Text = function () {
+			this.insert = function (where) {
+				var txt = document.createTextNode(this.url);
+				where.appendChild(txt);
+			}
+		};
+		myApp.dom.Link = function () {
+			this.insert = function (where) {
+				var link = document.createElement('a');
+				link.href = this.url;
+				link.appendChild(document.createTextNode(this.url));
+				where.appendChild(link);
+			}
+		};
+		myApp.dom.Image = function () {
+			this.insert = function (where) {
+				var im = document.createElement('img');
+				im.src = this.url;
+				where.appendChild(im);
+			}
+		};
+		/*
+		var o = new myApp.dom.Image();
+		o.url = 'https://www.baidu.com/img/bd_logo1.png';
+		o.insert(document.body);
+		var o = new myApp.dom.Text();
+		o.url = 'https://www.baidu.com/img/bd_logo1.png';
+		o.insert(document.body);
+		var o = new myApp.dom.Link();
+		o.url = 'https://www.baidu.com/img/bd_logo1.png';
+		o.insert(document.body);
+		*/
+		myApp.dom.factory = function (type) {
+			return new myApp.dom[type]
+		}
+		var o = myApp.dom.factory('Link');
+		o.url = 'https://www.baidu.com/img/bd_logo1.png';
+		o.insert(document.body);
+	</script>
+</body>
+</html>

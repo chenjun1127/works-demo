@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object</title>
+</head>
+<body>
+	<script> 
+		var o = {
+			name : "jak",
+			say : function () {
+				return 'I am a ' + this.name
+			}
+		}
+		function F() {};
+		F.prototype = o;
+		var obj = new F();
+		console.log(obj.say());
+		// call apply 改变this的指针
+		var some_obj = {
+			name : "jack",
+			say : function (who) {
+				return "Hi " + who + ',I am a ' + this.name;
+			}
+		}
+		console.log(some_obj.say('judy'));
+		var my_obj = {
+			name : "chenjun",
+			log : function () {
+				return this.name
+			}
+		};
+		console.log(some_obj.say.call(my_obj, 'judy')); //==> Hi judy,I am a chenjun
+		console.log(my_obj.log.call(some_obj)); //==> jack
+		// arguments 对象
+		function f_1() {
+			return arguments
+		}
+		console.log(f_1(1, 3, 5))
+		function f_2() {
+			return arguments.callee
+		};
+		console.log(f_2());
+		// arguments.callee实现递归
+		(function (count) {
+			if (count < 5) {
+				alert(count);
+				arguments.callee(++count)
+			}
+		})(1)
+		// 日期对象
+		// 查看从2016到3012年有多少个9月27日是星期二，并查看一下这些日子在一周当中的分布情况；
+		var stats = [0, 0, 0, 0, 0, 0, 0]
+		for (var i = 2016; i < 3012; i++) {
+			stats[new Date(i, 8, 27).getDay()]++
+		}
+		console.log(stats)
+	</script>
+</body>
+</html>

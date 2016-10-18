@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script> 
+		// 1、每个函数都有一个prototype属性，该属性所存储的就是原型对象；__proto__用于保存各种原型对象的神秘链接；两者并不是对等的，IE浏览器并不支持__proto__，因此__proto__只能在学习或调试的环境中使用； 
+		// 2、propertyIsEnumerable 判断其中哪些是可枚举的属性，constrctor,length这些属性都是不会显示的，要以显示的属性即是枚举属性; 
+		// 3、对于所有的原型属性，propertyIsEnumerable都会返回false;但需要注意的是，如果propertyIsEnumerable是调用来自于某个原型链上的对象，那么该对象上的属性是可以枚举的；
+		// 4、isPrototypeOf方法用于检测当前对象是否是另一个对象的原型；
+
+		function person(name, age) {
+			this.name = name; // 私有属性
+			this.age = age;
+		}
+		person.prototype.name = "jack"; // 原型属性
+		person.prototype.work = 'teacher'; // 原型属性
+		var P = new person('chen', 30);
+		console.log(P.name); // ==> chen
+		delete P.name
+		console.log(P.name); // ==> jack
+		console.log(person.hasOwnProperty('name')) // ==> ture   对象（自身）属性
+		console.log(person.hasOwnProperty('work')) // ==> false  原型属性
+		console.log(P.__proto__.hasOwnProperty('name')) // ==> ture
+		console.log(P.__proto__.hasOwnProperty('work')) // ==> ture
+		console.log(P.propertyIsEnumerable('age')) // ==> ture 可枚举
+		console.log(P.__proto__.propertyIsEnumerable('age')) // ==> false
+		console.log(P.__proto__.propertyIsEnumerable('work')) // ==> false
+		for (var prop in P) {
+			if (P.hasOwnProperty(prop)) {
+				console.log(prop + '=' + P[prop])
+			}
+		}
+		console.log(P.__proto__.isPrototypeOf(P)) // ==> true
+		console.log(person.prototype.isPrototypeOf(P)) // ==> true
+		console.log(P.__proto__.__proto__.isPrototypeOf(P.__proto__)) // ==> true
+
+		console.log('------我是分割线-------')
+
+		var obj = {
+			work : "teacher",
+			sex : '男'
+		}
+		function people(name, age) {
+			this.name = name;
+			this.age = age
+		}
+		people.prototype = obj;
+		var People = new people('eric', 15);
+		console.log(obj.isPrototypeOf(People))
+	</script>
+	
+</body>
+</html>

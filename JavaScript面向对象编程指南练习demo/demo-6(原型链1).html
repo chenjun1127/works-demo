@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型链</title>
+</head>
+<body>
+	<script> 
+		// 原型链的继承 
+		function Shape() {
+			this.name = 'Shape';
+			this.toString = function () {
+				return this.name;
+			}
+		}
+		function TwoDShape() {
+			this.name = "2d Shape";
+		}
+		function Triangle(side, height) {
+			this.name = 'Triangle';
+			this.side = side;
+			this.height = height;
+			this.getArea = function () {
+				return this.side * this.height / 2;
+			}
+		}
+		TwoDShape.prototype=new Shape();
+		Triangle.prototype=new TwoDShape();
+		var my=new Triangle(5,10);
+		console.log(my.getArea());
+		console.log(my.toString())             //==> Triangle
+		console.log('my是否是当前对象的实例?')
+		console.log(my instanceof Shape)       //==> true
+		console.log(my instanceof TwoDShape)   //==> true
+		console.log(my instanceof Triangle)    //==> true
+		console.log(my instanceof Array)       //==> false
+		console.log('当前对象是否是my这个实例对象的原型？')
+		console.log(Shape.prototype.isPrototypeOf(my))
+		console.log(TwoDShape.prototype.isPrototypeOf(my))
+		console.log(Triangle.prototype.isPrototypeOf(my))
+		console.log(String.prototype.isPrototypeOf(my))
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for循环</title>
+</head>
+<body>
+	<script>
+		var res = "\n";
+		for (var i = 0; i < 10; i++) {
+			for (var j = 0; j < 10; j++) {
+				res += '*';
+			}
+			res += "\n";
+		}
+		console.log(res);
+		var res1 = '\n', i, j;
+		for (var i = 1; i <= 7; i++) {
+			for (j = 1; j <= 15; j++) {
+				res1 += (i * j) % 8 ? '-' : '*'
+			}
+			res1 += '\n'
+		}
+		console.log(res1);
+		var result = "";
+		for (var i = 1; i <= 9; i++) {
+
+			for (var j = 1; j <= i; j++) {
+				result += i + '*' + j + '=' + i * j + '  '
+
+			}
+			result += '<br/>'
+		}
+		document.body.innerHTML = result;
+	</script>
+</body>
+</html>

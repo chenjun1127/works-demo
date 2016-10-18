@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="tools.js"></script>
+</head>
+<body>
+	<script> 
+		// 查询数组中是否村子某一个值
+		Array.prototype.inArray = function (neddle) {
+			for (var i = 0; i < this.length; i++) {
+				if (this[i] == neddle) {
+					return true
+				}
+			}
+			return false;
+		}
+
+		var arr = ['red', 'green', 'orange'];
+		console.log(arr.inArray('red'));
+		// 添加字符串反转的方法，借助数组里面的reverse方法；
+		String.prototype.reverse = function () {
+			return Array.prototype.reverse.apply(this.split('')).join('');
+		}
+		console.log('str'.reverse());
+
+		var shape = {
+			type : "triangle",
+			getType : function () {
+				return this.type
+			}
+		}
+		console.log('-------分割线，以下为例子--------')
+		function Triangle(a, b, c) {
+			this.a = a;
+			this.b = b;
+			this.c = c;
+		}
+		Triangle.prototype = shape;
+		Triangle.prototype.getPerimeter = function () {
+			return this.a + this.b + this.c
+		}
+
+		var t = new Triangle(1, 2, 3);
+		console.log(t) // ==> Triangle {a: 1, b: 2, c: 3}
+		console.log(shape.isPrototypeOf(t)); // ==> true
+		console.log(shape.__proto__.isPrototypeOf(t)); // ==> true
+		console.log(t.getPerimeter()) // ==> 6
+		console.log(t.getType()) // ==> triangle
+		for (var prop in t) {
+			if (t.hasOwnProperty(prop)) { // ==> 私有属性
+				console.log('key--' + prop + '，value--' + t[prop])
+			}
+		}
+
+		// shuffle函数，打乱数组的函数，用内建对象扩展;
+		Array.prototype.shuffle = function () {
+			for (var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+			return this;
+		};
+		console.log([1, 3, 4, 52, 3].shuffle());
+	</script>
+</body>
+</html>
