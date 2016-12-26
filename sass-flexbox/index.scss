@@ -1,0 +1,108 @@
+@import '_scss/_flex.scss';
+@import '_scss/_tool.scss';
+$backgroundColor: #ff9900;
+$width-25:25%;
+$height: 200px;
+
+@mixin padding($px) {
+	padding: $px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.box {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	@include boxSizing;
+	@include flexbox;
+	@include flexDirection(row);
+	@include horizontal-center;
+	@include border(1px, solid, #d9d9d9);
+	position: relative;
+	width: 100%;
+	@include padding(10px);
+	@include flex-flow(row, wrap);
+	@include justify-content(space-between);
+	li {
+		@include flexbox;
+		@include border(1px, dashed, #f90);
+		@include justify-content(center);
+		@include align-items(center);
+		@include flex(auto);
+		height: $height/2;
+		margin: 10px;
+		&:nth-of-type(even) {
+			background: $backgroundColor;
+		}
+		&:hover {
+			background-color: desaturate($backgroundColor, 80%);
+			animation: 0.25s ease both;
+
+			@include animation-keyframes {
+				100% {
+					height: $height;
+				}
+			}
+		}
+	}
+}
+
+.parent {
+	width: 100%;
+	height: $height*2;
+	background-color: darken($backgroundColor, 40%);
+	position: relative;
+}
+
+.child {
+	width: $height;
+	height: $height;
+	background-color: green;
+	color: #fff;
+	@include centerer(true, true);
+	@include flexbox;
+	@include justify-content(center);
+	@include align-items(center);
+	@include prefix(border-radius, 10px);
+	&:before {
+		content: "";
+		@include triangle(30px, green, left);
+		left: -30px;
+		top: 30px;
+		position: absolute;
+	}
+}
+
+input[disabled] {
+	@include disabled(#efefef, #ccc);
+	@include border(1px, solid, #d9d9d9);
+	padding: 10px;
+	@include prefix(border-radius, 3px);
+}
+
+.maskBox {
+	width: 100%;
+	height: $height;
+	position: relative;
+	background-color: darken($backgroundColor, 20%);
+	margin-bottom: 20px;
+	text-align: center;
+	line-height: $height;
+	color: #fff;
+	&:before {
+		content: "";
+		@include coverMask(rgba(20, 20, 20, .6));
+		@include translate(-100%, 0);
+		@include prefix(transition, all 0.25s ease-in-out, webkit moz);
+	};
+	&:hover {
+		&:before {
+			@include translate(0%, 0);
+		}
+	}
+}
