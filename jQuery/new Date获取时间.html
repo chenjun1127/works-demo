@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if else运用！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var d = new Date();
+            var time = d.getHours();
+            $("button").bind('click', function () {
+                if (time < 12) {
+                    $(".box").show("fast").html("<b>上午好！</b>");
+                } else {
+                    $(".box").hide();
+                    alert("O.O,时间不对！");
+                }
+
+            })
+        })
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 14px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 215px;
+            border: solid 1px #949494;
+            display: none;
+            height: 50px;
+        }
+
+    </style>
+<body>
+<button type="button">获取时间</button>
+<div class="box">
+
+</div>
+</body>
+</html>

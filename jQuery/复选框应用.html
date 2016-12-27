@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框应用</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //全选
+            $("#selectAll").click(function () {
+                $("input[name='itmes']").attr("checked", true)
+            })
+            //全不选
+            $("#notselectAll").click(function () {
+                $("input[name='itmes']").attr("checked", false)
+            })
+            //反选
+            $("#inselectAll").click(function () {
+                $("input[name='itmes']").each(function () {
+                    $(this).attr("checked", !$(this).attr("checked"))
+                })
+            })
+            //提交
+            $("#subit").click(function () {
+                var str = "你选中的是:\r\n";
+                $("input[name='itmes']:checkbox:checked").each(function () {
+                    str += $(this).val() + "\r\n";
+                })
+                alert(str)
+            })
+            //复选框代替全选/全不选；
+            $("#checkAll").click(function () {
+                //所有checkbox跟着全选的checkbox走。
+                $('[name=itmes]:checkbox').attr("checked", this.checked);
+            });
+            $("input[name='itmes']").click(function () {
+                var $tmp = $("[name='itmes']:checkbox");
+                $("#checkAll").attr("checked", $tmp.length == $tmp.filter(":checked").length)
+            })
+
+        })
+
+
+    </script>
+</head>
+
+<body>
+<form action="#" method="post" name="Form">
+    你最喜欢的运动是什么？
+    <input type="checkbox" name="itmes" value="篮球"/>篮球
+    <input type="checkbox" name="itmes" value="足球"/>足球
+    <input type="checkbox" name="itmes" value="乒乓球"/>乒乓球
+    <input type="checkbox" name="itmes" value="游泳"/>游泳
+    <input type="checkbox" name="itmes" value="爬山"/>爬山
+    <input type="checkbox" name="all" id="checkAll"/>全选/全不选
+    <hr/>
+    <input type="button" id="selectAll" value="全选"/>
+    <input type="button" id="inselectAll" value="反选"/>
+    <input type="button" id="notselectAll" value="全不选"/>
+    <input type="button" id="subit" value="提交"/>
+</form>
+
+</body>
+</html>

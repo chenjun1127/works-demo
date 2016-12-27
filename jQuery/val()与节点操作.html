@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>val()与节点操作</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        $(function () {
+            $("#key").val("请输入关键字进行搜索");
+            $("#key").attr("color", "#ccc");
+            $("#key").hover(function () {
+                $(this).css("background", "#fee").css("color", "#d00");
+            }, function () {
+                $(this).css("background", "#fff").css("color", "#333");
+            });
+            $("#key").click(function () {
+                $(this).val("");
+            });
+        });
+        //]]>
+    </script>
+</head>
+<body>
+<input type="text" id="key" name="key"/>
+</body>
+</html>

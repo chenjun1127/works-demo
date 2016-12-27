@@ -1,0 +1,48 @@
+@charset "utf-8";
+*{padding:0;margin:0;}
+body{padding:0; margin:0;font:12px/1.7em Microsoft YaHei; padding-top:30px;}
+h3{height:30px; background:#3B5998;color:#FFF; line-height:30px; text-indent:6px;}
+.prolist { 
+	position:relative;
+	height: 220px;
+	overflow:hidden; 
+	border: 1px solid #AAAAAA;
+	background:#FFFFFF;
+	width:586px;
+	margin:auto;
+}
+.prolist .prolist_content{
+ 	position:absolute; 
+	width:1800px;
+	top:26px; 
+	left:0px;
+	padding:20px 0 0 8px;
+}
+.prolist ul{  
+	margin-bottom:0px; 
+    float:left;
+	height: 220px;
+}
+.prolist ul li { 
+	float:left;
+	display:inline;
+	text-align:center;
+	margin-right:22px;  
+}
+.prolist ul li span { 
+	display:block;
+	overflow:hidden; 
+}
+.prolist ul li img { 
+	display:block; 
+	width:124px; 
+	height:124px; 
+	background:#EEE; 
+	border:0;
+}
+.module_left_right{ 
+	position:absolute; 
+	top:7px; 
+	right:10px; 
+	cursor:pointer;
+}

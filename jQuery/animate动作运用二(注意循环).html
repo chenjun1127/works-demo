@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animate动画的运用2</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function aa() {
+                $(".box_2").animate({width: "500"}, "slow");
+                $(".box_2").animate({width: "100"}, "slow", aa);
+            }
+
+            aa();
+            $("button").click(function () {
+                $(".box_2").css("background", "red");
+                $(":animated").stop(true);
+            })
+        });
+    </script>
+    <style type="text/css">
+        .box_2 {
+            width: 100px;
+            height: 50px;
+            background: #666;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box_2">ff</div>
+<button type="button">stop</button>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+AJAX is not a programming language.
+
+It is just a technique for creating better and more interactive web applications.

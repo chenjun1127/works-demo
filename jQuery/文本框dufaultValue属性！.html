@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框dufaultValue属性！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(":input").focus(function () {
+                $(this).css("background", "#d5f0fc");
+                if ($(this).val() == this.defaultValue) {//初始默认属性
+                    $(this).val("")
+                }
+            }).blur(function () {
+                $(this).css("background", "#fff");
+                if ($(this).val() == "") {
+                    $(this).val(this.defaultValue)
+                }
+            })
+        })
+    </script>
+    <style type="text/css">
+        body {
+            font-size: 12px;
+            color: #6d6d6d;
+            line-height: 1.8em;
+        }
+
+        input {
+            width: 250px;
+            height: 20px;
+            line-height: 20px;
+            margin: 5px;
+            color: #9e9e9e;
+        }
+
+        textarea {
+            width: 222px;
+            padding: 0;
+            margin: 0;
+            padding: 5px;
+            color: #9e9e9e;
+        }
+    </style>
+</head>
+
+<body>
+姓名：<input name="" id="usename" type="text" value="请输入你的姓名"/><br/>
+密码：<input name="" type="text" id="pasd" value="请输入你的密码"/><br/>
+详细内容： <textarea name="" cols="30" rows="5">详细内容</textarea>
+</body>
+</html>
+

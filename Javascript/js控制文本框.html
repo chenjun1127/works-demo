@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Javascript控制文本框</title>
+    <script type="text/javascript">
+        function setValue() {
+            var textVal = document.frmData.textValue.value;
+            alert("文本框的值为：" + textVal);
+            document.frmData.textValue.value = "文本框赋值";
+            alert("赋值之后的结果：" + document.frmData.textValue.value)
+            document.frmData.textValue.readOnly = "readOnly";//设置文本框只读
+        }
+        function setAttr() {
+            var textObj = document.frmData.elements("textValue");
+            textObj.size = 30;
+            textObj.maxLength = 24;
+            textObj.redadOnly = "";
+
+        }
+        function setClass() {
+            var textObj = document.frmData.elements("textValue");
+            textObj.style.border = "solid #ccc 1px";
+            textObj.style.background = "#ff5500"
+
+        }
+    </script>
+</head>
+
+<body>
+<form action="#" method="get" name="frmData">
+    <table width="300" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <td><input type="text" value="请输入值" name="textValue"/></td>
+            <td><input type="button" value="设置文本框的值" onclick="setValue()"/></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="设置文本框的属性" onclick="setAttr()"/></td>
+            <td><input type="button" value="设置文本框的样式" onclick="setClass()"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

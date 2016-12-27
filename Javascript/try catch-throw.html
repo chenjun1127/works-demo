@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>try catch</title>
+</head>
+<script>
+    function aa() {
+        try {
+            var _box = document.getElementById("inputbox").value;
+            if (_box < 0)     throw"太小";
+            if (_box > 10)  throw"太大";
+            if (_box == "") throw"值为空";
+            if (isNaN(_box)) throw "不是数字";
+        }
+        catch (error) {
+            var y = document.getElementById("mess");
+            y.innerHTML = "错误：" + error + "。";
+        }
+    }
+</script>
+<body>
+<input type="text" id="inputbox"/><input type="button" value="click" onclick="aa()"/>
+<p id="mess"></p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无标题文档</title>
+    <style type="text/css">
+        #newsTable {
+            margin: 100px auto;
+        }
+    </style>
+    <script language="javascript" type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $('#btn1').click(function () {//全选
+                $("[name='fruit']").attr('checked', 'true');
+            });
+            $('#btn2').click(function () {//全不选
+                $("[name='fruit']").removeAttr('checked');
+            });
+            $('#btn3').click(function () {//反选
+                $("[name='fruit']").each(function () {
+                    if ($(this).attr('checked')) {
+                        $(this).removeAttr('checked');
+                    } else {
+                        $(this).attr('checked', 'true');
+                    }
+                })
+            });
+            $("#btn4").click(function () {//选中所有奇数
+                $("[name='fruit']:even").attr('checked', 'true');
+            })
+            $("#btn5").click(function () {//获取所有选中的选项的值
+                var checkVal = '';
+                $("[name='fruit'][checked]").each(function () {
+                    checkVal += $(this).val() + ',';
+                })
+                alert(checkVal);
+            })
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<input type="checkbox" name="fruit" value="apple"/>苹果
+<input type="checkbox" name="fruit" value="orange"/>橘子
+<input type="checkbox" name="fruit" value="banana"/>香蕉
+<input type="checkbox" name="fruit" value="grape"/>葡萄
+<input type="button" id="btn1" value="全选">
+<input type="button" id="btn2" value="全不选">
+<input type="button" id="btn3" value="反选">
+<input type="button" id="btn4" value="选中所有奇数">
+<input type="button" id="btn5" value="获得选中的所有值">
+</body>
+</html>
+
+ 

@@ -1,0 +1,43 @@
+@charset "utf-8";
+body{font:12px/1.7em Microsoft YaHei; padding:0; margin:0}
+#box{margin:0 auto; width:500px; margin-top:30px; height:300px; border:solid 1px #c8c8c8; padding:10px;}
+.skin{padding:0; margin:0; list-style:none; width:115px; height:15px; clear:both; padding:10px; border:solid 1px #c8c8c8; margin-bottom:10px; }
+ul.skin li{padding:0; margin:0; text-indent:-9999px; float:left; display:inline; width:15px; height:15px; background:url(../images/theme.gif); margin:0 2px; cursor:pointer; overflow:hidden;}
+#skin_0{
+background-position:0px 0px;
+}
+#skin_1{
+	background-position:15px 0px;
+}
+#skin_2{
+	background-position:35px 0px;
+}
+#skin_3{
+	background-position:55px 0px;
+}
+#skin_4{
+	background-position:75px 0px;
+}
+#skin_5{
+	background-position:95px 0px;
+}
+#skin_0.selected{
+	background-position:0px 15px !important;
+}
+#skin_1.selected{
+	background-position:15px 15px !important;
+}
+#skin_2.selected{
+	background-position:35px 15px !important;
+}
+#skin_3.selected{
+	background-position:55px 15px !important;
+}
+#skin_4.selected{
+	background-position:75px 15px !important;
+}
+#skin_5.selected{
+	background-position:95px 15px !important;
+}
+#div_side_0,#div_side_1{float:left;width:120px;height:100px;font-size:14px; text-align:center; margin-right:5px;}
+h1{font-size:14px; width:120px; height:100px; line-height:100px; padding:0; margin:0}

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取图片后缀名</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("img").click(function () {
+                var tt = $(this).attr("src");
+                var i = tt.lastIndexOf(".");
+                var init = tt.substring(i);
+                alert(init)
+            })
+        })
+    </script>
+</head>
+
+<body>
+<img src="http://www.baidu.com/img/bdlogo.gif"/>
+</body>
+</html>

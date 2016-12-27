@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <title>triggerHandler和trigger函数运用</title>
+    <script type="text/javascript">
+        $(function () {
+            //
+            $("#old").click(function () {
+                $("#divResult").html("")
+                $("input").trigger("focus")
+            })
+            //
+            $("#new").click(function () {
+                $("#divResult").html("");
+                $("input").triggerHandler("focus");
+            });
+            //
+            $("input").focus(function () {
+                $("<span>Focused!</span>").appendTo("#divResult");
+                $(this).css("background", "#eee")
+            })
+            //trigger函数出发了浏览器默认的获取焦点的行为,让input元素获得了焦点, 所以再次调用了focus事件处理函数.triggerHandler只调用为focus事件绑定的事件处理函数, 而不引发浏览器行为, 所以最后input元素没有获得焦点.
+        })
+    </script>
+</head>
+
+<body>
+<button id="old">.trigger("focus")</button>
+<button id="new">.triggerHandler("focus")</button>
+<br/>
+<br/>
+<input type="text" value="To Be Focused"/>
+<div id="divResult"></div>
+</body>
+</html>

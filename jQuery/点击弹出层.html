@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击弹出层</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var speed = 200;
+            $("button").bind("click", function (e) {
+                //取消事件冒泡；
+                e.stopPropagation
+                //设置弹出层位置；
+                var offset = $(e.target).offset();
+                $(".box").css({"top": "offset.top+$(e.target).height()+'px'", "left": "offset.left"});
+                //动画显示
+                var $this = $(".box")
+                if ($this.is(":visible")) {
+                    $this.slideUp(speed);
+                    $this.text("隐藏")
+                } else {
+                    $this.slideDown(speed);
+                    $this.text("显示")
+                }
+            })
+            $(document).bind("click", function (event) {
+//                var e=window.event||e;
+//                var target = $(e.srcElement || e.target);
+//                if(target.is($("button,.box"))){
+//                    console.log("目标区域");
+//                    return;
+//                }else{
+//                    $(".box").hide();
+//                }
+                var e = window.event || e;
+                var target = $(e.target);
+                if (target[0].tagName == "BUTTON" || target.hasClass("box")) {
+                    console.log("目标区域");
+                    return;
+                } else {
+                    $(".box").hide();
+                }
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+<button value="点击弹出层" type="button">点击弹出层</button>
+<div style="width:100px; height:50px; border:solid 1px #d4bebe; position:absolute; display:none; text-align:center; line-height:50px;"
+     class="box">隐藏
+</div>
+</body>
+</html>

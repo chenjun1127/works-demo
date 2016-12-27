@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>作为关联数组的对象</title>
+    <script type="text/javascript">
+        var busAry = new Array();
+
+        function busObj(line, num) {
+            this.line = line;
+            this.num = num;
+        }
+
+        function getNumByLine(line) { //根据线路得到数量
+            for (i = 0; i < busAry.length; i++) {
+                if (busAry[i].line == line)
+                    return busAry[i].num;
+            }
+        }
+        //使用数组对象，需要分别创建10个对象，并将这些对象写入数组；
+        var bus1 = new busObj("1路", 20);
+        var bus2 = new busObj("2路", 18);
+        var bus3 = new busObj("3路", 23);
+        var bus4 = new busObj("4路", 24);
+        var bus5 = new busObj("5路", 15);
+        var bus6 = new busObj("6路", 30);
+        var bus7 = new busObj("7路", 15);
+        var bus8 = new busObj("8路", 19);
+        var bus9 = new busObj("9路", 11);
+        var bus10 = new busObj("10路", 30);
+        busAry[0] = bus1;
+        busAry[1] = bus2;
+        busAry[2] = bus3;
+        busAry[3] = bus4;
+        busAry[4] = bus5;
+        busAry[5] = bus6;
+        busAry[6] = bus7;
+        busAry[7] = bus8;
+        busAry[8] = bus9;
+        busAry[9] = bus10;
+        var sum = bus1.num + bus2.num + bus3.num + bus4.num + bus5.num + bus6.num + bus7.num + bus8.num + bus9.num + bus10.num;
+        document.write("公交车总数为:" + sum + "<hr>")
+        document.write("公交车平均数为:" + sum / 10 + "<hr>")
+        document.write("5路公交车数量为:" + getNumByLine("5路") + "<hr>")
+    </script>
+</head>
+<body>
+</body>
+</html>

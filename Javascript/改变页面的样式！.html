@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>改变页面的样式！</title>
+    <style type="text/css">
+        .box {
+            background: #ccc;
+            font-size: 12px;
+        }
+    </style>
+    <script type="text/javascript">
+        function aa() {
+            var _body = document.body;
+            _body.className = "box";//(方法一，设置元素的className属性；)
+            _body.style.background = "gray";//(方法二，设置元素的style属性；)
+            alert(_body.style.background)
+        }
+        window.onload = aa;
+    </script>
+</head>
+<body>
+</body>
+</html>

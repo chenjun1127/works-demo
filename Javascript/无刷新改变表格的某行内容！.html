@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无刷新改变表格的某行内容！</title>
+    <script type="text/javascript">
+        var curRom = null;
+        function mod(obj) {
+            var _tr = obj.parentElement.parentElement;
+            curRom = _tr;
+            var _name = _tr.cells[0].innerText;
+            var _gender = _tr.cells[1].innerText;
+            var _age = _tr.cells[2].innerText;
+            var _height = _tr.cells[3].innerText;
+            var _weight = _tr.cells[4].innerText;
+            document.frmDom.txtName.value = _name;
+            document.frmDom.txtGender.value = _gender;
+            document.frmDom.txtAge.value = _age;
+            document.frmDom.txtHeight.value = _height;
+            document.frmDom.txtWeight.value = _weight;
+        }
+        function cfm() {
+            if (curRom == null) {
+                alert("没有修改信息！")
+                return;
+            }
+            curRom.cells[0].innerText = document.frmDom.txtName.value;
+            curRom.cells[1].innerText = document.frmDom.txtGender.value;
+            curRom.cells[2].innerText = document.frmDom.txtAge.value;
+            curRom.cells[3].innerText = document.frmDom.txtHeight.value;
+            curRom.cells[4].innerText = document.frmDom.txtWeight.value;
+            document.frmDom.txtName.value = "";
+            document.frmDom.txtGender.value = "";
+            document.frmDom.txtAge.value = "";
+            document.frmDom.txtHeight.value = "";
+            document.frmDom.txtWeight.value = "";
+            curRom = null
+        }
+    </script>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            border: solid 1px #ccc;
+            text-align: center
+        }
+
+        table td {
+            border: solid 1px #ccc;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+<form name="frmDom" method="post" action="#">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>身高</td>
+            <td>体重</td>
+            <td>操作</td>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>男</td>
+            <td>34</td>
+            <td>178</td>
+            <td>80</td>
+            <td>
+                <input type="button" value="修改 " onclick="mod(this)"/></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>女</td>
+            <td>24</td>
+            <td>165</td>
+            <td>50</td>
+            <td><input type="button" value="修改 " onclick="mod(this)"/></td>
+        </tr>
+        <tr>
+            <td>Toony</td>
+            <td>男</td>
+            <td>25</td>
+            <td>178</td>
+            <td>65</td>
+            <td><input type="button" value="修改 " onclick="mod(this)"/></td>
+        </tr>
+        <tr>
+            <td>Rose</td>
+            <td>女</td>
+            <td>23</td>
+            <td>155</td>
+            <td>45</td>
+            <td><input type="button" value="修改 " onclick="mod(this)"/></td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>男</td>
+            <td>24</td>
+            <td>175</td>
+            <td>60</td>
+            <td><input type="button" value="修改 " onclick="mod(this)"/></td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td colspan="2"><input type="text" name="txtName" value=""/></td>
+            <td>性别</td>
+            <td colspan="2"><input type="text" name="txtGender" value=""/></td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td colspan="2"><input type="text" name="txtAge" value=""/></td>
+            <td>身高</td>
+            <td colspan="2"><input type="text" name="txtHeight" value=""/></td>
+        </tr>
+        <tr>
+            <td>体重</td>
+            <td colspan="2"><input type="text" name="txtWeight" value=""/></td>
+            <td>&nbsp;</td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="6"><input type="button" name="button6" id="button6" value="确定" onclick="cfm()"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

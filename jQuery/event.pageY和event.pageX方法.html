@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event.pageY和event.pageX方法</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("a[title='www.baidu.com']").click(function (event) {
+                alert("当前的鼠标位置:" + event.pageY + "," + event.pageX);
+                return false;
+            })
+        })
+    </script>
+</head>
+
+<body>
+<a href="#" title="www.baidu.com">百度</a>
+</body>
+</html>

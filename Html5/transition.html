@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{width: 100px;height: 100px;background: red;
+        -webkit-transition: width 2s linear 2s,transform 3s,height 1s;
+        -moz-transition: width 2s linear 2s,transform 3s,height 1s;
+        -ms-transition: width 2s linear 2s,transform 3s,height 1s;
+        -o-transition: width 2s linear 2s,transform 3s,height 1s;
+        transition: width 2s linear 2s,transform 3s,height 1s;}
+    .box:hover{width: 200px;height: 200px;
+        -webkit-transform: scale(1, 2);
+        -moz-transform: scale(1, 2);
+        -ms-transform: scale(1, 2);
+        -o-transform: scale(1, 2);
+        transform: scale(1,2);}
+	</style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

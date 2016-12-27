@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>多维数组</title>
+    <script type="text/javascript">
+        function person(_name, _height, _weight, _gender) {
+            this._name = _name;
+            this._height = _height;
+            this._weight = _weight;
+            this._gender = _gender;
+        }
+        var personAry1 = new Array();
+        personAry1[0] = new person("Bob", 178, 60, "男");
+        personAry1[1] = new person("Jim", 168, 50, "女");
+        personAry1[2] = new person("Jack", 185, 65, "男");
+        personAry1[3] = new person("Jone", 178, 62, "男");
+        personAry1[4] = new person("Kate", 158, 45, "女");
+        document.write("数组1：" + personAry1 + "<hr>");
+        document.write("第一个数组项的名字：" + personAry1[0]._name + "<hr>");
+
+        var personAry2 = new Array();
+        personAry2[0] = new Array("Bob", 178, 60, "男");
+        personAry2[1] = new Array("Jim", 168, 50, "女");
+        personAry2[2] = new Array("Jack", 185, 65, "男");
+        personAry2[3] = new Array("Jone", 178, 62, "男");
+        personAry2[4] = new Array("Kate", 158, 45, "女");
+        document.write("数组2：" + personAry2 + "<hr>");
+        document.write("第一个数组项的名字：" + personAry2[0][0] + "<hr>");
+
+    </script>
+
+</head>
+
+<body>
+</body>
+</html>

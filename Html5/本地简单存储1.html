@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>本地简单存储！</title>
+    <script>
+        window.onload = function () {
+            var user = document.getElementsByName('user')[0];
+            var psd = document.getElementsByName('psd')[0];
+            var save = document.getElementsByName('save')[0];
+            //sessionStorage,浏览器打开的时候会存储，
+            //localStorage,永久保存；
+            if (localStorage.getItem('user') && localStorage.getItem('psd')) {
+                user.value = localStorage.getItem('user');
+                psd.value = localStorage.getItem('psd');
+                save.checked = true;
+            }
+            save.onclick = function () {
+                if (save.checked) {
+                    localStorage.setItem('user', user.value);
+                    localStorage.setItem('psd', psd.value);
+                } else {
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('psd');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+用户名：
+<input type="text" name="user"/>
+密码：
+<input type="password" name="psd"/>
+永久保存：
+<input type="checkbox" name="save" id=""/>
+</body>
+</html>

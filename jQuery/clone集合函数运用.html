@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用 clone() 方法来复制元素，包括其事件处理器。</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(".box").append($("p:first").clone());//clone，所选元素的集合
+            });
+            $("p").click(function () {
+                $(this).animate({fontSize: "+=1px"})
+
+            });
+        });
+    </script>
+    <style type="text/css">
+        p {
+            font: 12px/1.5em Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            height: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            border: solid 1px #b8b8b8;
+        }
+    </style>
+</head>
+
+<body>
+<p>这是一个标题！</p>
+<p>工塔顶</p>
+<button type="button">点击我，复制P</button>
+<div class="box"></div>
+</body>
+</html>

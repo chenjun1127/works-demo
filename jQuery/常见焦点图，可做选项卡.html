@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常见焦点图，可以做选项卡</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        img {
+            border: none;
+            width: 640px;
+            height: 200px;
+        }
+
+        .demo {
+            width: 640px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            border: #ddd 1px solid;
+            padding: 0px;
+        }
+
+        .num {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            z-index: 10;
+        }
+
+        .num a {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 3px;
+            cursor: pointer;
+            line-height: 16px;
+        }
+
+        .num a.cur {
+            background: #ff6700;
+            color: #fff;
+        }
+
+        .demo ul {
+            position: relative;
+            z-index: 5;
+        }
+
+        .demo ul li {
+            position: absolute;
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var sw = 0;
+            $(".demo .num a").mouseover(function () {
+                sw = $(".num a").index(this);
+                myShow(sw);
+            });
+            function myShow(i) {
+                $(".demo .num a").eq(i).addClass("cur").siblings("a").removeClass("cur");
+                $(".demo ul li").eq(i).stop(true, true).fadeIn(600).siblings("li").fadeOut(600);
+            }
+
+            //滑入停止动画，滑出开始动画
+            $(".demo").hover(function () {
+                if (myTime) {
+                    clearInterval(myTime);
+                }
+            }, function () {
+                myTime = setInterval(function () {
+                    myShow(sw)
+                    sw++;
+                    if (sw == 3) {
+                        sw = 0;
+                    }
+                }, 3000);
+            });
+            //自动开始
+            var myTime = setInterval(function () {
+                myShow(sw)
+                sw++;
+                if (sw == 3) {
+                    sw = 0;
+                }
+            }, 3000);
+        })
+    </script>
+</head>
+
+<body>
+<div class="demo">
+    <div class="num"><a class="cur">1</a><a>2</a><a>3</a></div>
+    <ul>
+        <li style="display:block;"><a href="#"><img src="http://www.baidu.com/img/baidu_sylogo1.gif"/></a></li>
+        <li><a href="#"><img src="http://www.google.com.hk/images/srpr/logo3w.png"/></a></li>
+        <li><a href="#"><img src="http://www.baidu.com/img/baidu_sylogo1.gif"/></a></li>
+    </ul>
+</div>
+</body>
+</html>

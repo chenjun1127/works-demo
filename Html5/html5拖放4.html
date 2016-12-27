@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>拖放应用！</title>
+    <style>
+    #box1{width:188px;height:188px; border: 1px solid #cccccc;margin-bottom: 10px;padding: 5px;}
+    #box2{width:188px;height:188px; border: 1px solid #cccccc;margin-bottom: 10px;padding: 5px;}
+    ul{list-style: none;padding: 0;margin: 0;}
+    li{list-style: none;padding: 0;margin: 0;width: 98%;float: left;display: inline;height: 36px;line-height: 36px;background: #b8b8b8;border-bottom:dashed 1px bisque;padding-left: 2%;}
+    </style>
+    <script>
+        window.onload=function(){
+            var box1=document.getElementById('box1');
+            var box2=document.getElementById('box2');
+            var aLi=document.getElementsByTagName('li');
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].draggable=true;
+                aLi[i].flag=false;
+                aLi[i].ondragstart=function(e){
+                    this.flag=true;
+                };
+                aLi[i].ondragend=function(e){
+                    this.flag=false;
+                };
+            };
+            targetOver(box1);
+            targetOver(box2);
+            targetDrop(box1);
+            targetDrop(box2);
+            function targetOver(obj){
+                obj.ondragover=function(e){
+                    e.preventDefault();
+                }
+            }
+            function targetDrop(obj){
+                obj.ondrop=function(e){
+                    for(var i=0;i<aLi.length;i++){
+                        if(aLi[i].flag){
+                            obj.appendChild(aLi[i]);
+                        }
+                    }
+                    e.preventDefault();
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2">
+        <ul>
+            <li draggable="true">html</li>
+            <li draggable="true">css</li>
+            <li draggable="true">jQuery</li>
+            <li draggable="true">ajax</li>
+        </ul>
+    </div>
+    <div id="box"></div>
+</body>
+</html>

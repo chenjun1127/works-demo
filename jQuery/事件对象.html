@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).bind('click', function (e) {
+                alert(e.pageY + ',' + e.screenY + ',' + e.clientY);
+                $("input").val(e.pageY + ',' + e.screenY + ',' + e.clientY)
+            })
+        })
+    </script>
+</head>
+<body style="height: 2000px;">
+<input type="text" value="click" id="text" style="position: fixed;left: 0;top: 0;">
+</body>
+</html>

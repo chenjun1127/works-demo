@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var arr = ["张三", "李四", "王五", "马六"];
+            var arr1 = [1, 2, 3, 4];
+            $.each(arr, function (index, value) {
+                $(".box").html($(".box").html() + (index + 1) + ',' + value + '<br/>')
+            });
+            var arrS = arr.concat(arr1);
+            for (var i in arrS) {
+                $(".pox").html($(".pox").html() + arrS[i] + '<br/>');
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="box"></div>
+<br/>
+<div class="pox"></div>
+</body>
+</html>

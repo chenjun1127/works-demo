@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格的应用</title>
+    <style type="text/css">
+        table {
+            border: 0;
+            border-collapse: collapse;
+            color: #636363
+        }
+
+        td {
+            font: normal 12px/20px Arial;
+            padding: 2px;
+            width: 100px;
+        }
+
+        th, tr, td {
+            font: bold 12px/20px Arial;
+            text-align: left;
+            padding: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .even {
+            background: #FF6600;
+        }
+
+        .odd {
+            background: #FF9999;
+        }
+
+        .selected {
+            background: #66CC99;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //行的颜色设定
+            $("tbody>tr:odd").addClass("odd");
+            $("tbody>tr:even").addClass("even");
+            $("tbody>tr:contains('王五')").addClass("selected");
+            //检验是否选中
+            $("tbody>tr").click(function () {
+                var hasSelected = $(this).hasClass("selected");
+                $(this)[hasSelected ? "removeClass" : "addClass"]("selected").find(":checkbox").attr("checked", !hasSelected);
+                //如果选中，则移出selected类，否则就加上selected类
+            })
+            //轮换样式+显示隐藏
+            $("tr.parent").click(function () {
+                $(this).toggleClass("selected").siblings('.child_' + this.id).toggle();    //利用id名的共同点
+            })
+        })
+    </script>
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>选项</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>暂住地</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox" value="1" name="p"/></td>
+        <td>王一</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="2" name="p"/></td>
+        <td>王二</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="3" name="p"/></td>
+        <td>王三</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="4" name="p"/></td>
+        <td>王四</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="1" name="q"/></td>
+        <td>王五</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="2" name="q"/></td>
+        <td>王三</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="3" name="q"/></td>
+        <td>王四</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" value="4" name="q"/></td>
+        <td>王五</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<table>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>暂住地</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="parent" id="row_01">
+        <td colspan="3">前台设计</td>
+    </tr>
+    <tr class="child_row_01">
+        <td>王一</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr class="child_row_01">
+        <td>王一</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr class="parent" id="row_02">
+        <td colspan="3">后台开发</td>
+    </tr>
+    <tr class="child_row_02">
+        <td>王一</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    <tr class="child_row_02">
+        <td>王一</td>
+        <td>男</td>
+        <td>浙江</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

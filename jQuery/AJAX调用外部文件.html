@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调用外部的文件</title>
+    <script src="js/jquery-1.5.1.min.js" language="javascript"></script>
+    <script language="javascript">
+        $(function () {
+            $("button:eq(0)").click(function () {
+                $(".box_1").load("js/ajax.html")
+            });
+            $("button:eq(1)").click(function () {
+                $(".box_2").load("js/ajax.html .tt")//注意调用某一个类，有一个空格；
+            });
+            $("button:eq(2)").click(function () {
+                $(".box_3").load("js/ajax.txt")
+            });
+        })
+
+    </script>
+    <style type="text/css">
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+
+        .box_1, .box_2, .box_3 {
+            width: 300px;
+            height: 100px;
+            padding: 10px;
+            font-size: 12px;
+            background: #eee;
+            border: solid 1px #b8b8b8;
+        }
+
+        .gaibian_1, .gaibian_2 {
+            cursor: pointer;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<button type="button" value="ajax获取1">ajax获取1</button>
+<div class="box_1">我已经被改变啦!</div>
+<button type="button" value="ajax获取2">ajax获取2</button>
+<div class="box_2">我已经被添加啦!</div>
+<button type="button" value="ajax获取3">ajax获取3</button>
+<div class="box_3">我已经被添加啦!</div>
+</body>
+</html>

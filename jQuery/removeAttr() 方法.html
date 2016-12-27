@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>.removeAttr() 方法</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".btn").click(function () {
+                $(".btn").next().removeAttr("disabled").focus().val("editable now")
+            })
+        })
+    </script>
+</head>
+
+<body>
+<input type="button" value="点击" class="btn"/>
+<input disabled="disabled" value="can't edit this"/>
+</body>
+</html>

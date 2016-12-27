@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>获取表格的某列---平均分案例！</title>
+    <style type="text/css">
+        #table {
+            border-collapse: collapse;
+            text-align: center
+        }
+
+        #table td {
+            height: 30px;
+            border: solid 1px #B5B5B5;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="table">
+    <thead>
+    <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>成绩</td>
+        <td>专业</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>01</td>
+        <td>陈一</td>
+        <td>85</td>
+        <td>电气自动化</td>
+    </tr>
+    <tr>
+        <td>02</td>
+        <td>王三</td>
+        <td>65</td>
+        <td>英语</td>
+    </tr>
+    <tr>
+        <td>03</td>
+        <td>李四</td>
+        <td>75</td>
+        <td>数学</td>
+    </tr>
+    <tr>
+        <td>04</td>
+        <td>赵三</td>
+        <td>88</td>
+        <td>计算机</td>
+    </tr>
+    <tr>
+        <td>05</td>
+        <td>许一</td>
+        <td>88</td>
+        <td>计算机</td>
+    </tr>
+    <tr>
+        <td>06</td>
+        <td>罗六</td>
+        <td>85</td>
+        <td>会计</td>
+    </tr>
+    <tr>
+        <td colspan="4"><input type="button" value="平均分数为：" onclick="sorce()"/></td>
+
+    </tr>
+    </tbody>
+</table>
+<script>
+    function sorce() {
+        var _table = document.getElementById("table");
+        var rows = _table.tBodies[0].children;
+        var sorceTextArr = [];
+        for (var i = 0; i < rows.length - 1; i++) {
+            var tds = rows[i].children
+            var tdSorce = tds[2];
+            sorceTextArr[i] = tdSorce.innerText;
+        }
+        var sum = sorceTextArr;
+        alert("平均分数为："+average(sum)+'分！')
+    }
+    function average(arr) {
+        var temp = 0;
+        for (var i = 0; i < arr.length; i++) {
+            temp += arr[i] / arr.length;
+        }
+        return temp;
+    }
+
+</script>
+</body>
+</html>

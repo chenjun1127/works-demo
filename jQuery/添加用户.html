@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //添加用户；
+            $("#addEmpButton").click(function () {
+                var nameVal1 = $("#name").val();
+                var nameVal2 = $("#email").val();
+                var nameVal3 = $("#salary").val();
+                var td1 = "<td>" + nameVal1 + "</td>";
+                var td2 = "<td>" + nameVal2 + "</td>";
+                var td3 = "<td>" + nameVal3 + "</td>";
+                var td4 = "<td><a href=''>" + "Delete" + "</a> </td>";
+                var td = td1 + td2 + td3 + td4;
+                var tr = "<tr></tr>";
+                $(tr).append(td).appendTo("#employeetable tbody").find("a").click(function (e) {
+                    e.preventDefault();
+                    remove(this);
+                });
+            });
+            //删除;
+            $("#employeetable").find("a").bind("click", function () {
+                remove(this)
+            });
+            function remove(obj) {
+                var flag = confirm("确定要删除吗？");
+                if (flag) {
+                    $(obj).parent().parent().remove();
+                } else {
+                    return;
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+
+<h3>添加新员工</h3>
+name: <input type="text" name="name" id="name"/>
+email: <input type="text" name="email" id="email"/>
+salary: <input type="text" name="salary" id="salary"/>
+<button id="addEmpButton" value="abc">Submit</button>
+<br/>
+<br/>
+<table id="employeetable" border="1" cellpadding="5" cellspacing=0 width="1000">
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr>
+        <td>Tom</td>
+        <td>tom@tom.com</td>
+        <td>5000</td>
+        <td><a href="javascript:;">Delete</a></td>
+    </tr>
+    <tr>
+        <td>
+            Jerry
+        </td>
+        <td>jerry@sohu.com</td>
+        <td>8000</td>
+        <td><a href="javascript:;">Delete</a></td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>bob@tom.com</td>
+        <td>10000</td>
+        <td><a href="javascript:;">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>只能单选的复选框javascript特效</title>
+    <script type="text/javascript">
+        function checkOnly(checkObj) {
+            var inputAry = document.getElementsByTagName("input");
+            for (i = 0; i < inputAry.length; i++) {
+                if (inputAry[i].type == "checkbox") {
+                    inputAry[i].checked = "false";
+                }
+            }
+            checkObj.checked = true;
+        }
+    </script>
+
+</head>
+
+<body>
+<input type="checkbox" value="1" onclick="checkOnly(this)"/>足球
+<input type="checkbox" value="2" onclick="checkOnly(this)"/>篮球
+<input type="checkbox" value="3" onclick="checkOnly(this)"/>排球
+<input type="checkbox" value="4" onclick="checkOnly(this)"/>冰球
+</body>
+</html>

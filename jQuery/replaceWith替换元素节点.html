@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>替换元素节点replaceWith()</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("button:first").after("<br/>");//after()在匹配元素后添加内容;
+            $("button:first").bind("click", function () {
+                $("p:first").replaceWith("欢迎来到Jqeury的世界！");
+            });
+            $("button:eq(1)").bind("click", function () {
+
+                $("p:eq(1)").replaceWith(function () {
+                    return "<p>hollo world</p>"
+                })
+            })
+        })
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 12px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+<body>
+<p>这是标题一</p>
+<p>这是标题一</p>
+<button type="button">checke me(1)</button>
+<button type="button">checke me(2)</button>
+</body>
+</html>

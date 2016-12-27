@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格的数据管理</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("tr:first").addClass("oddtd");
+            $("tr:odd").css("background", "#ff9");
+            $(".allcheck").click(function () {
+                if (this.checked) {
+                    $("input[type=checkbox]").attr("checked", true);
+                }
+                else {
+                    $("input[type=checkbox]").attr("checked", false);
+                }
+            });
+            $(".btn").click(function () {
+                var inputL = $("input:checked:not('.allcheck')").length;//获取除全选复选框外的所有选中项
+                if (inputL != 0) {//如果有选中项
+                    $("input[type=checkbox]:not('.allcheck')").each(function (index) {//遍历除全选复选框外的
+                        if (this.checked) {//如果选中
+                            $("table tr[id=" + this.value + "]").remove();//获取选中的值，并删除该值所在的
+                        }
+
+                    })
+
+                }
+            })
+        })
+
+
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 12px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .oddtd {
+            background: #eee;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: #ccc solid 1px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+        }
+    </style>
+<body>
+<table width="800" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="63">选项</td>
+        <td width="302">项目名称</td>
+        <td width="143">缩略图</td>
+        <td width="141">完成时间</td>
+        <td width="151">负责人</td>
+    </tr>
+    <tr id="0">
+        <td><input type="checkbox" value="0"/></td>
+        <td>广州讯信科技有限公司</td>
+        <td>&nbsp;</td>
+        <td>2011-4-12</td>
+        <td>张三</td>
+    </tr>
+    <tr id="1">
+        <td><input type="checkbox" value="1"/></td>
+        <td>深圳和田服装</td>
+        <td>&nbsp;</td>
+        <td>2011-4-12</td>
+        <td>李四</td>
+    </tr>
+    <tr id="2">
+        <td><input type="checkbox" value="2"/></td>
+        <td>广州腾讯</td>
+        <td>&nbsp;</td>
+        <td>2011-4-12</td>
+        <td>王王</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="input3" class="allcheck"/>
+            全选
+        </td>
+        <td><input type="submit" name="button" id="button" class="btn" value="删除"/></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+
+</body>
+</html>

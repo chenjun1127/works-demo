@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>改变DIV的内容</title>
+    <script type="text/javascript">
+        var btn = document.getElementsByTagName("button")
+        var btn_1 = btn[0];
+        var btn_2 = btn[1];
+        function showtxt() {
+            var _div = document.getElementById("box");
+            _div.innerText = "让DIV元素显示文本信息";
+        }
+        function hidetxt() {
+            var _div = document.getElementById("box");
+            _div.innerText = "";
+        }
+        function showhtml() {
+            var _div = document.getElementById("box");
+            var _divContent = "<div style='width:300px; height:100px; background:#ccc;'>内容</div>";
+            _div.innerHTML = _divContent;
+        }
+        function hidehtml() {
+            var _div = document.getElementById("box");
+            _div.innerHTML = "";
+        }
+    </script>
+</head>
+
+<body>
+<table width="400" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>
+            <button type="button" onclick="showtxt()">显示文本</button>
+        </td>
+        <td>
+            <button type="button" onclick="hidetxt()">隐藏文本</button>
+        </td>
+    </tr>
+    <tr>
+        <td height="30">
+            <button type="button" onclick="showhtml()">显示内容</button>
+        </td>
+        <td>
+            <button type="button" onclick="hidehtml()">隐藏内容</button>
+        </td>
+    </tr>
+</table>
+<div class="main" id="box">
+
+</div>
+
+</body>
+</html>

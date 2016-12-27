@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一个漂亮的焦点图（带缩略图）</title>
+    <style type="text/css">
+        /*一个漂亮的焦点图*/
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        img {
+            border: none;
+        }
+
+        #img_scroll {
+            width: 546px;
+            height: 220px;
+            overflow: hidden;
+            padding: 8px;
+            background: #444;
+            border: #333 4px solid;
+            margin: 0 auto;
+        }
+
+        #img_small {
+            width: 120px;
+            float: left;
+            position: relative;
+        }
+
+        #img_small a {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #img_small img {
+            height: 70px;
+        }
+
+        #img_small .curr {
+            width: 176px;
+            height: 73px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #img_big {
+            width: 405px;
+            height: 220px;
+            float: right;
+            position: relative;
+        }
+
+        #img_big a {
+            display: none;
+            position: absolute;
+            left: 0px;
+            top: 0;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        //一个漂亮的焦点图
+        $(function () {
+            var showtime = 0;
+            $("#img_small a:lt(3)").mouseover(function () {//lt表示小于
+                var showtime = $("#img_small a:lt(3)").index(this);
+                showImg(showtime)
+            });
+            //滑入停止动画，滑出开始动画
+            $("#img_scroll").hover(function () {
+                if (settime) {
+                    clearInterval(settime);
+                }
+            }, function () {
+                settime = setInterval(function () {
+                    showImg(showtime)
+                    showtime++;
+                    if (showtime == 3) {
+                        showtime = 0;
+                    }
+                }, 3000);
+            });
+            //自动开始
+            var settime = setInterval(function () {
+                showImg(showtime)
+                showtime++;
+                if (showtime == 3) {
+                    showtime = 0;
+                }
+            }, 3000);
+        })
+        function showImg(i) {
+            var Link = $("#img_small").eq(i).find("a").attr("href");
+            $("#img_small .curr").attr("href", Link);
+            $("#img_big a").eq(i).fadeIn(800).siblings("a").fadeOut(600);
+            $("#img_small .curr").animate({top: (i * 75)}, 300);
+        }
+    </script>
+</head>
+
+<body>
+<div id="img_scroll">
+    <div id="img_small">
+        <a href="#1"><img src="http://www.daqianduan.com/demo/images/01.jpg"/></a>
+        <a href="#2"><img src="http://www.daqianduan.com/demo/images/02.jpg"/></a>
+        <a href="#3"><img src="http://www.daqianduan.com/demo/images/03.jpg"/></a>
+        <a class="curr" href="#1"><img src="http://www.daqianduan.com/demo/images/img-scroll/curr.png"></a>
+    </div>
+    <div id="img_big">
+        <a style="display:block;" href="#"><img src="http://www.daqianduan.com/demo/images/01.jpg"></a>
+        <a href="#"><img src="http://www.daqianduan.com/demo/images/02.jpg"></a>
+        <a href="#"><img src="http://www.daqianduan.com/demo/images/03.jpg"></a>
+    </div>
+</div>
+
+</body>
+</html>

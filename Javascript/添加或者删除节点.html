@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>添加删除节点</title>
+    <script>
+        window.onload = function aa() {
+            var text_1 = document.createElement("p")
+            var text_2 = document.createTextNode("这是新的段落")
+            text_1.appendChild(text_2)
+            var element = document.getElementById("div1");
+            element.appendChild(text_1);
+            var child = document.getElementById("h2")
+            element.removeChild(child);
+
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1">
+    <p id="h1">这是第一段</p>
+    <p id="h2">这是第二段</p>
+</div>
+</body>
+</html>

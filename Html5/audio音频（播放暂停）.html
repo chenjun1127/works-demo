@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音频播放暂停</title>
+	<script>
+	window.onload=function(){
+		var audio=document.getElementById('audio');
+		var oBtn=document.getElementById('btn');
+		oBtn.onclick=function(){
+			if(audio.paused){
+				audio.play()
+			}else{
+				audio.pause()
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<audio src="video/Your smile.mp3"   id="audio">您的浏览器不支持！</audio>
+	<input type="button" name="" value="播放/暂停" id="btn">
+</body>
+</html>

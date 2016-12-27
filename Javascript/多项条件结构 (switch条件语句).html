@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>多项条件结构 (switch条件语句)</title>
+    <script type="text/javascript">
+        var d = new Date();
+        var thdDay = d.getHours();
+        switch (thdDay) {
+            case 0:
+                document.write("<b>明天又要上班，想想就烦。</b>");
+                break
+            case 5:
+                document.write("<b>总算熬到星期五了。</b>)");
+                break
+            case 6:
+                document.write("<b>哈哈，周末啦！</b>");
+                break
+            default:
+                document.write("<b>每个工作日慢得都象蜗牛爬啊！</b>");
+        }
+    </script>
+</head>
+<body style="font-size:12px;">
+</body>
+</html>

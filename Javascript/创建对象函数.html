@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>创建对象函数</title>
+    <script type="text/javascript">
+        /**对像的构造方法*/
+        /*有参数的构造*/
+        function person(_name, _age, _height, _weight, _gender) {
+            this._name = _name;
+            this._age = _age;
+            this._height = _height;
+            this._weight = _weight;
+            this._gender = _gender;
+            this._jumped = function () {
+                alert("i jumped!")
+            }
+        }
+        /****没参数的构造******/
+        function people() {
+            this._name = "Jone";
+            this._age = 20;
+            this._height = 178;
+            this._weight = 68;
+            this._gender = "男"
+            this._speak = function () {
+                alert("My name is" + this.name + ".i am a boy.")
+            }
+        }
+        var tom = new person("tom", 20, 178, 50, "男");
+        document.write(tom._name + "<hr>");
+        document.write(tom._age + "<hr>");
+        document.write(tom._height + "<hr>");
+        document.write(tom._weight + "<hr>");
+        document.write(tom._gender + "<hr>");
+        document.write(tom._jumped + "<hr>");
+        document.write(tom._name + "|" + tom._age + "|" + tom._height + "<hr>");
+        tom._age = 25 //改变对象tom的属性，
+        document.write(tom._age + "<hr>");
+        var Jone = new people; ///****没参数的构造方法******/
+        document.write(Jone._name + "<hr>");
+        document.write(Jone._speak + "<hr>");
+        var Kate = new person()
+        document.write(Kate._age + "<hr>"); //Kate创建对象时，没有给构造函数指定足够的参数。
+    </script>
+</head>
+<body>
+</body>
+</html>

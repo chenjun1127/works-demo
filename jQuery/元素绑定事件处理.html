@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实例1</title>
+    <script language="javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#bt2").click(function () {
+                $("#bt1").bind("click", {foo: "我要解除第二个按钮的点击事件"}, bt1_Handler);
+            });
+            $("#bt3").click(function () {
+                $("#bt4").fadeIn(function () {
+                    $(this).one("click", function () {
+                        alert("我是一次性的只弹出一次,确定后再点击我一次");
+                    })
+                });
+            });
+            $("#bt5").click(function () {
+                $("#bt7").trigger("click", alert("我不仅要跳转到demo2.html页面（注意地址栏url），还要弹出我这个弹出框。"));
+            })
+            $("#bt6").click(function () {
+
+                $("#bt7").triggerHandler("click", alert("我【不会】跳转页面，即【不会执行浏览器默认事件】，只弹出我这个弹出框。"));
+            })
+            function bt1_Handler(event) {
+                alert(event.data.foo + ",方法如下：\n\n\t$(\"#bt2\").unbind(\"click\");");
+                $("#bt2").unbind("click");
+                alert("现在再点击一下第二个按钮，看看是否还起作用。")
+            }
+        })
+    </script>
+
+</head>
+
+<body>
+<input id="bt1" type="button" value="空无一物"/><br/>
+<input id="bt2" type="button" value="绑定事件"/><br/>
+<input id="bt3" type="button" value="一次性事件"/><br/>
+<input id="bt4" type="button" value="试验按钮"/><br/>
+<input id="bt5" type="button" value="绑定某类事件"/><br/>
+<input id="bt6" type="submit" value="绑定某类事件，去除浏览器默认事件"/><br/>
+<form action="http://www.baidu.com" method="post">
+    <input id="bt7" value="提交" type="submit"/>
+</form>
+</body>
+</html>

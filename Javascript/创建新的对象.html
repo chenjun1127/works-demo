@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>创建新的对象</title>
+    <script language="JavaScript">
+        //创建一个新的对象，并把它的引用保存到变量person中
+        var person = new Object();
+        //设置该对象的属性
+        person.name = "Jeadong";
+        person.address = "China";
+        //设置该对象的方法，即赋值为一个函数
+        person.say = function () {
+            document.write("I am a person.<br>");
+        }
+        document.writeln("Name:" + person.name + "<br>");
+        document.writeln("Address:" + person.address + "<br>");
+        //调用该方法
+        person.say();
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

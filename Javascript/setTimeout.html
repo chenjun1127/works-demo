@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>setTimeout</title>
+    <script>
+        var i = 3;
+        function A() {
+            setTimeout(B, 1000);
+            if (i == 0) {
+                location.href = "http://www.baidu.com";
+            }
+        }
+
+        function B() {
+            i = i - 1;
+            document.getElementById("h1").innerHTML = "还有" + i + "秒钟返回";
+            A();
+        }
+    </script>
+</head>
+
+<body onload="A();">
+<h1 id="h1">还有3秒钟返回</h1>
+</body>
+</html>

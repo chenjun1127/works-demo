@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>原型对象prototype用法</title>
+    <script type="text/javascript">
+        function person(_name, _height, _weight, _gender) {
+            this._name = _name;
+            this._height = _height;
+            this._weight = _weight;
+            this._gender = _gender;
+        }
+        person.prototype.speak = function () {
+            document.write("How are you?<br/>");
+            var gender = this._gender;
+            if (gender == "Male")
+                gender = "boy";
+            else if (gender == "Female")gender = "gril";
+            document.write("My name is " + this._name + "，and I'm a" + gender + "<br/>");
+        }
+        var tom = new person("Tom", 178, 78, "Male");
+        tom.speak();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

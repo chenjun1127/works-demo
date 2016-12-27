@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>某个域被使用或改变时，它会改变颜色。</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".filed").change(function () {
+                $(this).css("background", "#eee")
+            });
+        });
+    </script>
+</head>
+
+<body>
+<input type="text" class="filed"/>
+<select name="设计" class="filed">
+    <option class="filed" value="网页设计">网页设计</option>
+    <option class="filed" value="平面设计">平面设计</option>
+    <option class="filed" value="3D设计">3D设计</option>
+</select>
+</body>
+</html>

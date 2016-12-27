@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            $("form :input.bitian").each(function () {
+                var $xing = $("<span class='cred'> * </span>");
+                $(this).parent().append($xing);
+            });
+            //对必填项的判断由jquery来完成，为必填项添加“*”号
+
+            $("form :input").blur(function () {
+                var $parent = $(this).parent();
+                $parent.find(".tishi").remove();
+                //进行下一步判断前把之前的结果清除
+
+                if ($(this).is("#username")) {
+                    if (this.value == "" || this.value.length < 6) {
+                        var errorMsg = "用户名长度不小于6位";
+                        $parent.append("<span class='tishi onError'>" + errorMsg + "</span>");
+                    } else {
+                        var okMsg = "用户名输入正确";
+                        $parent.append("<span class='tishi onSuccess'>" + okMsg + "</span>");
+                    }
+                }
+                //根据长度判断用户名是否合法
+
+                if ($(this).is("#password")) {
+                    if (this.value == "" || this.value.length < 6) {
+                        var errorMsg = "密码长度不小于6位";
+                        $parent.append("<span class='tishi onError'>" + errorMsg + "</span>");
+                    } else {
+                        var okMsg = "密码格式正确";
+                        $parent.append("<span class='tishi onSuccess'>" + okMsg + "</span>");
+                    }
+                }
+                //根据长度判断密码是否合法
+
+                if ($(this).is("#email")) {
+                    if (this.value == "" || (this.value != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))) {
+                        var errorMsg = "邮箱输入错误";
+                        $parent.append("<span class='tishi onError'>" + errorMsg + "</span>");
+                    } else {
+                        var okMsg = "邮箱输入正确";
+                        $parent.append("<span class='tishi onSuccess'>" + okMsg + "</span>");
+                    }
+                }
+                //邮箱验证
+
+            }).keyup(function () {
+                $(this).triggerHandler("blur");
+            }).focus(function () {
+                $(this).triggerHandler("blur");
+            });
+            //在敲击键盘和输入框获取焦点时用triggerHandler()方法模拟blur事件，来触发对本项的验证
+
+            $("#send").click(function () {
+                $("form .bitian:input").trigger("blur");
+                var errorNum = $("form .onError").length;
+                if (errorNum) {
+                    return false;
+                }
+                alert("所有项填写正确！");
+            });
+            //点击“提交”按钮时根据表单内错误信息的数量判断是否全部填写正确
+        });
+    </script>
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+<form method=post action="">
+    <ul>
+        <li>
+            <label for="username">用户</label>
+            <input type="text" id="username" class="bitian"/>
+        </li>
+        <li>
+            <label for="password">密码</label>
+            <input type="password" id="password" class="bitian"/>
+        </li>
+        <li>
+            <label for="email">邮箱</label>
+            <input type="text" id="email"/>
+        </li>
+        <li style="text-align:left;">
+            <input type="submit" id="send" value="验证"/>
+            <input type="reset" value="重置"/>
+        </li>
+    </ul>
+</form>
+</body>
+</html>

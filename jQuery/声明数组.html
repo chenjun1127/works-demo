@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript声明数组</title>
+    <script language="javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script language="javascript">
+        array = new Array(5)
+        array[0] = "宝马";
+        array[1] = "奔驰";
+        array[2] = "法拉利";
+        array[3] = "现代";
+        array[4] = "丰田";
+        var newarray = ("数组是：" + "<br/>" + array[0] + "<br/>" + array[1] + "<br/>" + array[2] + "<br/>" + array[3] + "<br/>" + array[4]);
+        $(function () {
+            $(".title").bind("click", function () {
+                $(".box").html(newarray)
+            })
+        })
+    </script>
+    <style type="text/css">
+        body {
+            font: 12px/1.7em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .box {
+            width: 278px;
+            height: auto;
+            overflow: auto;
+            border: solid 1px #999;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .title {
+            width: 290px;
+            height: 25px;
+            line-height: 25px;
+            background: #999;
+            margin: 0 auto;
+            cursor: pointer;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="title">显示数组</div>
+<div class="box"></div>
+</body>
+</html>

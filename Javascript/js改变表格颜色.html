@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>js改变表格颜色 </title>
+    <script type="text/javascript">
+        function selectRow(target) {
+            //点击当前选中行的时候设置当前行的颜色，同时恢复除当前行外的行的颜色及鼠标事件
+            var sTable = document.getElementById("ServiceListTable")
+            for (var i = 1; i < sTable.rows.length; i++) //遍历除第一行外的所有行
+            {
+                if (sTable.rows[i] != target) //判断是否当前选定行
+                {
+                    sTable.rows[i].bgColor = "#ffffff"; //设置背景色
+                    sTable.rows[i].onmouseover = resumeRowOver; //增加onmouseover 事件
+                    sTable.rows[i].onmouseout = resumeRowOut;//增加onmouseout 事件
+                }
+                else {
+                    sTable.rows[i].bgColor = "#d3d3d3";
+                    sTable.rows[i].onmouseover = ""; //去除鼠标事件
+                    sTable.rows[i].onmouseout = ""; //去除鼠标事件
+                }
+            }
+        }
+        //移过时tr的背景色
+        function rowOver(target) {
+            target.bgColor = '#e4e4e4';
+        }
+        //移出时tr的背景色
+        function rowOut(target) {
+            target.bgColor = '#ffffff';
+        }
+        //恢复tr的的onmouseover事件配套调用函数
+        function resumeRowOver() {
+            rowOver(this);
+        }
+        //恢复tr的的onmouseout事件配套调用函数
+        function resumeRowOut() {
+            rowOut(this);
+        }
+    </script>
+
+
+</head>
+
+<body>
+<div style="height:50px;background-color:Blue" onmouseover="javascript:this.style.backgroundColor='red';"
+     onmouseout="javascript:this.style.backgroundColor='blue'">
+    关于最后两个函数resumeRowOver和resumeRowOut为什么这样写参考我之前写的通过js给页面元素添加事件对应的表格HTMLview plaincopy to clipboardprint?
+</div>
+<table width="100%" border="1" cellspacing="1" cellpadding="0" id="ServiceListTable">
+    <tr>
+        <th>服务事项</th>
+        <th>N</th>
+        <th>状态</th>
+        <th>办结</th>
+        <th>资料</th>
+    </tr>
+    <tr onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this)">
+        <td>相关内容</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+    </tr>
+    <tr onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this)">
+        <td>相关内容</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+    </tr>
+    <tr onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this)">
+        <td>相关内容</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+    </tr>
+    <tr onmouseover="rowOver(this)" onmouseout="rowOut(this)" onclick="selectRow(this)">
+        <td>相关内容</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;</td>
+    </tr>
+</table>
+
+</body>
+</html>

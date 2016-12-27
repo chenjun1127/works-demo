@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+</head>
+<body>
+<div id="demo" style="overflow:hidden;height:500px;width:520px; border:1px solid #b4b4b4; overflow:hidden;float:left">
+    <div id=demo1>
+        <img src="http://www.baidu.com/img/bdlogo.gif">
+        <img src="http://www.baidu.com/img/bdlogo.gif">
+        <img src="http://www.baidu.com/img/bdlogo.gif">
+        <img src="http://www.baidu.com/img/bdlogo.gif">
+        <img src="http://www.baidu.com/img/bdlogo.gif">
+        <img src="http://www.baidu.com/img/bdlogo.gif">
+    </div>
+    <div id=demo2></div>
+</div>
+<script>
+    var speed = 40
+    var demo = document.getElementById("demo");
+    var demo2 = document.getElementById("demo2");
+    var demo1 = document.getElementById("demo1");
+    demo2.innerHTML = demo1.innerHTML
+
+    function Marquee() {
+        if (demo2.offsetTop - demo.scrollTop <= 0)
+            demo.scrollTop -= demo1.offsetHeight
+        else {
+            demo.scrollTop++
+        }
+    }
+    var MyMar = setInterval(Marquee, speed)
+    demo.onmouseover = function () {
+        clearInterval(MyMar)
+    }
+    demo.onmouseout = function () {
+        MyMar = setInterval(Marquee, speed)
+    }
+</script>
+</body>
+</html>

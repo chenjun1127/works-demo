@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过高度变化来变化</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $(".bb").click(function () {
+                $(".aa").slideToggle("slow");//slideToggle:通过高度变化来切换所有匹配元素的可见性，并在切换完成后可选地触发一个回调函数。
+            });
+        });
+    </script>
+    <style type="text/css">
+        .aa {
+            background: #eee;
+            border: solid 1px #b8b8b8;
+            width: 300px;
+            height: 100px;
+            padding: 10px;
+            font: 12px/24px Arial, Helvetica, sans-serif;
+            border-top: none;
+        }
+
+        .bb {
+            width: 300px;
+            height: 20px;
+            line-height: 20px;
+            font: 12px/20px Arial, Helvetica, sans-serif;
+            padding: 0 10px;
+            text-align: center;
+            font-weight: bold;
+            border: solid 1px #b8b8b8;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666666;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff0099;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="bb">请点击我</div>
+<div class="aa"></div>
+
+</body>
+</html>

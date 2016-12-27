@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟事件trigger传递数据</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn").bind("myclick", function (event, msg1, msg2) {
+                $(".box").append("<p>" + msg1 + msg2 + "</p>")
+            })
+            $("#btn").click(function () {
+                $(this).trigger("myclick", ["我的自定义", "事件"])
+            })
+        })
+    </script>
+</head>
+
+<body>
+<button id="btn">Click</button>
+<div class="box"></div>
+</body>
+</html>

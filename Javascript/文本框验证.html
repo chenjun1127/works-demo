@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <script type="text/javascript">
+        function blurtext() {
+            var t_name = document.all.txtName; //获取文本框对象
+            var t_value = t_name.value; //文本框对象的值
+            if ((t_value == null) || (t_value.length < 1)) { //判断文本框的值是否为空
+                window.alert("文本框内容不能为空！");
+                t_name.focus(); //文本框获得焦点
+                return;
+            }
+            if (t_value.length > 20) {
+                alert("文本框内容不能超过20！");
+                t_name.focus();
+                return;
+            }
+            if (isNaN(t_value)) {
+                alert("文本框内容，必须全部由数字组成！");
+                t_name.focus();
+                return;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<form method="post" action="#">
+    <input type="text" name="txtName"/>
+    <input type="button" onclick="blurtext()" value="test"/>
+</form>
+</body>
+</html>

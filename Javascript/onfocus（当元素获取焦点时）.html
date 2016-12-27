@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>onfocus（当元素获取焦点时）</title>
+    <script type="text/javascript">
+        function focusinput() {
+            document.getElementById("input_1").style.background = "yellow";
+        }
+        function focusinput1() {
+            document.getElementById("input_2").style.background = "blue";
+        }
+        function focus1(x) {
+            document.getElementById(x).style.background = "red";
+        }
+    </script>
+</head>
+
+<body>
+<p>姓名：
+    <input type="text" name="textfield" id="input_1" onfocus="focusinput()"/>
+</p>
+<p>年龄：
+    <input type="text" name="textfield2" id="input_2" onfocus="focusinput1()"/>
+</p>
+<p>生日：
+    <input type="text" name="textfield3" id="textfield" onfocus="focus1(this.id)"/>
+</p>
+<p>身高：
+    <input type="text" name="textfield4" id="textfield2" onfocus="focus1(this.id)"/>
+</p>
+</body>
+
+
+</html>

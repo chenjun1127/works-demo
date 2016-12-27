@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".box ul li").mouseenter(function () {
+            var ele = $(this).position().left;
+            var timer = setTimeout(function () {
+                $(".side").animate({left: ele}, 200)
+            })
+        }).mouseout(function () {
+            clearTimeout(timer)
+        });
+    })
+</script>
+<STYLE TYPE="text/css">
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    .box {
+        width: 600px;
+        margin: 0 auto;
+        height: 40px;
+        position: relative;
+    }
+
+    .box ul li {
+        list-style: none;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font: 14px/40px "microsoft yehei";
+        float: left;
+        display: inline;
+        background: #f1f1f1
+    }
+
+    .side {
+        font-size: 0;
+        line-height: 0;
+        height: 2px;
+        background: red;
+        width: 200px;
+        position: absolute;
+        left: 0;
+        bottom: 0
+    }
+
+</STYLE>
+<body>
+<div class="box">
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+
+    </ul>
+    <span class="side"></span>
+</div>
+</body>
+</html>

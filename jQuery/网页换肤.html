@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页换肤！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <link rel="stylesheet" href="css/change skin.css"/>
+    <link href="css/skin_0.css" rel="stylesheet" type="text/css" id="cssfile"/>
+    <script language="javascript">
+        $(function () {
+            var $li = $("#box ul li")
+            $li.click(function () {
+                $("#" + this.id).addClass("selected").siblings().removeClass("selected");
+                $("#cssfile").attr("href", "css/" + this.id + ".css")
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div id="box">
+    <ul class="skin">
+        <li id="skin_0" title="灰色" class="selected">灰色</li>
+        <li id="skin_1" title="紫色">紫色</li>
+        <li id="skin_2" title="红色">红色</li>
+        <li id="skin_3" title="天蓝色">天蓝色</li>
+        <li id="skin_4" title="橙色">橙色</li>
+        <li id="skin_5" title="淡绿色">淡绿色</li>
+    </ul>
+    <div id="div_side_0">
+        <div id="news">
+            <h1 class="title">时事新闻</h1>
+        </div>
+    </div>
+
+    <div id="div_side_1">
+        <div id="game">
+            <h1 class="title">娱乐新闻</h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>

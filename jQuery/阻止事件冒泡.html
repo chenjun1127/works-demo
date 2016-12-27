@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决javascript事件的冒泡问题，点击超链接会向上冒泡到div，从而触发div的点击事件。</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("div").bind("click", function (aa) {
+                alert("你点了DIV")
+            });
+            $("a").bind("click", function (aa) {
+                aa.stopPropagation();
+            });
+        })
+    </script>
+</head>
+<body>
+<div><a href="http://bbs.jquery.org.cn">jquery</a> 非常的好用啊</div>
+</body>
+</html>

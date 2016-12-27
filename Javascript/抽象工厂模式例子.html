@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>抽象工厂模式例子</title>
+    <script type="text/javascript">
+        function autoObj(_carName, _carNum) {
+            this._carName = _carName;
+            this._carNum = _carNum;
+        }
+        function carList() {
+            //轿车列表
+            this.bw = new autoObj("宝马", 150);
+            this.ft = new autoObj("丰田", 100);
+            this.bc = new autoObj("奔驰", 250);
+            this.bt = new autoObj("本田", 180);
+        }
+        function trunckList() {
+            //货车列表
+            this.trunck1 = new autoObj("货车一", 20);
+            this.trunck2 = new autoObj("货车二", 30);
+            this.trunck3 = new autoObj("货车三", 28);
+            this.trunck4 = new autoObj("货车四", 40);
+        }
+        function autoFactory() {
+            autoFactory.prototype.car = new car();
+            autoFactory.prototype.trunck = new trunck();
+        }
+        function car() {
+            car.prototype.prdtList = new carList();
+        }
+        function trunck() {
+            trunck.prototype.trckList = new trunckList();
+        }
+        document.write(carList)
+    </script>
+</head>
+<body>
+</body>
+</html>

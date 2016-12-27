@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>五种方法获取页面的body</title>
+    <script type="text/javascript">
+        function bodymain() {
+            var _html = document.documentElement;
+            var _body1 = _html.lastChild;
+            var _tagname = _body1.tagName;
+            alert("body1 tag is:" + _tagname);
+            var _body2 = _html.childNodes[1];
+            alert("body2 tag is:" + _body2.tagName);
+            var _body3 = document.body;
+            alert("body3 tag is:" + _body3.tagName)
+            var _body4 = document.getElementById("main");
+            alert("body4 tag is:" + _body4.tagName)
+            var _body5 = document.getElementsByTagName("body")[0];
+            alert("body5 tag is:" + _body5.tagName)
+        }
+    </script>
+</head>
+<body id="main">
+<input type="button" value="onclick" onclick="bodymain()"/>
+</body>
+</html>

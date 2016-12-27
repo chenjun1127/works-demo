@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>下拉框应用 ！</title>
+    <style>
+        select {
+            height: 100px;
+            padding: 1px;
+            border: 1px solid #c9c9c9;
+            width: 60px;
+            float: left;
+            display: inline;
+            margin-right: 10px;
+        }
+
+        option {
+            height: 24px;
+            line-height: 24px;
+        }
+
+        .box {
+            clear: both;
+            font-size: 13px;
+            padding: 10px 0
+        }
+
+        .box span {
+            float: left;
+            display: inline-block;
+            background: #ccc;
+            padding: 5px;
+            margin-right: 8px;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //全选左移；
+            $(".all_1").click(function () {
+                //$("#select1 option").appendTo("#select2");
+                allSelect($("#select1"), '#select2');
+            });
+            //全选右移；
+            $(".all_2").click(function () {
+                allSelect($("#select2"), '#select1');
+            });
+            function allSelect(obj, iTaregt) {
+                obj.find('option').appendTo(iTaregt);
+            }
+
+            //造中右移；
+            $(".select_1").click(function () {
+                $("#select1 option:checked").appendTo("#select2");
+            });
+            //造中左移；
+            $(".select_2").click(function () {
+                $("#select2 option:checked").appendTo("#select1");
+            });
+        })
+    </script>
+</head>
+<body>
+<select name="" id="select1" multiple>
+    <option value="1">张三</option>
+    <option value="2">李四</option>
+    <option value="3">王五</option>
+    <option value="4">赵六</option>
+    <option value="5">陈七</option>
+    <option value="6">朱八</option>
+    <option value="7">易九</option>
+    <option value="8">陈龙</option>
+    <option value="9">龙飞</option>
+    <option value="10">易龙</option>
+</select>
+<select id="select2" multiple>
+
+</select>
+<div class="box">
+    <span class="all_1">全选左移</span>
+    <span class="all_2">全选右移</span>
+    <span class="select_1">选中右移</span>
+    <span class="select_2">选中左移</span>
+</div>
+</body>
+</html>

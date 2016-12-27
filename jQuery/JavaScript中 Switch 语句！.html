@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Switch 语句！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var d = new Date();
+            var theDay = d.getDay();
+            $("button").bind('click', function () {
+                switch (theDay) {
+                    case 5:
+                        $(".box").show("fast").html("Finally Friday");// 执行代码块 1
+                        break
+                    case 6:
+                        $(".box").show("fast").html("Super Saturday");// 执行代码块 2
+                        break
+                    case 0:
+                        $(".box").show("fast").html("Sleepy Saturday");// 执行代码块 3
+                        break
+                    default:
+                        $(".box").show("fast").html("I'm looking forward to this weekend!");//如果theDay即不是1也不是2也不是3，则执行此代码
+                }
+            })
+        })
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 14px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 215px;
+            border: solid 1px #949494;
+            display: none;
+            height: 50px;
+        }
+
+    </style>
+<body>
+<button type="button">获取星期几</button>
+<div class="box">
+
+</div>
+</body>
+</html>

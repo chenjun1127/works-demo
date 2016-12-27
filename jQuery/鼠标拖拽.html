@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标拖拽</title>
+    <style type="text/css">
+        .drag {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ddd;
+            background: #FBF2BD;
+            text-align: center;
+            padding: 5px;
+            top: 100px;
+            left: 20px;
+            cursor: move;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var _move = false;//移动标记
+            var _x, _y;//鼠标离控件左上角的相对位置
+            $(".drag").click(function () {
+                //alert("click");//点击（松开后触发）
+            }).mousedown(function (e) {
+                _move = true;
+                _x = e.pageX - parseInt($(".drag").css("left"));
+                _y = e.pageY - parseInt($(".drag").css("top"));
+                $(".drag").fadeTo(20, 0.5);//点击后开始拖动并透明显示
+            });
+            $(document).mousemove(function (e) {
+                if (_move) {
+                    var x = e.pageX - _x;//移动时根据鼠标位置计算控件左上角的绝对位置
+                    var y = e.pageY - _y;
+                    $(".drag").css({top: y, left: x});//控件新位置
+                }
+            }).mouseup(function () {
+                _move = false;
+                $(".drag").fadeTo("fast", 1);//松开鼠标后停止移动并恢复成不透明
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="drag">鼠标拖拽</div>
+
+</body>
+</html>

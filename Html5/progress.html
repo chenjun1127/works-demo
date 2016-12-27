@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>进度条progress</title>
+    <script>
+        window.onload = function () {
+            var pro = document.getElementsByTagName('progress')[0];
+            t = setInterval(function () {
+                if (pro.value == 100) {
+                    clearInterval(t);
+                    document.body.removeChild(pro);
+                    document.body.innerHTML = "加载完成！";
+                    window.location.href = "http://www.baidu.com";
+                } else {
+                    pro.value += 1;
+                }
+            }, 50)
+        }
+    </script>
+</head>
+<body>
+<progress max="100" min="0" value="0" ></progress>
+</body>
+</html>

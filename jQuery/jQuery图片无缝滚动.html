@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS图片向左滚动</title>
+    <style type="text/css">
+        img {
+            border: none;
+        }
+    </style>
+    <!-- 这句话不能少，记得把jquery.js文件放在当前页面的同一目录中 -->
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+</head>
+<body>
+<div id="demo" style="overflow:hidden;width:500px;">
+    <table border=0 align=center cellpadding=1 cellspacing=1 cellspace=0>
+        <tr>
+            <td id="demo1" valign="top" bgcolor="ffffff">
+                <!-- 特别注意，下面的图片总宽度必须大于上面定义的demo的宽度，如上面demo的宽度为500px,则下面图片总宽度必须大于500,否则会出现些问题！ -->
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <tr align="center">
+                        <td>
+                            <a href="#" target="_blank">
+                                <img src="http://www.baidu.com/img/bdlogo.gif" width="150" height="100">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" target="_blank">
+                                <img src="http://www.baidu.com/img/bdlogo.gif" width="150" height="100">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" target="_blank">
+                                <img src="http://www.baidu.com/img/bdlogo.gif" width="150" height="100">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" target="_blank">
+                                <img src="http://www.baidu.com/img/bdlogo.gif" width="150" height="100">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" target="_blank">
+                                <img src="http://www.baidu.com/img/bdlogo.gif" width="150" height="100">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td id="demo2" valign="top"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    var speed = 30;
+    var demo = $("#demo");
+    var demo1 = $("#demo1");
+    var demo2 = $("#demo2");
+    demo2.html(demo1.html());
+    function Marquee() {
+        if (demo.scrollLeft() >= demo1.width())
+            demo.scrollLeft(0);
+        else {
+            demo.scrollLeft(demo.scrollLeft() + 1);
+        }
+    }
+    var MyMar = setInterval(Marquee, speed)
+    demo.mouseover(function () {
+        clearInterval(MyMar);
+    })
+    demo.mouseout(function () {
+        MyMar = setInterval(Marquee, speed);
+    })
+
+    function fun1() {
+        alert(demo.scrollLeft());
+    }
+    function fun2() {
+        alert(demo1.width());
+    }
+</script>
+<input type="button" value="显示demo.scrollLeft()" onclick="fun1();"/>
+<input type="button" value="显示demo1.width())" onclick="fun2();"/>
+</body>
+</html>

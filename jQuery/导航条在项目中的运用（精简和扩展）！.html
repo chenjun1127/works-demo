@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航条在项目中的运用（精简和扩展）！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("h1").click(function () {
+                $("h1").css("cursor", "pointer")
+                if ($(".boxcontent").is(":visible")) {
+                    $(".boxcontent").slideUp("fast");
+                    $(".h1_pic img").attr("src", "images/a1.gif");
+                } else {
+                    $(".boxcontent").slideDown("fast");
+                    $(".h1_pic img").attr("src", "images/a2.gif");
+                }
+            });
+            $(".h2>a").click(function () {
+                if ($(".h2>a").text() == "精简") {
+                    $(".boxcontent>a:gt(4):not(:last)").hide().addClass("bgc");
+                    $(".h2>a").text("更多");
+                } else {
+                    $(".boxcontent>a:gt(4):not(:last)").show();
+                    $(".h2>a").text("精简");
+                }
+
+            })
+        })
+    </script>
+    <style type="text/css">
+        .box {
+            margin: 0 auto;
+            width: 298px;
+            border: solid 1px #666;
+            height: auto;
+            overflow: auto;
+            font: 12px/1.7em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            height: 25px;
+            padding: 0;
+            margin: 0;
+            padding-left: 10px;
+            line-height: 25px;
+            background: #eee;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .boxcontent {
+            background: #fff;
+            padding: 10px;
+        }
+
+        .boxcontent i {
+            font-size: 10px;
+        }
+
+        .boxcontent a {
+            margin-right: 10px;
+        }
+
+        a {
+            color: #666666;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #990033;
+            text-decoration: underline;
+        }
+
+        .h2 {
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+            width: 36px;
+            clear: both;
+            margin-left: 250px;
+            text-align: right;
+            font-weight: bold
+        }
+
+        .h1_pic {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 7px;
+            height: 8px;
+        }
+
+        .bgc {
+            background: #f09;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <h1>歌手列表
+        <span class="h1_pic"><img src="images/a2.gif"/></span>
+    </h1>
+
+    <div class="boxcontent">
+        <a href="#">张学友<i>(1105)</i></a>
+        <a href="#">刘德华<i>(905)</i></a>
+        <a href="#">李小路<i>(804)</i></a>
+        <a href="#">郭富城<i>(1250)</i></a>
+        <a href="#">王菲<i>(250)</i></a>
+        <a href="#">周杰伦<i>(3650)</i></a>
+        <a href="#">许嵩<i>(580)</i></a>
+        <a href="#">张晋<i>(451)</i></a>
+        <a href="#">郭晋安<i>(2641)</i></a>
+        <a href="#">其它歌手<i>(265)</i></a>
+        <div class="h2"><a href="#">精简</a></div>
+    </div>
+
+</div>
+</body>

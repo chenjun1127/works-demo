@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS时间的简单运用</title>
+    <script language="javascript">
+        function startTime() {
+            var data = new Date();
+            var day = data.getDay();
+            var weekday = new Array(7)
+            weekday[0] = "Sunday"
+            weekday[1] = "Monday"
+            weekday[2] = "Tuesday"
+            weekday[3] = "Wednesday"
+            weekday[4] = "Thursday"
+            weekday[5] = "Friday"
+            weekday[6] = "Saturday"
+            var h = data.getHours();
+            var m = data.getMinutes();
+            var s = data.getSeconds();
+            m = checktime(m);
+            //方法checkTime方法的调用，如果当前分钟数小于10，前面加0
+            s = checktime(s);
+            //方法checkTime方法的调用，如果当前秒数小于10，前面加0
+            document.getElementById("txt").innerHTML = "Today it is " + weekday[data.getDay()] + "\n" + h + ":" + m + ":" + s;
+            t = setTimeout("startTime()", 500)
+
+            // function checktime(i) {
+            // 	return i < 10 ? "0" + i : i
+            // }
+
+            function checktime(n) {
+                return n.toString().replace(/^(\d)$/, '0$1');
+            }
+        }
+    </script>
+</head>
+<body>
+<button onclick="startTime()">startTime</button>
+<div id="txt"></div>
+</body>
+</html>

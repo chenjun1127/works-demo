@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Date 对象方法</title>
+    <script type="text/javascript">
+        var mydate = new Date();
+        var myhour = mydate.getDate();//getDate() 方法可返回月份的某一天。
+        var birthday = new Date("July 21, 1986 01:15:00");//定义了带有具体日期的变量，并输出变量中月份的天
+        document.write(myhour + "<br/>");
+        document.write(mydate.getDay() + "<br/>");//getDay() 方法可返回表示星期的某一天的数字。返回值是 0（周日） 到 6（周六） 之间的一个整数
+        document.write(birthday.getDate() + "<br/>");
+        document.write(mydate.getMonth() + 1 + "<br/>");//返回值是 0（一月） 到 11（十二月） 之间的一个整数。
+        document.write(mydate.getFullYear() + "<br/>");//getFullYear() 方法可返回一个表示年份的 4 位数字,表示包括世纪值在内的完整年份，而不是两位数的缩写形式。
+        document.write(mydate.getHours() + "<br/>");//返回值是 0 （午夜） 到 23 （晚上 11 点）之间的一个整数。
+        document.write(mydate.getMinutes() + "<br/>");//返回值是 0 ~ 59 之间的一个整数。
+        document.write(mydate.getSeconds() + "<br/>");//。返回值是 0 ~ 59 之间的一个整数。
+        var aa = new Date();
+        var bb = aa.getDay();
+        var day = new Array(7);
+        day[0] = "星期天";
+        day[1] = "星期一";
+        day[2] = "星期二";
+        day[3] = "星期三";
+        day[4] = "星期四";
+        day[5] = "星期五";
+        day[6] = "星期六";
+        document.write("今天是" + day[bb])
+    </script>
+</head>
+
+<body>
+</body>
+</html>

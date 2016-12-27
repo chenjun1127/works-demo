@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript中alert（警告）confirm（确认）prompt（提示） 语句！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("button:eq(0)").click(function () {
+                alert("我是警告！")
+            });
+            $("button:eq(1)").click(function () {
+                var r = confirm("你确认删除吗？")
+                if (r == true) {
+                    alert("You pressed OK!")
+                } else {
+                    alert("You pressed Cancel!")
+                }
+            });
+            $("button:eq(2)").click(function () {
+                var d = prompt("请输入你的姓名:", "Bill Gates")
+                if (name != null && name != "") {
+                    document.write("你好！" + name + " 今天过得怎么样？")
+                }
+            })
+
+        })
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 14px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 215px;
+            border: solid 1px #999;
+            height: 50px;
+        }
+
+    </style>
+<body>
+<button type="button"> 警告</button>
+<br/>
+<button type="button">确认</button>
+<br/>
+<button type="button">提示</button>
+<div class="box"></div>
+</body>
+</html>

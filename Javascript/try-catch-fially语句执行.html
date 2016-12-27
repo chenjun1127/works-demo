@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <script type="text/javascript">
+        try {
+            document.write("try语句开始执行。。。<br/>")
+            var result = 20 / a //错误信息a没有定义
+        }
+        catch (error) {
+            document.write("try存在异常，catch语句开始执行。。。<br/>");
+            document.write("异常名称：" + error.name + "<br/>" + "异常信息：" + error.message + "<br/>");
+        }
+        finally {
+            document.write("finally语句执行。。<br/>");
+            document.write("运算结果：" + result + "<br/>");
+        }
+    </script>
+</head>
+
+<body>
+</body>
+</html>

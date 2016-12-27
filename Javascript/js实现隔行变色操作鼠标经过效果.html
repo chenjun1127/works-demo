@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>js实现隔行变色操作鼠标经过效果</title>
+    <script type="text/javascript">
+        function tb() {
+            var cc = document.getElementById("table_style");
+            var aa = cc.getElementsByTagName("tr");
+            for (i = 0; i < aa.length; i++) {
+                if (i % 2 == 0) {
+                    aa[i].className = "tr_style_1";
+                } else {
+                    aa[i].className = "tr_style_2";
+                }
+            }
+        }
+        /**鼠标经过的效果**/
+        function hover() {
+            var cc = document.getElementById("table_style");
+            var aa = cc.getElementsByTagName("tr");
+            for (i = 0; i < aa.length; i++) {
+                aa[i].old_class = aa[i].className;
+                aa[i].onmousemove = function () {
+                    this.className = "tr_style_3";
+                }
+                aa[i].onmouseout = function () {
+                    this.className = this.old_class;
+                }
+            }
+        }
+        window.onload = function () {
+            tb();
+            hover();
+        }
+    </script>
+    <style type="text/css">
+        /**隔行变色样式**/
+        .tr_style_1 {
+            background-color: #00FFCC;
+        }
+
+        .tr_style_2 {
+            background-color: #FFFF00;
+        }
+
+        .tr_style_3 {
+            background-color: #f3f3f3;
+        }
+
+        /**鼠标经过样式**/
+        .tr_style {
+            background-color: #00FF00;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<table border="0" width="400" height="150" id="table_style" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>中国</td>
+        <td>中国</td>
+        <td>中国</td>
+    </tr>
+    <tr>
+        <td>美国</td>
+        <td>美国</td>
+        <td>美国</td>
+    </tr>
+    <tr>
+        <td>俄罗斯</td>
+        <td>俄罗斯</td>
+        <td>俄罗斯</td>
+    </tr>
+    <tr>
+        <td>日本</td>
+        <td>日本</td>
+        <td>日本</td>
+    </tr>
+    <tr>
+        <td>新加坡</td>
+        <td>新加坡</td>
+        <td>新加坡</td>
+    </tr>
+</table>
+</body>
+</html>

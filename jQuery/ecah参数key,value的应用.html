@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ecah参数key,value的应用</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("[name='fruits']").click(function () {
+                var arr = new Array();
+                $("[name='fruits']:checked").each(function (key, value) {
+                    arr[key] = $(value).val();
+                })
+                $(".box").text("共选中了：" + arr.length + "项,分别是:" + arr.join(","))
+            })
+
+        })
+    </script>
+
+</head>
+
+<body>
+你喜欢的水果是：
+<input type="checkbox" value="苹果" name="fruits"/>苹果
+<input type="checkbox" value="梨子" name="fruits"/>梨子
+<input type="checkbox" value="核桃" name="fruits"/>核桃
+<input type="checkbox" value="橘子" name="fruits"/>橘子
+<input type="checkbox" value="桃子" name="fruits"/>桃子
+<div class="box"></div>
+</body>
+</html>

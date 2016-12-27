@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>canvas2</title>
+	<link rel="stylesheet" href="">
+	<script>
+	window.onload=function(){
+		var myCanvas=document.getElementById("myCanvas");
+		var cxt=myCanvas.getContext("2d");
+//        二次贝塞尔
+        cxt.beginPath();
+        cxt.lineWidth=2;
+        cxt.moveTo(10,10);
+        cxt.quadraticCurveTo(100,100,200,10);
+        cxt.stroke();
+        cxt.closePath();
+//        三次贝塞尔
+        cxt.beginPath();
+        cxt.moveTo(0,100);
+        cxt.bezierCurveTo(150,200,300,50,400,100);
+        cxt.stroke();
+        cxt.closePath();
+	};
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="600" height="600" style="background: red;"></canvas>
+</body>
+</html>

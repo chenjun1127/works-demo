@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>获取单选按钮的值</title>
+    <style type="text/css">
+        table {
+            width: 1000px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: solid 1px #dcdcdc;
+            height: 30px;
+        }
+    </style>
+    <script type="text/javascript">
+        function getVal() {
+            var inputAry = document.getElementsByTagName("input");
+            var inputVal = null;
+            for (i = 0; i < inputAry.length; i++) {
+                if (inputAry[i].checked) {
+                    inputVal = inputAry[i].value;
+                }
+            }
+            alert("选择的选项是：" + inputVal)
+        }
+
+        function choice(index) {
+            var radioArr=document.forms[0].elements.radio;
+            radioArr[index].checked=true
+        }
+    </script>
+</head>
+
+<body>
+<form method="get" action="#" name="frmData">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td><input type="radio" name="radio" value="A" checked/>A.公务员</td>
+            <td><input type="radio" name="radio" value="B"/>B.教师</td>
+            <td><input type="radio" name="radio" value="C"/>C.医生</td>
+            <td><input type="radio" name="radio" value="D"/>D.公司职员</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="button" value="你选择的是" onclick="getVal()">
+                <input type="button" value="选择A " onclick="choice(0)"/>&nbsp;&nbsp;
+                <input type="button" value="选择B " onclick="choice(1)"/>&nbsp;&nbsp;
+                <input type="button" value="选择C " onclick="choice(2)"/>&nbsp;&nbsp;
+                <input type="button" value="选择D " onclick="choice(3)"/>&nbsp;
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

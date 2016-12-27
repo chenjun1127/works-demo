@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset方法</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("button").click(function () {
+                var $p = $("p")
+                var top = $p.offset().top;
+                var left = $p.offset().left;
+                alert("p的坐标位置：" + top + "," + left)
+            })
+        })
+    </script>
+</head>
+
+<body style="padding:50px 100px;">
+<p>My name is Tom</p>
+<button value="onlick">Click</button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        span {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('a').click(function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                alert("a")
+            })
+            $('span').click(function (e) {
+                e.stopPropagation();
+                alert('span')
+            })
+            $('div').click(function (e) {
+                alert("div")
+            })
+
+        })
+    </script>
+</head>
+<body>
+<div>
+		<span>
+			<a href="http://www.baidu.com" target='_blank'>baidu.com</a>
+		</span>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>JavaScript Math.ceil() 相关的几个函数示例</title>
+    <script type="text/javascript">
+        document.write(Math.ceil(5.99));//Math.ceil返回大于等于x的最小整数，6大于5.99，所以取值为6
+        document.write("<br />");
+        document.write(Math.ceil(-5.99));//*-5大于-5.99，所以取值为-5
+        document.write("<br />");
+        document.write(Math.ceil(1.01));
+        document.write("<br />");
+        document.write(Math.ceil(-1.01));
+        document.write("<br />");
+        document.write(Math.floor(-1.01));//*Math.floor返回小于等于X的最小整数，-2小于-1.01，所以取值为-2
+        document.write("<br />");
+        document.write(Math.floor(12.3));//*Math.floor返回小于等于X的最小整数，12小于12.3，所以取值为12
+        document.write("<br />");
+        document.write(Math.floor(12.8));
+        document.write("<br />");
+        document.write(Math.round(12.3));//*Math.round，四舍五入，取值为12
+        document.write("<br />");
+        document.write(Math.round(12.8));//*Math.round，四舍五入，取值为13
+        document.write("<br />");
+        document.write(Math.sqrt(16));//*Math.sqrt，平方根，取值为4
+        document.write("<br />");
+        document.write(Math.pow(2, 3));//*Math.pow，X的Y次方，取值为8
+        document.write("<br />");
+        var vNumn = Math.random();
+        var vNumn = Math.round(vNumn * 10)
+        document.write(vNumn);
+    </script>
+</head>
+<body>
+<p>
+    该Javascript示例解释：这个示例用到了Math.random()，这个函数返回值是一个大于等于0，且小于1的随机数。得到随机数之后，将这个随机数乘以10，那么就得到一个大于等于0，小于10之间的数值，然后再用Math.round四舍五入一下，得到最接近的一个整数。这样最后返回的值是一个大于等于0，小于等于10的整数。</p>
+</body>
+</html>

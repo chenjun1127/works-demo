@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery制作tab菜单</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            padding-top: 30px;
+        }
+
+        .box {
+            font: 12px/1.7em Verdana, Arial, Helvetica, sans-serif;
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        h1 {
+            padding: 0;
+            margin: 0;
+            font: 12px/30px Verdana, Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        h1 ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 ul li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            float: left;
+            display: inline;
+            text-align: center;
+            width: 80px;
+            background: #e0e0e0;
+            border: solid 1px #b5b5b5;
+            border-bottom: none;
+        }
+
+        .tabs_box {
+            width: 378px;
+            height: 300px;
+            border: solid 1px #b5b5b5;
+            clear: both;
+            padding: 10px;
+        }
+
+        ul.tabs li a {
+            text-decoration: none;
+            color: #000;
+            display: block;
+        }
+
+        ul.tabs li a:hover {
+            background: #ccc;
+        }
+
+        html ul.tabs li.active, html ul.tabs li.active a:hover {
+            background: #fff;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".tabs_content").hide(); //Hide all content
+            $("ul.tabs li:first").addClass("active");//Activate first tab
+            $(".tabs_content:first").show();//Show first tab content
+            $("ul.tabs li").click(function () {
+                $("ul.tabs li").removeClass("active");//Remove any "active" class
+                $(this).addClass("active");//Add "active" class to selected tab
+                $(".tabs_content").hide();//Hide all tab content
+                var activeTab = $(this).find("a").attr("href");
+                $(activeTab).fadeIn(); //Fade in the active content
+                return false;
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div class="box">
+    <h1>
+        <ul class="tabs">
+            <li class="active"><a href="#tab1">jQuery</a></li>
+            <li><a href="#tab2">Asp</a></li>
+            <li><a href="#tab3">PHP</a></li>
+            <li><a href="#tab4">java</a></li>
+        </ul>
+    </h1>
+    <div class="tabs_box">
+        <div id="tab1" class="tabs_content" style="display:block;">
+            欢迎来到jQuery的世界！
+        </div>
+        <div id="tab2" class="tabs_content" style="display:none;">
+            你最近还好吗？
+        </div>
+        <div id="tab3" class="tabs_content" style="display:none;">
+            想要大声说爱你
+        </div>
+        <div id="tab4" class="tabs_content" style="display:none;">
+            我们再也回不到从前了!
+        </div>
+    </div>
+</div>
+</body>
+</html>

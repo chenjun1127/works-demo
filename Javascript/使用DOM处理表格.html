@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>使用DOM处理表格</title>
+    <script type="text/javascript">
+        function table1() {
+            var _table1 = document.getElementById("table_1")
+            var _firstTr = _table1.rows[0];
+            _firstTr.className = "tr_1";
+            var _firstTd = _firstTr.children;
+            console.log(_firstTd)
+            alert("第一行第一个td的内容为：" + _firstTd[0].innerText);
+            alert("第一行对象标记名为：" + _firstTr.tagName);
+            alert("第一行索引为：" + _firstTr.rowIndex);
+
+        }
+        window.onload = function changecolor() {
+            var table = document.getElementsByTagName("table");
+            var tr = document.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.background = "#fff";
+                tr[i].onmouseover = function () {
+                    this.style.background = "#dcdcdc";
+                }
+                tr[i].onmouseout = function () {
+                    this.style.background = "#fff";
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        #table_1 {
+            border-collapse: collapse;
+            border: solid 1px #ccc;
+            text-align: center
+        }
+
+        #table_1 td {
+            height: 30px;
+        }
+
+        .tr_1 {
+            background: #ccc;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .tr_2 {
+            background: #ddd;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<table width="100%" border="1" cellspacing="0" cellpadding="0" id="table_1">
+    <tr>
+        <td>姓名</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>职业</td>
+    </tr>
+    <tr>
+        <td>陈三</td>
+        <td>男</td>
+        <td>23</td>
+        <td>老师</td>
+    </tr>
+    <tr>
+        <td>李四</td>
+        <td>女</td>
+        <td>32</td>
+        <td>技术员</td>
+    </tr>
+    <tr>
+        <td>王五</td>
+        <td>男</td>
+        <td>15</td>
+        <td>学生</td>
+    </tr>
+</table>
+<input type="button" value="onclick-1" onclick="table1()"/>
+</body>
+</html>

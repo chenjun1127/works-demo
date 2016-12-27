@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移除事件</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".add").bind("click", myFun1 = function () {
+                $("#test").append("<p>我的绑定函数1</p>");
+            }).bind("click", myFun2 = function () {
+                $("#test").append("<p>我的绑定函数2</p>");
+            }).bind("click", myFun3 = function () {
+                $("#test").append("<p>我的绑定函数3</p>");
+            });
+            $(".del").click(function () {
+                $(".add").unbind("click", myFun3)
+            })
+
+        })
+    </script>
+</head>
+
+<body>
+<button type="button" class="add">Click</button>
+<div id="test"></div>
+<button type="button" class="del">删除第三个事件</button>
+</body>
+</html>

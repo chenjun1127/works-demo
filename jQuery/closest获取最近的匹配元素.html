@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>closest获取最近的匹配元素</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).bind("click", function (e) {
+                $(e.target).closest("li").css({"color": "red", "font-size": "12px", "opacity": "0.5"})
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div class="box">
+    <ul>
+        <li style="background:gray">我是中国人</li>
+    </ul>
+</div>
+</body>
+</html>

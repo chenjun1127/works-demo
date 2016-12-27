@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript中for in循环语句！</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        var x;
+        var mycars = new Array();//**数组
+        mycars[0] = "奔驰";
+        mycars[1] = "宝马";
+        mycars[2] = "法拉利";
+        for (x in mycars) {
+            document.write(mycars[x] + "<br />")
+        }
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 14px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+    </style>
+<body>
+</body>
+</html>

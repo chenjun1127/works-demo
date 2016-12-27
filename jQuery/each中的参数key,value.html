@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>each中的参数key,value</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $("input[name=names]").click(function () {
+                var arr = new Array();
+                $("input[name=names]:checked").each(function (key, value) {
+                    arr[key] = $(value).val();
+                });
+                $("#msgNames").text("共选中了" + arr.length + "项；" + "分别是：" + arr.join(","));
+            });
+        });
+    </script>
+</head>
+<body>
+<p>请选择你喜欢吃的水果</p>
+<p><input name="names" type="checkbox" value="香蕉"/>香蕉</p>
+<p><input name="names" type="checkbox" value="苹果"/>苹果</p>
+<p><input name="names" type="checkbox" value="梨子"/>梨子</p>
+<p><input name="names" type="checkbox" value="桔子"/>桔子</p>
+<p><input name="names" type="checkbox" value="李子"/>李子</p>
+<p><input name="names" type="checkbox" value="杏子"/>杏子</p>
+<p id="msgNames"></p>
+</body>
+</html>

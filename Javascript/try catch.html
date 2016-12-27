@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <script type="text/javascript">
+        var txt = ""
+        function message() {
+            try {
+                tt("Welcome guest!")
+            }
+            catch (err) {
+                txt = "此页面存在一个错误。\n\n"
+                txt += "错误描述: " + err.description + "\n\n"
+                txt += "点击OK继续。\n\n"
+                alert(txt)
+            }
+        }
+    </script>
+</head>
+
+<body>
+<input type="button" value="View message" onclick="message()"/>
+</body>
+
+</html>

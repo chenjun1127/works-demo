@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义事件</title>
+    <script src="js/jquery-1.5.1.min.js" language="javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            function hander(e) {
+                alert(e.data.foo)
+            };
+            $("div").bind("click", {foo: "bar"}, hander)
+        })
+    </script>
+</head>
+
+<body>
+<div>click me</div>
+</body>
+</html>

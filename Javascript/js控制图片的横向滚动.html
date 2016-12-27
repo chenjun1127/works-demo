@@ -1,0 +1,81 @@
+<div id=demo style="width:1002px; overflow:hidden;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td id=demo1>
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                        <td valign="middle">
+                            <a href="http://www.wow-diamond.com.cn/" target="_blank">
+                                <img src="http://www.baidu.com/img/baidu_logo.gif" width="90" height="45" border="0"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td id=demo2></td>
+        </tr>
+    </table>
+</div>
+<script>
+    var speed = 20;
+    document.getElementById("demo2").innerHTML = document.getElementById("demo1").innerHTML
+    function Marquee() {
+        if (document.getElementById("demo2").offsetWidth - document.getElementById("demo").scrollLeft <= 0)
+            document.getElementById("demo").scrollLeft -= document.getElementById("demo1").offsetWidth
+        else {
+            document.getElementById("demo").scrollLeft++;
+        }
+    }
+    var MyMar = setInterval(Marquee, speed)
+    document.getElementById("demo").onmouseover = function () {
+        clearInterval(MyMar)
+    }
+    document.getElementById("demo").onmouseout = function () {
+        MyMar = setInterval(Marquee, speed)
+    }
+</script> 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>左侧的下拉菜单！</title>
+<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".box ul li").hover(function(){
+		$(this).find(".menu_1").stop(true,true).show("fast")
+	},function(){
+		$(this).find(".menu_1").stop(true,true).hide("fast")
+	})
+})
+</script>
+<style type="text/css">
+body{padding:0; margin:0; margin:0 auto; width:800px; margin-top:30px; font:14px/1.6em Verdana, Arial, Helvetica, sans-serif;}
+ul,li{padding:0; margin:0; list-style:none;}
+.box{width:215px; border:solid 1px #949494;}
+.box ul li{position: relative;height:30px;display:inherit !important; display:inline; line-height:30px; border-bottom:1px #dcdcdc solid; width:215px;}/*如果没有inline，效果会出错的,display:inherit !important; display:inline;兼容FF与ie6.7*/
+.box ul li a{display:block; background:#f6f6f6; color:#949494; width:200px; padding-left:15px; text-decoration:none;}
+.box ul li a:hover{background:#ee224d; color:#fff; text-decoration:none;}
+.menu_1{position:absolute;left: 217px;top:-1px;width: 150px; border:solid 1px #ee224d; display:none;}
+ul.menu_1 li{line-height:30px; height:30px; font-size:12px; color:#949494; width:150px;border-bottom:1px #dcdcdc solid;}
+ul.menu_1 li a{background:#f6f6f6; display:block; width:140px; padding-left:10px;}
+ul.menu_1 li a:hover{background:#e8e8e8; color:#f52954;width:140px; padding-left:10px;}
+</style>
+<body>
+<div class="box">
+	<ul>
+    	<li><a href="#">演唱会</a>
+        	<ul class="menu_1">
+                <li><a href="">许茹芸</a></li>
+                <li><a href="">郭富城</a></li>
+                <li><a href="">刘德华</a></li>
+                <li><a href="">张学友</a></li>
+            </ul>     
+        </li>
+        <li><a href="#">音乐剧</a>
+        	<ul class="menu_1">
+                <li><a href="">周杰伦</a></li>
+                <li><a href="">李小龙</a></li>
+                <li><a href="">郭敬明</a></li>
+                <li><a href="">张学友</a></li>
+                <li><a href="">Allen</a></li>
+            </ul> 
+        </li>
+        <li><a href="#">话剧歌剧</a></li>
+        <li><a href="#">舞蹈芭蕾</a></li>
+        <li><a href="#">体育比赛</a></li>
+        <li><a href="#">英超足球</a></li>
+        <li><a href="#">周边商品</a></li>
+        <li><a href="#">亲子儿童</a></li>
+    </ul>
+</div>
+</body>
+</html>

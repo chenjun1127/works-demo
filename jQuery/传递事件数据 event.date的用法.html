@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>传递事件数据 event.date的用法</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var message = "歡迎來到jQuery的世界!";
+            $("button:first").bind("click", {msg: message}, function (event) {
+                alert(event.data.msg);
+            })
+            message = "Hollo,welcome to jQuery!";
+            $("button:last").bind("click", {msg: message}, function (event) {
+                $(".box").show("fast").html(event.data.msg);
+            });
+        })
+
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 30px;
+            font: 12px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 300px;
+            border: solid 1px #888;
+            display: none;
+            padding: 10px;
+            height: 90px;
+        }
+    </style>
+<body>
+<button type="button">check me</button>
+<button type="button">check me</button>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>你得了多少分？</title>
+    <script type="text/javascript">
+        function judge() {
+            var scorce, result
+            scorce = prompt("你得了多少分", "0")
+            if (scorce > 100 || scorce < 0) {
+                result = "耍我？分数输出错误！"
+            } else {
+                switch (parseInt(scorce / 10)) {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        result = 'fail';
+                        break;
+                    case 6:
+                    case 7:
+                        result = 'pass';
+                        break;
+                    case 8:
+                        result = 'good';
+                        break;
+                    case 9:
+                    case 10:
+                        result = 'excellent';
+                }
+            }
+            alert(result)
+        }
+    </script>
+</head>
+<body>
+<button onclick="judge()">分数</button>
+</body>
+</html>

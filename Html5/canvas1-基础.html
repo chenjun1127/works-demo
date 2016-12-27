@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas-1</title>
+    <script type="text/javascript">
+        w=800;
+        h=600;
+        window.onload = function () {
+            //创建canvas
+            createCanvas();
+            stroke();
+
+        };
+        function createCanvas() {
+            var canvas = "<canvas id='canvas' width="+w+" height="+h+"></canvas>"
+            document.body.innerHTML=canvas;
+            var oCanvas=document.getElementById('canvas');
+            oCanvas.style.background="gray";
+        };
+        function img(){
+            var img=document.createElement("img");
+            img.setAttribute("src","http://t1.27270.com/uploads/tu/201412/007/1.jpg");
+            img.setAttribute("id","imgPic");
+            img.width=400;
+            img.style.display="none";
+            document.body.appendChild(img);
+        }
+        function stroke() {
+            var myCanvas = document.getElementById('canvas');
+            var cxt = myCanvas.getContext('2d');
+            //开始路径
+            //画一条线段
+            cxt.beginPath()
+            cxt.lineWidth=10;
+            cxt.strokeStyle="blue"
+            cxt.moveTo(20, 20);
+            cxt.lineTo(200, 20);
+            cxt.stroke();
+            cxt.closePath();
+            //关闭路径
+            //画空心园；
+            cxt.beginPath();
+            cxt.lineWidth=3;
+            cxt.strokeStyle="green";
+            cxt.arc(100,100,40,0,360,false);
+            cxt.stroke();
+            cxt.closePath();
+            //画实心园；
+            cxt.beginPath();
+            cxt.fillStyle="orange";
+            cxt.strokeStyle="black";
+            cxt.arc(200,100,40,0,360,false);
+            cxt.fill();//填充；
+            cxt.stroke();//边框；
+            cxt.closePath();
+            //画矩形；
+            cxt.beginPath();
+            cxt.lineWidth=1;
+            cxt.fillStyle="orange";
+            cxt.strokeStyle="black";
+            cxt.rect(300,50,200,100);
+            cxt.fill();//填充；
+            cxt.stroke();//边框；
+            cxt.closePath();
+            //渐变矩形；
+            cxt.beginPath();
+            var colorObj=cxt.createLinearGradient(0,0,200,0);
+            colorObj.addColorStop(0,"red");
+            colorObj.addColorStop(0.5,"yellow");
+            colorObj.addColorStop(1,"orange");
+            cxt.fillStyle=colorObj;
+            cxt.fillRect(0,200,200,200);
+            cxt.closePath();
+            //渐变圆形；
+            cxt.beginPath();
+            var circleObj=cxt.createRadialGradient(300,300,10,300,300,100);
+            //context.createRadialGradient(x0,y0,r0,x1,y1,r1);
+            circleObj.addColorStop(0,"red");
+            circleObj.addColorStop(1,"blue");
+            cxt.arc(300,300,100,0,360,false);
+            cxt.lineWidth=1;
+            cxt.fillStyle=circleObj;
+            cxt.fill();
+            cxt.stroke();
+            cxt.closePath();
+            //图片放到矩形中；
+            cxt.beginPath();
+            img();
+            //alert(document.getElementById("imgPic"));
+            var imgObj=cxt.createPattern(document.getElementById("imgPic"),"repeat");
+            cxt.fillStyle=imgObj;
+            cxt.fillRect(450,200,200,200);
+            cxt.closePath();
+            //
+            
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

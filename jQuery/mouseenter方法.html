@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无标题文档</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("p").bind("mouseenter", function () {
+                $("p").css("background", "red")
+            }).bind("mouseleave", function () {
+                $("p").css("background", "yellow")
+            })
+
+            $(".tt").hover(function () {
+                $(this).css("background", "red")
+            }, function () {
+                $(this).css("background", "gray")
+            })
+        })
+    </script>
+</head>
+<body>
+<p style="background-color:#E9E9E4">请把鼠标指针移动到这个段落上。</p>
+<div class="tt" style="background:#f0f0f0">我是中国人</div>
+</body>
+</html>

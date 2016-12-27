@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX的获取!</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("button").click(function () {
+                $(".box").load("js/test.html", function (responseText, textStatus, XMLHttpRequest) {//回调函数cellback的三个参数；
+                    alert($(this).html());//在这里this指向的是当前的DOM对象
+                    alert(responseText); //请求返回的内容
+                    alert(textStatus); //请求状态：success，error
+                    alert(XMLHttpRequest);  //XMLHttpRequest对象
+                })
+            })
+        })
+    </script>
+    <style type="text/css">
+        body {
+            font-size: 12px;
+            color: #366;
+        }
+
+        .box {
+            width: 500px;
+            height: 300px;
+            background: #e3e3e3;
+            border: solid 1 px #e7e7e7;
+            padding: 10px;
+        }
+
+        ul, li {
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+
+        ul li a {
+            text-decoration: none;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            color: #366;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            background: #CCCCCC;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+<button type="button">AJAX获取</button>
+<div class="box"></div>
+</body>
+</html>
+

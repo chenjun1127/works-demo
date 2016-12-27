@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>trigger执行默认操作</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".old").bind("click", function () {
+                $("input").trigger("focus");
+            });
+            $(".new").bind("click", function () {
+                $("input").triggerHandler("focus");//只绑定focus事件，不获得焦点（浏览器默认操作）
+            });
+            $("input").focus(function () {
+                if ($("p").length == 0) {
+                    $(".box").append("<p>focus.</p>");
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+<button class="old">Click-1</button>
+<button class="new">Click-2</button>
+<div class="box"></div>
+<input/>
+</body>
+</html>

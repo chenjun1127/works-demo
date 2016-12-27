@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>给P元素添加类</title>
+    <script src="js/jquery-1.5.1.min.js" language="javascript"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("p").addClass(function (n) {
+                    return "par_" + n;
+                });
+            });
+        });
+    </script>
+    <style type="text/css">
+        .par_0 {
+            color: #000099;
+            font-size: 12px;
+        }
+
+        .par_1 {
+            color: #FF0000;
+            font-size: 14px;
+        }
+
+        .par_2 {
+            color: #333333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>这只是一个标题</h1>
+<p>蓝颜色的字1</p>
+<p>红颜色的字2</p>
+<p>灰颜色的字3</p>
+<button type="button">给P元素添加类</button>
+</body>
+</html>

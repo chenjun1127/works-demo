@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>获取列表框与组合框的值!</title>
+    <script type="text/javascript">
+        function getValue1() {
+            var Opp_value = "";
+            var Opp_txt = "";
+            var _txtObj = document.getElementById("str1")
+            for (i = 0; i < _txtObj.length; i++) {
+                if (_txtObj.options[i].selected) {
+                    Opp_value = _txtObj.options[i].value;
+                    Opp_txt = _txtObj.options[i].text;
+                }
+            }
+            alert("组合框的值" + Opp_value + "\n" + "选中项的文本是：" + Opp_txt)
+        }
+        function getValue2() {
+            var lstVal = "";
+            var lstTxt = "";
+            var _lstObj = document.getElementById("str2")
+            var count = 0;
+            for (i = 0; i < _lstObj.length; i++) {
+                if (_lstObj.options[i].selected) {
+                    lstVal = _lstObj.options[i].value;
+                    lstTxt = _lstObj.options[i].text;
+                    count++;
+                }
+
+            }
+            if (count == 0) {
+                alert("列表框中没有选中的值！")
+            } else {
+                alert("列表框的值" + lstVal + "\n" + "选中项的文本是：" + lstTxt)
+            }
+        }
+    </script>
+</head>
+
+<body>
+<form name="form1" method="get" action="#">
+    <select name="str1" style="width:120px" id="str1">
+        <option value="1">选项1</option>
+        <option value="2">选项2</option>
+        <option value="3">选项3</option>
+        <option value="4">选项4</option>
+    </select>
+    <input type="button" value="获取组合框的值" onclick="getValue1()"/>
+    <br/>
+    <select name="str2" style="width:120px" id="str2">
+        <option value="1">选项1</option>
+        <option value="2">选项2</option>
+        <option value="3">选项3</option>
+        <option value="4">选项4</option>
+    </select>
+    <input type="button" value="获取列表框的值" onclick="getValue2()"/>
+</form>
+</body>
+</html>

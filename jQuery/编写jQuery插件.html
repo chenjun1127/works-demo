@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编写jQuery插件</title>
+    <style type="text/css">
+        .tt {
+            color: red;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+
+        (function ($) {
+            //插件编写
+            $.fn.extend({
+                "color": function (value) {
+                    return this.css("color", value);
+                }
+            });
+        })(jQuery);
+        $(function () {
+            //插件应用
+            $("div").bind("click", function () {
+                var color = $(this).text();
+                $("div").color(color);
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div class="tt">red</div>
+<div style="color:blue;">blue</div>
+<div style="color:gray;">gray</div>
+<div style="color:black;">black</div>
+</body>
+</html>

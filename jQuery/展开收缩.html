@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".tit:first").addClass("on");
+	$(".list:first").show();	
+	$(".tit").css("cursor","pointer").click(function(){
+		$(this).next(".list").slideToggle("fast").siblings(".list:visible").slideUp("fast");
+		$(this).toggleClass("on").siblings().removeClass("on");
+	})
+
+})
+
+</script>
+<title>jQuery展开收缩</title>
+<style type="text/css">
+<!--
+*{ margin:0px; padding:0px;}
+body { font-size:12px;}
+p{ line-height:20px;}
+#menu{ margin:10px; width:690px; }
+#menu .tit {line-height: 36px;background:#fff3e9 url(images/bottom.gif) no-repeat 660px center;padding-left: 10px;height:36px;width: 678px;font-size: 13px;font-weight: bold;color: #333;position: relative; border:solid 1px #fa7bae; margin-bottom:5px;}
+#menu .tit a{color:#333; text-decoration:none}
+#menu .tit a:hover{color: #e46e15;text-decoration: none;}
+#menu .list {color:#6d6d6d; display:none;border:solid 1px #fa7bae; margin-bottom:5px; margin-top:-5px; border-top:none; padding:10px;}
+#menu .tit.on{background:#fff3e9 url(images/top.gif) no-repeat 660px center; color:#ff6666}/*向上的箭头-暗色*/
+
+-->
+</style>
+</head>
+
+<body>
+<div id="menu">
+    <div class="tit">高级销售经理</div>
+    <div class="list" >
+      <p id="m1_1">工作内容：<br/>
+      1、音乐教学工具的市场拓展、区域市场的销售与管理。<br/>
+      2、儿童教育学习平台及终端产品的销售和区域渠道建设。<br/> <br/> 
+        岗位要求：<br/> 
+        1、大专以上学历，音乐类或教育类相关专业毕业优先。<br/> 
+        2、有2年以上消费类电子产品、教育类电子产品、乐器类产品的渠道营销或市场管理经验，熟悉教育和音乐培训机构者  优先。<br/> 
+        3、出色的销售能力，良好的沟通协调能力；有开拓市场、建立销售渠道、组织经销商活动相关经历。<br/> 
+        4、具有管理销售渠道、制定销售政策、组建并管理销售团队的能力。<br/> 
+        5、良好的语言表达能力，能够对经销商或顾客进行相关培训工作。<br/> 
+        6、身体健康，态度端正、敬业勤奋；建议在发送简历时附近期照片头像。<br/> 
+      7、愿意从事多种销售模式，服从公司未来发展的需要。</p>
+    </div>
+    <div class="tit" >电子商务专员</div>
+    <div class="list">
+      <p id="m2_1">工作内容： <br/>
+1、能有效的与客户在网上或电话中沟通； <br/>
+2、利用聊天工具、电话等通讯手段为客户提供服务，争取达成订单； <br/>
+3、及时准确地处理客户的问题及订单； <br/>
+4、客户的维护与日常管理； <br/>
+5、完成公司交办的其它事宜。 <br/> <br/>
+
+要求： <br/>
+１、好学，耐心，有责任心及团队合作精神； <br/>
+２、具有较好的网络沟通和电话沟通能力； <br/>
+３、有电子商务经验者优先； <br/>
+４、熟练操作计算机及各类网络业务工具。
+</p>
+    </div>
+    <div class="tit">网站编辑</div>
+    <div class="list">
+      <p id="m3_1">职位描述：<br/> 
+1、负责网站频道的管理，内容维护更新；<br/>  
+2、负责栏目、专题、活动的策划与执行；<br/>  
+3、整合各类内容和数字技术，向用户提供切实有价值的多媒体内容；<br/><br/>   
+
+职位要求： <br/> 
+1、热爱编辑工作，热爱幼儿教育，思想活跃，有热情，工作责任心强，善于团队协作和资源整合；<br/>  
+2、具有一定的新闻和教育敏感性，较强的策划、组织与执行能力；<br/>  
+3、大学本科以上学历，2年以上工作经验；<br/>  
+4、拥有儿童心理学、教育学、中文、传播学等相关专业背景者优先；<br/>  
+5、有图书编辑、数字内容开发经验者优先；<br/>  
+6、幼儿教育及幼儿教育媒体从业者优先；
+</p>
+    </div>
+    <div class="tit" >网站策划运营经理</div>
+    <div class="list" >
+      <p id="m4_1">岗位要求：
+<br/>1、 完全了解互联网行业的运营模式
+2、 对频道栏目尤其是SNS社区有独到的认识和操作经验<br/>
+3、 熟悉平台的构架搭建和制作流程<br/>
+4、 有过网站品牌价值推广的成功案例<br/>
+5、 熟练掌握互联网的各种推广手段<br/>
+6、 有思想、有创意、有责任、有追求<br/>
+7、 了解儿童教育或对女性需求有一定的认识
+</p>
+    </div>
+    <div class="tit">运营推广主管 </div>
+    <div class="list">
+      <p id="m5_1">工作职责:<br/>
+1. 策划并组织线上、线下产品推广运营活动；<br/>
+2. 擅长网络市场推广与合作，进行市场发展跟踪及运营策略调整； <br/>
+3. 分析产品运营中存在的问题，从数据上提供产品运营及业务发展建议；<br/>
+4.根据公司发展策略，策划与布局网站并执行相关的网络推广宣传计划；<br/><br/>
+
+职位要求：<br/> 
+1. 大专及以上学历，市场营销、电子商务、新闻等相关专业；<br/>
+2. 熟悉互联网企业的运营模式，具有良好的用户体验感知能力；<br/>
+3. 了解网络应用产品或电子商务的运行推广规则；<br/>
+4. 具备实操经验，有相关岗位的从业经历；<br/>
+5.具有较强的学习能力、沟通能力和谈判能力，文案撰写和数据分析能力优秀；<br/> 
+6.自信，耐心，责任心强，具有较好的团队合作精神和执行力；
+</p>
+    </div>    
+</div>
+</body>
+</html>

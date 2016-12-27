@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超链接提示和图片提示效果</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var x = 10;
+            var y = 20;
+            $("a.lope").mouseover(function (e) {
+                this.Mytitle = this.title;
+                this.title = "";
+                var items = "<div id='items'><img src='" + this.href + "'/></div>";//注意这种写法,创新一个DIV
+                $("body").append(items);
+                $("#items").css({'top': (e.pageY + y) + "px", "left": (e.pageX + x) + "px"}).show("fast");
+            }).mouseout(function () {
+                this.title = this.Mytitle;
+                $("#items").remove();
+            }).mousemove(function (e) {
+                $("#items").css({"top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px"});
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #fff;
+            font: 80% Arial, Helvetica, sans-serif;
+            color: #555;
+            line-height: 180%;
+        }
+
+        p {
+            font-size: 12px;
+            line-height: 24px;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: #666666;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #990000;
+            text-decoration: underline;
+        }
+
+        #items {
+            display: none;
+            position: absolute;
+            border: 1px solid #888;
+            background: #f7f5d1;
+            padding: 1px;
+            color: #333;
+        }
+    </style>
+    <title>无标题文档</title>
+</head>
+
+<body>
+<p><a class="lope" href="http://www.baidu.com/img/baidu_sylogo1.gif" title="baidu">百度</a></p>
+<p><a class="lope" href="http://www.google.com.hk/images/srpr/logo4w.png" title="google">谷歌</a></p>
+<p><a class="lope" href="http://mat1.gtimg.com/www/iskin960/qqcomlogo.png" title="google">腾讯</a></p>
+</body>
+</html>

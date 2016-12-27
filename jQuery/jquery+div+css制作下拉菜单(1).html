@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery+div+css制作下拉菜单</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("li").hover(function () {
+                $(this).find(".list_1").slideDown("fast");//鼠标滑过查找li下面的第一个ul然后显示；
+            }, function () {
+                $(this).find(".list_1").slideUp("fast");//鼠标离开隐藏li下面d的ul；
+            })
+        })
+    </script>
+    <style type="text/css">
+        ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            float: left;
+            display: inline;
+            background: #ff0099;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            list-style: none;
+            font: 12px/28px Verdana, Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        ul li a {
+            display: block;
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            display: block;
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            color: #fff;
+            text-decoration: none;
+            background: #990033;
+        }
+
+        .list_1 {
+            width: 80px;;
+            text-align: center;
+        }
+
+        .list_1 ul li {
+            list-style: none;
+            text-align: center;
+            clear: both;
+            width: 80px;
+            background: none;
+            font-weight: normal;
+        }
+
+        .list_1 ul li a {
+            background: none;
+            display: inline;
+            color: #999999;
+            text-decoration: none;
+            display: block;
+            background: #CCCCCC;
+        }
+
+        .list_1 ul li a:hover {
+            background: none;
+            display: inline;
+            color: #990000;
+            text-decoration: underline;
+            display: block;
+            background: #666666;
+        }
+
+        .list_1 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="">栏目一</a>
+        <div class="list_1">
+            <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">产品展示</a></li>
+                <li><a href="#">内容要点</a></li>
+                <li><a href="#">产品介绍</a></li>
+            </ul>
+        </div>
+    </li>
+
+
+    <li><a href="">栏目二</a>
+
+    </li>
+    <li><a href="">栏目三</a>
+
+    </li>
+    <li><a href="">栏目四</a>
+        <div class="list_1">
+            <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">产品展示</a></li>
+                <li><a href="#">内容要点</a></li>
+                <li><a href="#">产品介绍</a></li>
+            </ul>
+        </div>
+    </li>
+
+</ul>
+</body>
+</html>

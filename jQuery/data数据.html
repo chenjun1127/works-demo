@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		//data数据
+		$("input:first").bind("click",["123","abc"],function(e){
+			alert(e.data[0])
+		})
+		$("input:last").bind("click",{user:"jone"},function(e){
+			alert(e.data.user)
+		})
+
+		 
+	})
+	</script>
+</head>
+<body>
+	<input type="button" value="data_1">
+	<input type="button" value="data_2"> 
+</body>
+</html>

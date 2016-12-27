@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQeury+div+css制作选项卡效果!</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var $div_li = $(".tab_menu ul li");
+            $div_li.click(function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+                var index = $div_li.index(this);
+                $(".tab_box>div").eq(index).show().siblings().hide();
+            }).hover(function () {
+                $(this).addClass("hover");
+            }, function () {
+                $(this).removeClass("hover");
+            })
+
+        });
+    </script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 600px;
+            margin: 0 auto;
+            background: #eee;
+            text-align: left;
+            clear: both;
+        }
+
+        .tab_menu {
+            width: 400px;
+            font: 12px/24px Verdana, Arial, Helvetica, sans-serif;
+            clear: both;
+        }
+
+        .tab_menu ul li {
+            line-height: normal;
+            float: left;
+            width: 98px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            list-style: none;
+            border: solid 1px #b8b8b8;
+            border-bottom: none;
+            margin-right: 5px;
+            font-weight: bold;
+            display: block;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .tab_menu li.hover {
+            background: #b8b8b8;
+        }
+
+        .tab_menu li.selected {
+            color: #FFF;
+            background: #6D84B4;
+        }
+
+        .tab_box {
+            width: 590px;
+            height: 400px;
+            background: #fff;
+            border: solid 1px #ccc;
+            clear: both;
+            padding: 5px;
+            font: 12px/1.6em Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <div class="tab_menu">
+        <ul>
+            <li>政治</li>
+            <li>军事</li>
+            <li>工业</li>
+        </ul>
+    </div>
+    <div class="tab_box">
+        <div class="">政治内容</div>
+        <div class="hide">军事内容</div>
+        <div class="hide">工业内容</div>
+    </div>
+</div>
+</body>
+</html>

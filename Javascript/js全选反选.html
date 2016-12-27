@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选反选</title>
+</head>
+<body>
+<script type="text/javascript">
+    function checkAll(name) {
+        var el = document.getElementsByTagName('input');
+        var len = el.length;
+        for (var i = 0; i < len; i++) {
+            if ((el[i].type == "checkbox") && (el[i].name == name)) {
+                el[i].checked = true;
+            }
+        }
+    }
+
+    function clearAll(name) {
+        var el = document.getElementsByTagName('input');
+        var len = el.length;
+        for (var i = 0; i < len; i++) {
+            if ((el[i].type == "checkbox") && (el[i].name == name)) {
+                el[i].checked = false;
+            }
+        }
+    }
+
+    function selectedSwidth(obj, eleNode) {
+        obj.checked == true ? checkAll(eleNode) : clearAll(eleNode);
+    }
+</script>
+<input type="checkbox" name="test" value="" onclick="selectedSwidth(this,'test')"/> 字母全选开关
+<input type="checkbox" name="test" value="a"/> a
+<input type="checkbox" name="test" value="b"/> b
+<input type="checkbox" name="test" value="c"/> c
+<input type="checkbox" name="test" value="d"/> d
+<input type="checkbox" name="test" value="e"/> e
+<input type="checkbox" name="test" value="f"/> f
+<input type="checkbox" name="test" value="g"/> g
+<br>
+<input type="checkbox" name="num" value="" onclick="selectedSwidth(this,'num')"/> 数字全选开关
+<input type="checkbox" name="num" value="1"/> 1
+<input type="checkbox" name="num" value="2"/> 2
+<input type="checkbox" name="num" value="3"/> 3
+<br><br>
+<input type="button" value="选择所有的字母" onclick="checkAll('test')"/>
+<input type="button" value="清空选中的字母" onclick="clearAll('test')"/> <br><br>
+<input type="button" value="选择所有的数字" onclick="checkAll('num')"/>
+<input type="button" value="清空选中的数字" onclick="clearAll('num')"/>
+
+</body>
+</html>

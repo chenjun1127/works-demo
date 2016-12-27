@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+</head>
+<script type="text/javascript">
+    function aa() {
+        var str = "My name is bill,I am 20 years old.";
+        var re = /\d/; //检索数字的位置
+        var arr = str.search(re); //非分组情况下返回数组
+        alert(arr);
+    }
+
+    function bb() {
+        var str = "Bill is 12 years old,he is a good boy.";
+        var re = /\d{2}/; //检索数字的位置，为了得到完整两位数字，使用了正则表达式的分组
+        var arr = str.replace(re, 20); //使用replace()方法进行替换操作
+        alert(arr);
+    }
+</script>
+<body>
+<button onclick="aa()">Click-1</button>
+<button onclick="bb()">Click-2</button>
+</body>
+</html>

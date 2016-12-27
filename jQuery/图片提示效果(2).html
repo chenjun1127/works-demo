@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片提示效果!</title>
+    <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var x = 10;
+            var y = 20;
+            $("a.pic").mouseover(function (e) {//鼠标移上去开始函数
+                this.Mytitle = this.title;
+                this.title = "";
+                var img = "<div id='img'><img src='" + this.href + "'></div>";
+                $("body").append(img);
+                $("#img").css({"top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px"}).show("fast");
+            }).mouseout(function () {//鼠标移开
+                this.title = this.Mytitle;
+                $("#img").remove();
+            }).mousemove(function (e) {//鼠标移动
+                $("#img").css({"top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px"});
+            });
+            //下面这代码是给图片变换样式
+            $("a>img").hover(function () {
+                $(this).css("opacity", "0.5")
+            }, function () {
+                $(this).css("opacity", "1");
+            });
+        });
+    </script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            padding-top: 40px;
+            font: 12px/1.6em Verdana, Arial, Helvetica, sans-serif;
+            color: #b8b8b8;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        .box_1 {
+            margin: 0 10px;
+            width: 140px;
+            height: 80px;
+            float: left;
+            display: inline;
+        }
+
+        #img {
+            display: none;
+            position: absolute;
+            width: 600px;
+            height: 350px;
+            border: solid 2px #fff;
+        }
+
+        .box_1 img {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box_1">
+    <a class="pic" href="images/big01.jpg" title="晚霞天空"><img src="images/small01.jpg" alt="晚霞天空"></a>
+</div>
+<div class="box_1">
+    <a class="pic" href="images/big02.jpg" title="黄昏天空"><img src="images/small02.jpg" alt="黄昏天空"></a>
+</div>
+<div class="box_1">
+    <a class="pic" href="images/big03.jpg" title="古典美女"><img src="images/small03.jpg" alt="古典美女"></a>
+</div>
+<div class="box_1">
+    <a class="pic" href="images/big04.jpg" title="地铁美女"><img src="images/small04.jpg" alt="地铁美女"></a>
+</div>
+
+</body>
+</html>

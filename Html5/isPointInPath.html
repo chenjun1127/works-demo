@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <script>
+    window.onload=function(){
+        var canvas=document.getElementById("canvas");
+        var cxt=canvas.getContext("2d");
+        cxt.beginPath();
+        cxt.arc(200,200,50,0,2*Math.PI);
+        cxt.stroke();
+        cxt.closePath();
+        var angel=0;
+        canvas.onclick=function(e){
+            var mx= e.pageX;
+            var my= e.pageY;
+            if(cxt.isPointInPath(mx,my)){//isPointInPath() 方法返回 true，如果指定的点位于当前路径中；否则返回 false。
+                setInterval(function(){
+                    angel+=0.2;
+                    cxt.clearRect(0,0,500,500);
+                    cxt.beginPath();
+                    cxt.lineWidth=2;
+                    cxt.strokeStyle="orange";
+                    cxt.arc(200,200,50+10*Math.sin(angel),0,2*Math.PI);//Math.sin返回值为-1到1之间
+                    cxt.stroke();
+                    cxt.fill();
+                    cxt.closePath();
+                },50)
+            }
+        }
+
+    }
+    </script>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500" style="background: red;"></canvas>
+</body>
+</html>

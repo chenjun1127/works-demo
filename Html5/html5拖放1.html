@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HTML拖放1</title>
+    <style>
+        #box{width: 500px;height: 500px;background: #ccc;}
+    </style>
+    <script>
+    window.onload=function(){
+        var oDiv=document.getElementById("box");
+        var img=document.getElementById("src");
+        var msg=document.getElementById("msg");
+        // oDiv.ondragenter=function(e){
+        //     showMsg(e)
+        // }
+        oDiv.ondragover=function(e){
+            e.preventDefault();
+            //showMsg(e)
+        };
+        img.ondragstart=function(e){
+            //showMsg(e)
+            e.dataTransfer.setData("imgId","src");
+        };
+        oDiv.ondrop=function(e){
+            //showMsg(e.dataTransfer);
+            e.preventDefault();
+            var img=document.getElementById(e.dataTransfer.getData("imgId"));
+            oDiv.appendChild(img)
+        };
+    };
+    function showMsg(obj){
+        var s='';
+        for(var i in obj){
+            s+=i+":"+obj[i]+"<br/>";
+        }
+        msg.innerHTML=s;
+    }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <img id="src" src="http://www.soso.com/soso/images/logo_index.png" alt=""/>
+    <div id="msg"></div>
+</body>
+</html>
