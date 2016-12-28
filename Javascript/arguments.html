@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arguments</title>
+</head>
+<body>
+	<script> 
+		function multiple(){
+			var arr=[].slice.call(arguments);
+			var arr=Array.from(arguments) // es中新方法array.from;
+			var result=0;
+			for(var i=0; i<arr.length; i++){
+				result+=arr[i]/arr.length;
+			}
+			return result;
+		}
+		console.log(multiple(1,3,10))
+	</script>
+</body>
+</html>

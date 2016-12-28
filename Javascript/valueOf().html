@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> valueOf() </title>
+</head>
+<body>
+	<script> 
+		var Person=function(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		var jack=new Person("jack",30);
+		console.log(jack);
+		jack.name="Tom";
+		console.log(jack);
+		console.log(jack.valueOf());
+	</script>
+</body>
+</html>

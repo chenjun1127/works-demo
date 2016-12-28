@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="requireScript.js"></script>
+	<script> 
+		var l=new Loader();
+		l.require(["a.js"],function(){
+			a("a.js");
+			console.log('All Scripts Loaded');
+		})
+	</script>
+</body>
+</html>

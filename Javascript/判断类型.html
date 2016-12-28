@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断类型</title>
+</head>
+<body>
+	<script> 
+		function isArray(obj){
+			return Object.prototype.toString.call(obj) == "[object Array]"
+		}
+		function isFunction(obj){
+			return Object.prototype.toString.call(obj) == "[object Function]"
+		}
+		function isObj(obj){
+			return Object.prototype.toString.call(obj) == "[object Object]"
+		}
+	</script>
+</body>
+</html>
