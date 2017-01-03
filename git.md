@@ -24,15 +24,15 @@ git commit -m "write a readme file"
 单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。
 
 ####二、版本库的控制（查看、回退，修改，）
-* 1、git log命令显示从最近到最远的提交日志；
-* 2、git status命令可以让我们时刻掌握仓库当前的状态；
-* 3、git diff顾名思义就是查看difference，查看具体的修改；
-* 4、git checkout -- file可以丢弃工作区的修改：
-* 5、命令git rm用于删除一个文件；
-* 6、git add -A  提交所有变化；
-* 7、git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)；
-* 8、git add .   提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件；
-* 9、git rm -r --cached some-directory 删除缓冲
+* git log命令显示从最近到最远的提交日志；
+* git status命令可以让我们时刻掌握仓库当前的状态；
+* git diff顾名思义就是查看difference，查看具体的修改；
+* git checkout -- file可以丢弃工作区的修改：
+* git rm命令用于删除一个文件；
+* git add -A  提交所有变化；
+* git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)；
+* git add .   提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件；
+* git rm -r --cached some-directory 删除缓冲
 
 ####三、添加远程库；
 首先，登陆GitHub，然后，在右上角找到“Create a new repository”按钮，创建一个新的仓库：
