@@ -1,4 +1,4 @@
-Here are the global APIs, if you wanna see the Chinese version, click [here](https://github.com/marktony/Awesome_API).
+Here are the global APIs, if you wanna see the Chinese version, click [here](https://github.com/kiss19861127/works-demo/blob/master/Chinese.md).
 
 ### Table of Contents
 

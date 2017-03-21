@@ -1,4 +1,4 @@
-本页仅收集中国国内可用API，如需查看其他版本，请点击[这里](https://github.com/marktony/Awesome_API)。
+本页仅收集中国国内可用API，如需查看其他版本，请点击[这里](https://github.com/kiss19861127/works-demo/blob/master/Global.md)。
 
 ### 目录
 
