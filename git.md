@@ -41,7 +41,7 @@ git commit -m "write a readme file"
 * git add .   提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件；
 * git rm -r --cached some-directory 删除缓冲
 
-#### 三、添加远程库；
+#### 三、添加远程库
 
 首先，登陆GitHub，然后，在右上角找到“Create a new repository”按钮，创建一个新的仓库：
 目前，在GitHub上的库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。
