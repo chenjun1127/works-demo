@@ -1,12 +1,15 @@
 ##git 使用教程：（windows平台下）
 
 ####一、版本库的建立、添加、提交；
+
 #####1、本地目录创建一个版本库：
+
 ```javascript
 mkdir git 
 cd git 
 ```
 #####2、通过git init 命令把这个目录变成Git可以管理的仓库：
+
 ```javascript
 git init
 ```
@@ -14,16 +17,20 @@ git init
 瞬间Git就把仓库建好了，可以发现当前目录下多了一个.git的目录（默认是隐藏的）；
 
 #####3、在当前目录下创建文件readme.txt，使用 git add 命令将文件添加到仓库；
+
 ```javascript
 git add readme.txt
 ```
+
 #####4、用命令git commit告诉Git，把文件提交到仓库：
+
 ```javascript
 git commit -m "write a readme file"
 ```
 单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。
 
 ####二、版本库的控制（查看、回退，修改，）
+
 * git log命令显示从最近到最远的提交日志；
 * git status命令可以让我们时刻掌握仓库当前的状态；
 * git diff顾名思义就是查看difference，查看具体的修改；
@@ -35,6 +42,7 @@ git commit -m "write a readme file"
 * git rm -r --cached some-directory 删除缓冲
 
 ####三、添加远程库；
+
 首先，登陆GitHub，然后，在右上角找到“Create a new repository”按钮，创建一个新的仓库：
 目前，在GitHub上的库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。
 ```javascript
@@ -48,6 +56,7 @@ git remote add origin "地址"
 此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
 
 ####四、从远程库克隆
+
 之前讲了先有本地库，后有远程库的时候，如何关联远程库。
 现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。
 
@@ -84,6 +93,7 @@ fd1/*
 教程参考：http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
 
 ####五、常见问题
+
 **github的SSH怎么配置？**
 
 a 、设置Git的user name和email： 
