@@ -1,35 +1,35 @@
 ## git 使用教程：（windows平台下）
 
-#### 一、版本库的建立、添加、提交；
+#### 一、版本库的建立、添加、提交
 
-##### 1、本地目录创建一个版本库：
+##### 1、本地目录创建一个版本库
 
 ```javascript
 mkdir git 
 cd git 
 ```
-##### 2、通过git init 命令把这个目录变成Git可以管理的仓库：
+##### 2、通过git init 命令把这个目录变成Git可以管理的仓库
 
 ```javascript
 git init
 ```
 
-瞬间Git就把仓库建好了，可以发现当前目录下多了一个.git的目录（默认是隐藏的）;
+瞬间Git就把仓库建好了，可以发现当前目录下多了一个.git的目录（默认是隐藏的）
 
-##### 3、在当前目录下创建文件readme.txt，使用 git add 命令将文件添加到仓库；
+##### 3、在当前目录下创建文件readme.txt，使用 git add 命令将文件添加到仓库
 
 ```javascript
 git add readme.txt
 ```
 
-##### 4、用命令git commit告诉Git，把文件提交到仓库：
+##### 4、用命令git commit告诉Git，把文件提交到仓库
 
 ```javascript
 git commit -m "write a readme file"
 ```
 单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。
 
-#### 二、版本库的控制（查看、回退，修改，）
+#### 二、版本库的控制（查看、回退，修改）
 
 * git log命令显示从最近到最远的提交日志；
 * git status命令可以让我们时刻掌握仓库当前的状态；
