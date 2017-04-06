@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字环绕效果</title>
+	<style>		
+		.around{width:400px;height:400px; border:1px solid #ccc;position: absolute;font-family: "microsoft yahei";top:50%;left: 50%;transform: translate(-50%,-50%);border-radius: 50%}
+	</style>
+</head>
+<body>
+	<div class="around">
+		abcdefghijklmnopqrstuvwxyz
+	</div>
+	<script>
+	var around = {
+		init: function(el) {
+			el = document.querySelector(el);
+			var text = el.innerText;
+			el.innerHTML = '';
+			for (var i = 0; i < text.length; i++) {
+				el.insertAdjacentHTML('beforeend', '<span style=\'position:absolute;transform:rotateZ(' + (360 / text.length) * (i) + 'deg) translate(50%);left: 0;right: 0;top: 0;bottom: 0;display:inline-block;text-transform:uppercase;\'>' + text[i] + '</span>')
+			}
+		}
+
+	}
+	around.init(".around");
+	</script>
+</body>
+</html>

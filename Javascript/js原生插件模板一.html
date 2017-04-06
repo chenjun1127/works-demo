@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js插件模板一</title>
+</head>
+<body>
+<div id="box1" class="box"></div>
+<script>
+    /*需要注意的querySelector不支持IE6、7以下浏览器，支持IE8以上*/
+    (function (w, d) {
+        var Plugin = function () {
+            this.dom = d.querySelector(arguments[0]);
+            this.settting = {
+                bgColor: 'blue',
+                width: 100,
+                height: 100,
+                load:function () {}
+            };
+        }
+        Plugin.prototype={
+            init: function(o) {
+                this.extend(this.settting, o);
+                this.setStyle();
+                this.events();
+            },
+            setStyle:function () {
+                console.log(this.dom)
+                console.log(this)
+                this.dom.style.cssText = "background:" + this.settting.bgColor + ";width:" + this.settting.width + "px;height:" + this.settting.height + "px;";
+            },
+            events:function () {
+                this.dom.onclick=function () {
+                    this.style.backgroundColor='gold';
+                }  
+            },
+            extend: function(a, b) {
+                for (var key in b) {
+                    if(b.hasOwnProperty(key)){
+                        a[key] = b[key]
+                    }
+                };
+            }
+        }
+
+        function Oplugin(obj) {
+            return new Plugin(obj)
+        }
+
+        window.oPlugin = Oplugin
+    })(window, document);
+    // 调用
+    oPlugin(".box").init({
+        bgColor: 'red',
+        width: 200,
+        height: 200,
+        load:console.log('js原生插件模板二')
+    });
+</script>
+</body>
+</html>

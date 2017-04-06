@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用forEach循环Dom元素…</title>
+	<style> 
+		.box{width:80%;display:flex;list-style:none;padding:0;margin:100px auto;border:1px solid #ccc;justify-content: space-between;padding: 20px;}
+		.box li{width:19%;background:red;height:150px;line-height: 150px;text-align: center;color: #fff;font-size: 40px; }
+	</style>
+</head>
+<body>
+<ul class="box">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+	<script>
+	var arrLi = document.querySelector(".box").children;
+	Array.prototype.forEach.call(arrLi, function(ele, index) {
+		ele.onclick = function() {
+			alert(index)
+		}
+	})
+	// 需要注意的是，在IE8及以下是不支持forEach的，所以我们需要做下兼容，使用以下方法：
+	if (!Array.prototype.forEach) {
+		Array.prototype.forEach = function(fun) {
+			for (var i = 0; i < this.length; i++) {
+				if (i in this) {
+					fun.call(arguments[1], this[i], i, this);
+				}
+			}
+		};
+	}
+	</script>
+</body>
+</html>

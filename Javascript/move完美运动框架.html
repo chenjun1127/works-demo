@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	运动 </title>
+	<style> 
+		*{padding:0;margin:0}
+		.box{width:100px;height:100px;background:red;position:absolute;transform-origin:left top; }
+	</style>
+</head>
+<body>
+	<script src="js/startMove.js"></script>
+	<div class="box"></div>
+	<script> 
+		var oBox=document.querySelector('.box');
+		startMove(oBox,{"width":300,"height":300},fn);
+		function fn(){
+			oBox.style.transform='scale(0.5)'
+			oBox.style.transition='all 0.25s ease-in'
+		}
+	</script>
+</body>
+</html>

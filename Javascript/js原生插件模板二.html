@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js插件模板二</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    (function () {
+        var Plugin = function () {
+            this.init.apply(this, arguments);
+        }
+        Plugin.prototype = {
+            init: function (obj, options) {
+                this.options = options != null ? options : {
+                    border: '1px solid green',
+                    width: '400px',
+                    height: '200px',
+                    backgroundColor: 'lightgrey',
+                    fontColor: 'blue',
+                    load:function () {}
+                };
+                this.render(obj);
+            },
+            render: function (ele) {
+                ele.style.cssText = 'width:' + this.options.width + ';height:' + this.options.height + ';border:' + this.options.border;
+            }
+        }
+
+        function oPlugin(o, s) {
+            return new Plugin(o, s)
+        }
+        window.oPlugin = oPlugin;
+    })()
+    // 调用
+    oPlugin(document.getElementById('box'), {
+        width: '300px',
+        height: '400px',
+        border: '1px solid red',
+        load: console.log('原生js插件模板二')
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js原生插件效果demo</title>
+	<style>
+	.mainBox{width: 80%;border:1px solid #ccc;display: flex;justify-content: space-between;margin: 50px auto;padding: 50px;}
+	.box{width: 200px;height: 200px;background:red;margin-bottom: 20px;transition: all 0.20s ease-out 0s;border-radius: 50%;} 
+	.scale{transform: scale(1.2);}
+	</style>
+</head>
+<body>
+<div class="mainBox">
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+</div>
+<script>
+	;(function(w, d) {
+		function SetStyle() {
+			this.dom = d.querySelectorAll(arguments[0]);
+			this.settting = {
+				bgColor: 'blue',
+				width: 100,
+				height: 100,
+			};
+		 
+		 	console.log(this);
+		};
+		SetStyle.prototype = {
+			init: function(o) {
+				this.extend(this.settting, o);
+				this.set();
+				this.event();
+			},
+			extend: function(n, n1) {
+				for (var i in n1) {
+					n[i] = n1[i]
+				};
+			},
+			set: function() {;
+				var _this = this;			 
+				[].forEach.call(this.dom, function(ele, index) {
+					ele.style.cssText = "background:" + _this.settting.bgColor + ";width:" + _this.settting.width + "px;height:" + _this.settting.height + "px;";
+					// _this.addClass(ele,'red')
+				});
+			},
+			event: function() {
+				var _this = this;
+				[].forEach.call(this.dom, function(ele, index) {
+					_this.addEvent(ele, 'mouseenter', function() {
+						_this.addClass(this, 'scale');
+						setTimeout(function() {
+							ele.style.backgroundColor = 'red'
+						}, 10)
+					});
+					_this.addEvent(ele, 'mouseleave', function() {
+						_this.removeClass(this, 'scale');
+						setTimeout(function() {
+							ele.style.backgroundColor = _this.settting.bgColor
+						}, 10)
+					});
+				});
+			},
+			getStyle: function(obj, attr) {
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr];
+			},
+			hasClass: function(obj, cls) {
+				return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+			},
+			addClass: function(obj, cls) {
+				if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+			},
+			removeClass: function(obj, cls) {
+				if (this.hasClass(obj, cls)) {
+					var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+					obj.className = obj.className.replace(reg, ' ');
+				}
+			},
+			addEvent:function(obj,type,fn){				 
+				obj.attachEvent ? obj.attachEvent('on' + type, fn) : obj.addEventListener(type, fn, false);
+			}
+			 
+		}
+		 
+		function set_style(o) {
+			return new SetStyle(o)
+		};
+		w.setStyle = set_style;
+	})(window, document)
+	// 调用
+ 	setStyle(".box").init({
+ 		bgColor:'gold',
+ 		width:150,
+ 		height:150
+ 	})
+</script>
+</body>
+</html>
