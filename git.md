@@ -45,9 +45,14 @@ git commit -m "write a readme file"
 
 在你创建仓库的时候，master 是默认的。在其他分支上进行开发，完成后再将它们合并到主分支上。
 
-创建一个叫做“new_branch”的分支，并切换过去：
+创建一个叫做"test"的分支，并切换过去：
 ```javascript
-git checkout -b new_branch
+git checkout -b test
+```
+它是下面两条命令的简写：
+```javascript
+git branch test
+git checkout test
 ```
 切换回主分支：
 ```javascript
@@ -55,7 +60,7 @@ git checkout master
 ```
 再把新建的分支删掉：
 ```javascript
-git branch -d new_branch
+git branch -d test
 ```
 除非你将分支推送到远端仓库，不然该分支就是不为他人所见的：
 ```javascript
