@@ -43,7 +43,8 @@ git commit -m "write a readme file"
 
 #### 三、分支
 
-分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。
+在你创建仓库的时候，master 是默认的。在其他分支上进行开发，完成后再将它们合并到主分支上。
+
 创建一个叫做“new_branch”的分支，并切换过去：
 ```javascript
 git checkout -b new_branch
