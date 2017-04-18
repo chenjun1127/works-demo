@@ -41,7 +41,39 @@ git commit -m "write a readme file"
 * git add .   提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件；
 * git rm -r --cached some-directory 删除缓冲
 
-#### 三、添加远程库
+#### 三、分支
+
+分支是用来将特性开发绝缘开来的。在你创建仓库的时候，master 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。
+创建一个叫做“new_branch”的分支，并切换过去：
+```javascript
+git checkout -b new_branch
+```
+切换回主分支：
+```javascript
+git checkout master
+```
+再把新建的分支删掉：
+```javascript
+git branch -d new_branch
+```
+除非你将分支推送到远端仓库，不然该分支就是不为他人所见的：
+```javascript
+git push origin <branch>
+```
+
+#### 四、更新与合并
+
+要更新你的本地仓库至最新改动，执行：
+```javascript
+git pull
+```
+以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。
+要合并其他分支到你的当前分支（例如 master），执行：
+```javascript
+git merge <branch>
+```
+
+#### 五、添加远程库
 
 首先，登陆GitHub，然后，在右上角找到“Create a new repository”按钮，创建一个新的仓库：
 目前，在GitHub上的库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。
@@ -55,7 +87,7 @@ git remote add origin "地址"
 关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
 此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
 
-#### 四、从远程库克隆
+#### 六、从远程库克隆
 
 之前讲了先有本地库，后有远程库的时候，如何关联远程库。
 现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。
@@ -92,7 +124,7 @@ fd1/*
 
 教程参考：http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
 
-#### 五、常见问题
+#### 七、常见问题
 
 **github的SSH怎么配置？**
 
