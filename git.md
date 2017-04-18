@@ -54,6 +54,12 @@ git checkout -b test
 git branch test
 git checkout test
 ```
+查看当前分支：
+```javascript
+git branch
+```
+git branch命令会列出所有分支，当前分支前面会标一个*号。
+
 切换回主分支：
 ```javascript
 git checkout master
