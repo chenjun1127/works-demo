@@ -7,7 +7,6 @@
 * [Webpack入门教程](https://github.com/kiss19861127/webpack/blob/master/README.md)
 * [React-Native安装教程](https://github.com/kiss19861127/react-native-demos/blob/master/README.md)
 * [React基本教程](https://github.com/kiss19861127/react-demos/blob/master/README.md)
-* [Ionic2基本教程](https://github.com/kiss19861127/ionic-app/blob/master/README.md)
 
 #### 个人收藏：
 
