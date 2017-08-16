@@ -176,7 +176,7 @@
          -o-transform: $transforms;
         -ms-transform: $transforms;
     -webkit-transform: $transforms;
-          transform: $transforms;
+            transform: $transforms;
 }
 // rotate
 @mixin rotate ($deg) {
@@ -197,11 +197,11 @@
 }
 //transform origin
 @mixin transform-origin ($origin) {
-    moz-transform-origin: $origin;
+       -moz-transform-origin: $origin;
          -o-transform-origin: $origin;
         -ms-transform-origin: $origin;
     -webkit-transform-origin: $origin;
-          transform-origin: $origin;
+            transform-origin: $origin;
 }
 
 /* test
