@@ -193,3 +193,6 @@
 + [HaoService](http://www.haoservice.com/) - 支持多种类型数据。
 + [聚合数据](https://www.juhe.cn/) - 支持多种类型数据，部分免费。
 + [通联数据](https://m.datayes.com/) - 提供金融类数据，支持免费试用。
+
+#### 补充
+* [酷狗音乐](https://github.com/ecitlm/Kugou-api) - 最新整理的酷狗音乐API；
