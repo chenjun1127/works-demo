@@ -1,4 +1,4 @@
-## 前端大杂烩 DEMO
+## 前端大杂烩-DEMO
 #### 教程：
 
 * [Node基本安装教程](https://github.com/kiss19861127/nodejs-demo/blob/master/README.md)
