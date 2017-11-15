@@ -5,6 +5,7 @@
 	display: -webkit-flex;
 	display: flex;
 }
+
 @mixin flex($values) {
   -webkit-box-flex: $values;
   -moz-box-flex:  $values;
@@ -12,6 +13,7 @@
   -ms-flex:  $values;
   flex:  $values;
 }
+
 @mixin order($val) {
   -webkit-box-ordinal-group: $val;  
   -moz-box-ordinal-group: $val;     
