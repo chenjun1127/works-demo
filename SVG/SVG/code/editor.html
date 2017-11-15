@@ -1,49 +1,18 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>SVG 编辑器</title>
     <style>
-        #toolbox {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 250px;
-            border-right: 1px solid #CCC;
-        }
-
-        #toolbox h2 {
-            margin: 0;
-            padding: 0;
-            background: #EEE;
-            font-size: 16px;
-            height: 24px;
-            line-height: 24px;
-            padding: 5px 10px;
-        }
-
-        #toolbox form {
-            padding: 10px;
-        }
-
-        #canvas {
-            position: absolute;
-            left: 260px;
-            top: 10px;
-            bottom: 10px;
-            right: 10px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,.4);
-            border-radius: 5px;
-        }
-
-        label {
-            display: inline-block;
-            width: 80px;
-            text-align: right;
-        }
+        #toolbox{position:absolute;top:0;bottom:0;left:0;width:250px;border-right:1px solid #CCC;}
+        #toolbox h2{margin:0;padding:0;background:#EEE;font-size:16px;height:24px;line-height:24px;padding:5px 10px;}
+        #toolbox form{padding:10px;}
+        #canvas{position:absolute;left:260px;top:10px;bottom:10px;right:10px;box-shadow:2px 2px 10px rgba(0,0,0,.4);border-radius:5px;}
+        label{display:inline-block;width:80px;text-align:right;}
     </style>
 </head>
+
 <body>
     <div id="toolbox">
         <h2>创建</h2>
@@ -71,13 +40,10 @@
             <p>
                 <label>translateX</label>
                 <input id="translateX" type="range" min="-400" max="400" value="0" />
-
                 <label>translateY</label>
                 <input id="translateY" type="range" min="-400" max="400" value="0" />
-
                 <label>rotate</label>
                 <input id="rotate" type="range" min="-180" max="180" value="0" />
-
                 <label>scale</label>
                 <input id="scale" type="range" min="-1" max="2" step="0.01" value="1" />
             </p>
@@ -161,7 +127,7 @@
 
         attrForm.innerHTML = "";
 
-        while(attrs.length) {
+        while (attrs.length) {
             attr = attrs.shift().split(':');
             name = attr[0];
             value = shape.getAttribute(name) || attr[1];
@@ -179,7 +145,7 @@
     }
 
     function createHandle(shape, name, value) {
-        
+
 
         var label = document.createElement('label');
         label.textContent = name;
@@ -218,8 +184,9 @@
     function encodeTranform(transObject) {
         return ['translate(', transObject.tx, ',', transObject.ty, ') ',
             'rotate(', transObject.rotate, ') ',
-            'scale(', transObject.scale, ')'].join('');
+            'scale(', transObject.scale, ')'
+        ].join('');
     }
-
 </script>
+
 </html>
