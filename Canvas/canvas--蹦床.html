@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 canvas 蹦极床</title>
+    <style>
+		body{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" style="display: block;"></canvas>
+    <script>
+	    var ctx = canvas.getContext('2d'),
+	        count = 10,
+	        length = 80;
+	    var w = canvas.width = window.innerWidth,
+	        h = canvas.height = window.innerHeight,
+	        tick = 0;
+	    var anim = function anim() {
+	        ctx.globalCompositeOperation = 'source-over';
+	        ctx.fillRect(0, 0, w, h);
+	        ctx.globalCompositeOperation = 'lighten';
+	        for (var i = 0; i < 200; i++) {
+	            var x = 0;
+	            var b = 0;
+	            ctx.beginPath();
+	            for (var j = 0; j < count; j++) {
+	                x += 20;
+	                var y = x * Math.sin(j / 200);
+	                var _x = x * Math.cos(b / j / j);
+	                var _y = y * 3 * Math.sin(j * tick) + y / 2 * -length;
+	                b = j * Math.PI / j * i;
+	                // draw
+	                ctx.arc(w / 2 - _x, h / 5 - _y, 0, 0, Math.PI * 2);
+	            }
+	            ctx.lineWidth = .1;
+	            ctx.strokeStyle = 'hsl(' + ~~(i * 3 % 360) + ',50%,50%)';
+	            ctx.stroke();
+	        }
+	        tick += 1 / 60;
+	        window.requestAnimationFrame(anim);
+	    };
+	    anim();
+	    window.addEventListener('resize', function() {
+	        canvas.width = w = window.innerWidth;
+	        canvas.height = h = window.innerHeight;
+	    });
+    </script>
+</body>
+
+</html>

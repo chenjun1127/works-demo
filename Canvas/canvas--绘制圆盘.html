@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制圆盘</title>
+    <style>
+		body{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas width="400" height="400"></canvas>
+    <script>
+	    var canvas = document.querySelector('canvas')
+	    var ctx = canvas.getContext('2d');
+
+	    function draw() {
+	        var g = ctx.createRadialGradient(200, 200, 0, 200, 200, 200);
+	        g.addColorStop(0, "#fff")
+	        g.addColorStop(1, "#f3f3f3")
+	        ctx.fillStyle = g;
+	        ctx.fillRect(0, 0, canvas.width, canvas.height);
+	        ctx.translate(canvas.width / 2, canvas.height / 2);
+
+	        for (var i = 1; i < 6; i++) {
+	            ctx.save();
+	            ctx.fillStyle = 'rgb(' + (51 * i) + ',' + (255 - 51 * i) + ',255)';
+	            for (var j = 0; j < i * 6; j++) {
+	                ctx.rotate(Math.PI * 2 / (i * 6))
+	                ctx.beginPath()
+	                ctx.arc(0, 30 * i, 10, 0, Math.PI * 2, false);
+	                ctx.fill();
+	            }
+	            ctx.restore()
+	        }
+	    }
+	    draw();
+    </script>
+</body>
+
+</html>

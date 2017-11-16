@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--加速度 </title>
+    <script src="js/ball.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:black}
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        var canvas = document.querySelector('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var ctx = canvas.getContext('2d');
+        var ball = new Ball(),
+            vx = 0,
+            vy = 0,
+            ax = 0,
+            ay = 0,
+            gravity = 0.02; //重力加速度
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
+        window.addEventListener('keydown', function(event) {
+            switch (event.keyCode) {
+                case 37:
+                    ax = -0.5;
+                    break;
+                case 39:
+                    ax = 0.5;
+                    break;
+                case 38:
+                    ay = -0.5;
+                    break;
+                case 40:
+                    ay = 0.5;
+                    break;
+            }
+        }, false);
+        window.addEventListener('keyup', function() {
+            ax = 0;
+            ay = 0;
+        }, false);
+        (function drawFrame() {
+            requestAnimationFrame(drawFrame);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            vx += ax;
+            vy += ay;
+            vy += gravity;
+            ball.x += vx;
+            ball.y += vy;
+            ball.draw(ctx);
+        })()
+    </script>
+</body>
+
+</html>

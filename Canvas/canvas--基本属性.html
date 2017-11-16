@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>基本属性</title>
+    <style>
+		*{padding:0;margin:0}
+		#red{background:red;}
+    </style>
+    <script>
+	    window.onload = function() {
+	        var ext = document.querySelector('#red').getContext('2d');
+	        ext.beginPath();
+	        ext.fillStyle = 'rgba(0,100,200,0.8)';
+	        ext.lineWidth = 3;
+	        ext.strokeStyle = '#fff';
+	        ext.arc(200, 200, 50, 0, Math.PI * 2, false);
+	        ext.stroke();
+	        ext.fill();
+	        ext.closePath();
+	        var msg = function(obj) {
+	            var res = '';
+	            for (var a in obj) {
+	                res += obj[a] + '<br/>';
+	            }
+	            document.querySelector('.box').innerHTML = res;
+	        }
+	        msg(ext);
+
+	        function show() {
+	            var i = document.querySelector('#s').innerHTML
+	            if (i > 0) {
+	                i--;
+	                document.querySelector('#s').innerHTML = i;
+	                setTimeout(show, 1000)
+	            } else {
+	                document.querySelector('.box1').style.display = 'none';
+	                document.querySelector('.box').style.display = 'block';
+	            }
+	        }
+	        show();
+	    }
+    </script>
+</head>
+
+<body>
+    <canvas width="400" height="400" id='red'>
+        <p>This browser does not support the<code>canvas</code> element.</p>
+    </canvas>
+    <div class="box" style="display:none;">
+    </div>
+    <div class="box1">
+        <span id='s'>5</span>秒后显示内容
+    </div>
+</body>
+
+</html>

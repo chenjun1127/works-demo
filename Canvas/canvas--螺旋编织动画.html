@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--螺旋编织动画</title>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;}
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        var canvas = document.querySelector('canvas');
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width = window.innerWidth,
+            h = canvas.height = window.innerHeight;
+        canvas.style.cssText = 'background:black;'
+        var x = w / 2,
+            y = h / 2,
+            vx = 1,
+            vy = 1;
+
+        function draw() {
+            x += (vx / 10) * Math.sin(vx);
+            y += (vy / 10) * Math.cos(vy);
+            vy += 1;
+            vx += 1;
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, 2 * Math.PI);
+            ctx.fillStyle = "rgb(" + Math.floor(x / y * 100) + "," + Math.floor(x / y * 1000) + "," + Math.floor(x / y * 10) + ")";
+            ctx.fill();
+        }
+        window.requestAnimFrame = (function() {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function(callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
+
+        function loop() {
+            window.requestAnimFrame(loop);
+            draw();
+        }
+        loop();
+    </script>
+</body>
+
+</html>

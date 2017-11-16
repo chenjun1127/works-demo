@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--缓动</title>
+    <script src="js/ball.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:black;margin:0 auto;}
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector('canvas');
+            canvas.width = window.innerWidth * 0.8;
+            canvas.height = window.innerHeight * 0.8;
+            var ctx = canvas.getContext('2d');
+            var ball = new Ball();
+            var mouse = utils.captureMouse(canvas)
+            mouse.x = ball.x = canvas.width / 2;
+            mouse.y = ball.y = canvas.height / 2;
+            var easing = 0.05;
+            (function drawFrame() {
+                animRequest = window.requestAnimationFrame(drawFrame);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                ball.x += (mouse.x - ball.x) * easing;
+                ball.y += (mouse.y - ball.y) * easing;
+                ball.draw(ctx);
+            })();
+        }
+    </script>
+</body>
+
+</html>

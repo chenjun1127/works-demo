@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--向目标点的弹动，加个弹簧；</title>
+    <script src="js/ball.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:black;margin:0 auto;}
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector('canvas');
+            canvas.width = window.innerWidth * 0.8;
+            canvas.height = window.innerHeight * 0.8;
+            var ctx = canvas.getContext('2d');
+            var ball = new Ball();
+            var mouse = utils.captureMouse(canvas);
+
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.vx = 0;
+            ball.vy = 0;
+
+            var friction = 0.95;
+            var spring = 0.03; //弹动系数；
+            var gravity = 2;
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                var ax = (mouse.x - ball.x) * spring;
+                var ay = (mouse.y - ball.y) * spring;
+                ball.vx += ax;
+                ball.vy += ay;
+                ball.vy += gravity;
+                ball.vx *= friction;
+                ball.vy *= friction;
+                ball.x += ball.vx;
+                ball.y += ball.vy;
+
+                ctx.strokeStyle = "white";
+                ctx.beginPath();
+                ctx.moveTo(ball.x, ball.y)
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+                ctx.fillStyle = 'red';
+                ctx.beginPath();
+                ctx.arc(mouse.x, mouse.y, 5, 0, Math.PI * 2);
+                ctx.fill();
+                ball.draw(ctx);
+
+            })();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本图形</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+    <script>
+        window.onload = function () {
+            var canvas = document.querySelector('#canvas');
+            var ext = canvas.getContext('2d');
+            canvas.style.background = 'gray';
+            ext.lineWidth = '5';
+            ext.strokeStyle = "red";
+            ext.fillStyle = "white";
+            ext.beginPath();
+            ext.moveTo(100, 100);
+            ext.lineTo(200, 200);
+            ext.lineTo(300, 100);
+            ext.closePath(); //自动闭合路径
+            ext.stroke();
+            ext.fill();
+        }
+    </script>
+</head>
+<body>
+<canvas width='400' height='400' id='canvas'>
+    <p>您的浏览器不支持html5新标签</p>
+</canvas>
+</body>
+</html>

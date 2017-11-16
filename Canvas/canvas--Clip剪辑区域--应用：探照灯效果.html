@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>clip剪辑区域--应用：探照灯效果</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas class="canvas"></canvas>
+    <script>
+        var searchLight = {
+            x: 400,
+            y: 400,
+            radius: 150,
+            vx: Math.random() * 5 + 10, //x轴速度
+            vy: Math.random() * 5 + 10 //y轴速度
+        }
+        window.onload = function() {
+            var canvas = document.querySelector('.canvas');
+            var cxt = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 800;
+            canvas.style.background = 'black';
+            setInterval(function() {
+                draw(cxt);
+                update(canvas.width, canvas.height);
+            }, 40)
+        }
+
+        function draw(cxt) {
+            var canvas = cxt.canvas;
+            cxt.clearRect(0, 0, canvas.width, canvas.height);
+            cxt.save();
+            cxt.beginPath();
+            cxt.arc(searchLight.x, searchLight.y, searchLight.radius, 0, Math.PI * 2);
+            cxt.fillStyle = 'white';
+            cxt.fill();
+            cxt.closePath();
+            cxt.clip();
+            cxt.beginPath();
+            cxt.fillStyle = '#f90';
+            cxt.textAlign = 'center';
+            cxt.font = 'bold 120px impact';
+            cxt.fillText('hello world!', canvas.width / 2, canvas.height / 2 - 150)
+            cxt.fillText('hello world!', canvas.width / 2, canvas.height / 2)
+            cxt.fillText('hello world!', canvas.width / 2, canvas.height / 2 + 150)
+            cxt.fillText('hello world!', canvas.width / 2, canvas.height / 2 + 300)
+            cxt.restore();
+        }
+
+        function update(canvasWidth, canvasHeight) {
+            searchLight.x += searchLight.vx;
+            searchLight.y += searchLight.vy;
+            if (searchLight.x - searchLight.radius <= 0) {
+                searchLight.vx = -searchLight.vx;
+                searchLight.x = searchLight.radius;
+            };
+            if (searchLight.x + searchLight.radius >= canvasWidth) {
+                searchLight.vx = -searchLight.vx;
+                searchLight.x = canvasWidth - searchLight.radius;
+            };
+            if (searchLight.y - searchLight.radius <= 0) {
+                searchLight.vy = -searchLight.vy;
+                searchLight.y = searchLight.radius;
+            };
+            if (searchLight.y + searchLight.radius > canvasHeight) {
+                searchLight.vy = -searchLight.vy;
+                searchLight.y = canvasHeight - searchLight.radius;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>圆角矩形</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector('#canvas');
+            var context = canvas.getContext('2d');
+            canvas.width = 1024;
+            canvas.height = 768;
+            canvas.style.background = '#f5f5f5';
+            var w = 400,
+                h = 300,
+                x = (canvas.width - w) / 2,
+                y = (canvas.height - h) / 2;
+
+            draw(context, x, y, w, h, 10);
+
+            function draw(cxt, x, y, width, height, radius) {
+                //假设半径大于宽度的一半；
+                if (radius >= width / 2 || radius >= height / 2) {
+                    radius = window.prompt('请输入一个小于30的圆角半径', '15');
+                }
+                context.save();
+                context.translate(x, y);
+                PathDraw(cxt, width, height, radius);
+                cxt.strokeStyle = '#333';
+                cxt.stroke();
+                context.restore();
+            }
+
+            function PathDraw(cxt, width, height, radius) {
+                cxt.beginPath();
+                //逆时针画的圆角矩形；顺时针同理需要注意PI；
+                cxt.arc(width - radius, radius, radius, 0, Math.PI * 1.5, true); //从右上角开始画圆弧；
+                cxt.lineTo(radius, 0);
+                cxt.arc(radius, radius, radius, Math.PI * 1.5, Math.PI, true);
+                cxt.lineTo(0, height - radius);
+                cxt.arc(radius, height - radius, radius, Math.PI, Math.PI * 0.5, true);
+                cxt.lineTo(width - radius, height);
+                cxt.arc(width - radius, height - radius, radius, Math.PI * 0.5, 0, true);
+                cxt.closePath();
+            }
+        }
+    </script>
+</body>
+
+</html>

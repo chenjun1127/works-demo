@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GlobalAlpha </title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+    <script>
+    window.onload = function() {
+        var canvas = document.querySelector('.canvas');
+        var ext = canvas.getContext('2d');
+        canvas.style.display = 'block';
+        canvas.width = document.body.clientWidth || document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight || document.documentElement.clientHeight;
+        ext.globalAlpha = 0.6; //默认值是1；
+        for (var i = 0; i < 100; i++) {
+            ext.fillStyle = getRandomColorRGB();
+            ext.beginPath();
+            ext.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 50, 0, Math.PI * 2);
+            ext.fill();
+        }
+
+        function getRandomColorRGB() {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return 'rgb' + '(' + r + ',' + g + ',' + b + ')';
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <canvas class="canvas"></canvas>
+</body>
+
+</html>

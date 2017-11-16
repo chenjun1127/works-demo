@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>非零环绕原则--绘制镂空图形</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector('.canvas');
+            var cxt = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 800;
+            canvas.style.background = 'white';
+            cxt.fillStyle = '#f60';
+            cxt.shadowColor = '#d9d9d9';
+            cxt.shadowOffsetX = 10;
+            cxt.shadowOffsetY = 10;
+            cxt.shadowBlur = 5;
+            cxt.beginPath();
+            cxt.arc(canvas.width / 2, canvas.height / 2, 300, 0, Math.PI * 2);
+            cxt.arc(canvas.width / 2, canvas.height / 2, 150, 0, Math.PI * 2, true);
+            cxt.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2);
+            cxt.moveTo(555, 555)
+            cxt.arc(555, 555, 30, 0, Math.PI * 2, true);
+            cxt.fill();
+            cxt.closePath();
+        }
+    </script>
+</head>
+
+<body>
+    <canvas class="canvas">
+    </canvas>
+</body>
+
+</html>

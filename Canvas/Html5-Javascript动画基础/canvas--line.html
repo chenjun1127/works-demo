@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas--line</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="500" style="background: palevioletred; display: block;margin: 0 auto;"></canvas>
+    <script src="../js/utils.js"></script>
+    <script>
+        var canvas = document.querySelector('canvas');
+        var ctx = canvas.getContext('2d');
+        var mouse = utils.captureMouse(canvas);
+
+        function onMouseMove() {
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+        }
+        canvas.addEventListener('mousedown', function() {
+            ctx.beginPath();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'red';
+            ctx.moveTo(mouse.x, mouse.y);
+            canvas.addEventListener('mousemove', onMouseMove, false);
+        }, false)
+        canvas.addEventListener('mouseup', function() {
+            canvas.removeEventListener('mousemove', onMouseMove, false);
+        }, false)
+    </script>
+</body>
+
+</html>

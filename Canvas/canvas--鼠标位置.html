@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标位置</title>
+    <style>
+		*{padding:0;margin:0}
+    </style>
+    <script>
+	    window.onload = function() {
+	        var canvas = document.querySelector('#canvas');
+	        var ext = canvas.getContext('2d');
+	        canvas.style.background = getRandomColorHSL();
+	        canvas.onclick = function(event) {
+	            var mousePos = eventPose(event);
+	            document.getElementById('text').innerHTML = ' 当前鼠标坐标：' + mousePos.x + ',' + mousePos.y;
+	        }
+	    }
+	    //HSL模式颜色随机；
+	    function getRandomColorHSL() {
+	        return "hsl(" + Math.random() * 360 + "," + Math.random() * 100 + '%,' + Math.random() * 100 + '%)';
+	    }
+
+	    function radom(min, max) {
+	        var x = min + Math.round(Math.random() * (max - min));
+	        return x;
+	    };
+	    //鼠标坐标; 
+	    function eventPose(ev) {
+	        var e = ev || window.event;
+	        if (e.pageX || e.pageY) {
+	            return {
+	                x: e.pageX,
+	                y: e.pageY
+	            }
+	        } else {
+	            return {
+	                x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - document.body.clientLeft,
+	                y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop - document.body.clientTop
+	            }
+	        }
+
+	    }
+    </script>
+</head>
+
+<body>
+    <canvas width='400' height='400' id='canvas'>
+        <p>您的浏览器不支持html5新标签</p>
+    </canvas>
+    <div id="text"></div>
+</body>
+
+</html>

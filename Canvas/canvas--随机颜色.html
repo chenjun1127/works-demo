@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>随机颜色，十六进制方法；</title>
+    <style>
+		*{padding:0;margin:0}
+    </style>
+    <script>
+    window.onload = function() {
+        var canvas = document.querySelector('#canvas');
+        var ext = canvas.getContext('2d');
+        canvas.style.background = getRandomColorHSL();
+        canvas.addEventListener('mousedown', function(ev) {
+            this.style.background = getRandomColorHSL();
+        }, false);
+    }
+    //随机颜色，十六进制方法；
+    function getRandomColor() {
+        var rand = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+        if (rand.length == 6) {
+            return rand;
+        } else {
+            return randomColor();
+        }
+    }
+    //HSL模式颜色随机；
+    function getRandomColorHSL() {
+        return "hsl(" + Math.random() * 360 + "," + Math.random() * 100 + '%,' + Math.random() * 100 + '%)';
+    }
+    // 范围随机
+    function radom(min, max) {
+        var x = min + Math.round(Math.random() * (max - min));
+        return x;
+    };
+    </script>
+</head>
+
+<body>
+    <canvas width='400' height='400' id='canvas'>
+        <p>您的浏览器不支持html5新标签</p>
+    </canvas>
+</body>
+
+</html>

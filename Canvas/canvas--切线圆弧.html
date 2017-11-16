@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>arcTo绘制两条线之前相切的圆弧</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas class="canvas"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector('.canvas');
+            var context = canvas.getContext('2d');
+            canvas.width = canvas.height = 500;
+            canvas.style.background = 'red';
+            drawArc(context, canvas.width / 2, canvas.height / 2, 450, 250, 500, 450, 30);
+
+            function drawArc(cxt, x, y, x1, y1, x2, y2, r) {
+                cxt.save();
+                cxt.beginPath();
+                cxt.moveTo(x, y)
+                cxt.arcTo(x1, y1, x2, y2, r)
+                //cxt.lineTo(x1,y1)
+                cxt.strokeStyle = 'white';
+                cxt.stroke();
+                cxt.restore()
+            }
+        }
+    </script>
+</body>
+
+</html>

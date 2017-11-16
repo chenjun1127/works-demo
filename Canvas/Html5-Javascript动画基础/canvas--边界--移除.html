@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--边界--移除 </title>
+    <script src="js/ball.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:black;margin:0 auto;}
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        var canvas = document.querySelector('canvas');
+        canvas.width = window.innerWidth * 0.8;
+        canvas.height = window.innerHeight * 0.8;
+        var ctx = canvas.getContext('2d');
+        var balls = [];
+        var numBalls = 10;
+        var log = document.getElementById('log');
+        for (var j = 0; j < numBalls; j++) {
+            ball = new Ball(20, '#f90');
+            ball.id = "ball" + j;
+            ball.x = Math.random() * canvas.width;
+            ball.y = Math.random() * canvas.height;
+            ball.vx = Math.random() * 2;
+            ball.vy = Math.random() * 2;
+            balls.push(ball);
+        }
+        //    (function drawBalls() {
+        //        window.requestAnimationFrame(drawBalls);
+        //        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //        for (var i = 0; i < balls.length; i++) {
+        //            balls[i].x += balls[i].vx;
+        //            balls[i].y += balls[i].vy;
+        //            if (balls[i].x - balls[i].radius > canvas.width || balls[i].x + balls[i].radius < 0 || balls[i].y - balls[i].radius > canvas.height || balls[i].y + balls[i].radius < 0) {
+        //                var index = balls.indexOf(balls[i]);
+        //                balls.splice(index, 1)
+        //            }
+        //            console.log(balls.length)
+        //        }
+        //        for (var i = 0; i < balls.length; i++) {
+        //            if (balls.length < 0) {
+        //                alert('所有小球都已经除移除掉')
+        //                return
+        //            } else {
+        //                balls[i].draw(ctx);
+        //            }
+        //            console.log(balls.length)
+        //        }
+        //    })()
+        function draw(ball, pos) {
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            if (ball.x - ball.radius > canvas.width || ball.x + ball.radius < 0 || ball.y - ball.radius > canvas.height || ball.y + ball.radius < 0) {
+                balls.splice(pos, 1);
+            }
+            ball.draw(ctx);
+        }
+        (function drawFrame() {
+            window.requestAnimationFrame(drawFrame);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            var i = balls.length;
+            while (i--) {
+                draw(balls[i], i);
+            }
+        })()
+    </script>
+</body>
+
+</html>

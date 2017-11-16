@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas</title>
+    <style>
+        *{padding:0;margin:0}
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="500" style="background: palevioletred; display: block;margin: 0 auto;"></canvas>
+    <script>
+        var canvas = document.querySelector('canvas');
+        context = canvas.getContext('2d'),
+            points = [],
+            numPoints = 9;
+        //array of random point objects
+        for (var i = 0; i < numPoints; i++) {
+            points.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height
+            });
+        }
+        //move to the first point
+        context.beginPath();
+        context.moveTo(points[0].x, points[1].y);
+        //and loop through each successive pair
+        for (i = 1; i < numPoints; i += 2) {
+            context.quadraticCurveTo(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+        }
+        context.stroke();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas--拖拽</title>
+    <script src="js/ball.js"></script>
+    <script src="../js/utils.js"></script>
+    <style>
+        *{padding:0;margin:0;}
+        canvas{display:block;background:black;margin:0 auto;}
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <div class="box"></div>
+    <script>
+        window.onload = function() {
+            var canvas = document.querySelector('canvas');
+            canvas.width = window.innerWidth * 0.8;
+            canvas.height = window.innerHeight * 0.8;
+            var ctx = canvas.getContext('2d');
+            var ball = new Ball();
+            ball.radius = 30;
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+
+            var vx = Math.random() * 10 - 5;
+            var vy = -10;
+            var bounce = -0.7;
+            var gravity = 0.2;
+            var isMouseDown = false;
+            var oldX, oldY;
+            var mouse = utils.captureMouse(canvas);
+            canvas.addEventListener('mousedown', function() {
+                if (utils.containsPoint(ball.getBounds(), mouse.x, mouse.y)) {
+                    isMouseDown = true;
+                    vx = vy = 0;
+                    oldX = ball.x;
+                    oldY = ball.y;
+                    canvas.addEventListener('mouseup', mouseUp, false);
+                    canvas.addEventListener('mousemove', mouseMove, false);
+                }
+            }, false);
+
+            function mouseUp() {
+                isMouseDown = false;
+                canvas.removeEventListener('mouseup', mouseUp, false);
+                canvas.removeEventListener('mousemove', mouseMove, false);
+            }
+
+            function mouseMove(event) {
+                ball.x = mouse.x;
+                ball.y = mouse.y;
+            }
+
+            function checkBoundaries() {
+                vy += gravity;
+                ball.x += vx;
+                ball.y += vy;
+                if (ball.x - ball.radius < 0) {
+                    ball.x = ball.radius;
+                    vx *= bounce;
+                } else if (ball.x + ball.radius > canvas.width) {
+                    ball.x = canvas.width - ball.radius;
+                    vx *= bounce;
+                }
+                if (ball.y - ball.radius < 0) {
+                    ball.y = ball.radius;
+                    vy *= bounce;
+                } else if (ball.y + ball.radius > canvas.height) {
+                    ball.y = canvas.height - ball.radius;
+                    vy *= bounce;
+                }
+            }
+            //投掷
+            function trackVelocity() {
+                vx = ball.x - oldX;
+                vy = ball.y - oldY;
+                oldX = ball.x;
+                oldY = ball.y;
+            }
+            (function drawFrame() {
+                window.requestAnimationFrame(drawFrame);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                if (isMouseDown) {
+                    trackVelocity();
+                } else {
+                    checkBoundaries();
+                }
+                ball.draw(ctx);
+            })();
+        }
+    </script>
+</body>
+
+</html>

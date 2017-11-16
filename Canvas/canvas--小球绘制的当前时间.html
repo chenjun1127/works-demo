@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>小球绘制的当前时间</title>
+    <style>
+        body{padding:0;margin:0}
+    </style>
+    <script>
+        var radius = 8;
+        var MarginLeft = 400;
+        var MarginTop = 100;
+        window.onload = function() {
+            var canvas = document.getElementById("canvas");
+            var cxt = canvas.getContext("2d");
+            canvas.style.display = 'block';
+            canvas.width = document.body.clientWidth || document.documentElement.clientWidth;
+            canvas.height = document.documentElement.clientHeight;
+            canvas.style.background = "#910";
+            renter(cxt);
+        }
+
+        function renter(cxt) {
+            var curTime = new Date();
+            var date = new Date();
+            var hour = checkTime(date.getHours());
+            var minutes = checkTime(date.getMinutes())
+            var seconds = checkTime(date.getSeconds());
+            renterDigite(MarginLeft, MarginTop, parseInt(hour / 10), cxt);
+            renterDigite(MarginLeft + (2 * 7 + 1) * (radius + 1), MarginTop, parseInt(hour % 10), cxt);
+            renterDigite(MarginLeft + 30 * (radius + 1), MarginTop, 10, cxt);
+            renterDigite(MarginLeft + 39 * (radius + 1), MarginTop, parseInt(minutes / 10), cxt);
+            renterDigite(MarginLeft + 54 * (radius + 1), MarginTop, parseInt(minutes % 10), cxt);
+            renterDigite(MarginLeft + 69 * (radius + 1), MarginTop, 10, cxt);
+            renterDigite(MarginLeft + 78 * (radius + 1), MarginTop, parseInt(seconds / 10), cxt);
+            renterDigite(MarginLeft + 93 * (radius + 1), MarginTop, parseInt(seconds % 10), cxt);
+
+        }
+
+        function renterDigite(x, y, num, cxt) {
+            cxt.fillStyle = "#f90"
+            for (var i = 0; i < digit[num].length; i++) {
+                for (var j = 0; j < digit[num][i].length; j++) {
+                    if (digit[num][i][j] == 1) {
+                        cxt.beginPath();
+                        cxt.arc(x + j * 2 * (radius + 1) + (radius + 1), y + i * 2 * (radius + 1) + (radius + 1), radius, 0, Math.PI * 2);
+                        cxt.closePath();
+                        cxt.fill();
+                    }
+                }
+            }
+        }
+
+        function checkTime(i) {
+            return i < 10 ? '0' + 1 : i;
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="js/digit.js"></script>
+</body>
+
+</html>

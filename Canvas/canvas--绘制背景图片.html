@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制背景图片</title>
+    <style type="text/css">
+        *{padding: 0;margin: 0}
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"> </canvas>
+        <script>
+        window.onload = function() {
+            var canvas = document.querySelector("#canvas");
+            var ext = canvas.getContext("2d");
+            canvas.width = 800;
+            canvas.height = 800;
+            canvas.style.background = 'red';
+            ext.save();
+            var backgroundImg = new Image();
+            //canvas背景加载头像
+            backgroundImg.src = "images/baidu_logo_opacity.png";
+            backgroundImg.onload = function() {
+                //createPattern  第一个参数通常是一个 Image 对象，但是也可以使用一个 Canvas 元素。
+                var pattron = ext.createPattern(backgroundImg, 'no-repeat');
+                ext.fillStyle = pattron;
+                ext.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            ext.restore()
+            //加载一个绘制的canvas元素；
+            ext.save();
+            ext.translate(canvas.width / 2, canvas.height / 2);
+            var background = backgroundCanvas();
+            var pattron = ext.createPattern(background, 'repeat');
+            ext.fillStyle = pattron;
+            ext.fillRect(0, 0, canvas.width, canvas.height);
+
+            function backgroundCanvas() {
+                var backCanvas = document.createElement('canvas');
+                backCanvas.width = 100;
+                backCanvas.height = 100;
+                backCanvas.style.background = '#f90';
+                var backCanvasContext = backCanvas.getContext('2d');
+                backCanvasContext.fillStyle = 'blue';
+                backCanvasContext.fillRect(0, 0, 50, 50);
+                return backCanvas;
+            }
+            ext.restore();
+        }
+    </script>
+</body>
+
+</html>
