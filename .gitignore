@@ -1,4 +1,2 @@
-/imooc-express-demo/bower_components
-/imooc-express-demo/node_modules
-/mongoose/mongoose-demo/node_modules
-/nodeJs/node_modules
+/node_modules
+
