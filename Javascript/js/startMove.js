@@ -17,14 +17,14 @@ function getStyle(element, attr) {
  * 完美运动框架
  * @param {HTMLElement} element 运动对象
  * @param {JSON}        json    属性：目标值      
- *   @property {String} attr    属性值
- *   @config   {Number} target  目标值
+ * @property {String}   attr    属性值
+ * @config {Number}   target  目标值
  * @param {function}    func    可选，回调函数，链式动画。
  */
 function startMove(element, json, func) {
     var flag = true; //假设所有运动到达终点.
     clearInterval(element.timer);
-    element.timer = setInterval(function () {
+    element.timer = setInterval(function() {
         for (var attr in json) {
             //1.取当前的属性值。
             var iCurrent = 0;
