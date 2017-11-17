@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>绘制切线</title>
+    <style type="text/css">
+        *{padding: 0;margin: 0;}
+    </style>
+    <script>
+	    window.onload = function() {
+	        var myCanvas, cxt;
+	        myCanvas = document.getElementById("myCanvas");
+	        cxt = myCanvas.getContext("2d");
+	        cxt.moveTo(100, 200);
+	        cxt.lineTo(80, 200);
+	        cxt.arcTo(50, 200, 50, 150, 30);
+	        cxt.stroke();
+	    };
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="600" style="background: red;"></canvas>
+</body>
+
+</html>

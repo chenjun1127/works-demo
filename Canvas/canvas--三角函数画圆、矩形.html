@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>三角函数画圆、矩形</title>
+   	<style type="text/css">
+        *{padding: 0;margin: 0;}
+    </style>
+    <script>
+	    window.onload = function() {
+	        var myCanvas = document.getElementById("myCanvas");
+	        myCanvas.width = myCanvas.height = 600;
+	        var cxt = myCanvas.getContext("2d");
+	        drawRect(200, 200, 200, 200);
+	        drawCirle(300, 300, 145);
+	        //用线画矩形；
+	        function drawRect(x, y, w, h) {
+	            cxt.beginPath();
+	            cxt.lineWidth = 1;
+	            cxt.strokeStyle = "blue";
+	            cxt.moveTo(x, y);
+	            cxt.lineTo(x + w, y);
+	            cxt.lineTo(x + w, y + h);
+	            cxt.lineTo(x, y + h);
+	            cxt.closePath();
+	            cxt.stroke();
+	        }
+	        //用线画圆形；
+	        function drawCirle(x, y, r) {
+	            cxt.beginPath();
+	            cxt.lineWidth = 1;
+	            cxt.strokeStyle = "gold";
+	            for (var i = 0; i < 360; i++) {
+	                cxt.lineTo(x + r * Math.cos(i * Math.PI / 180), y + r * Math.sin(i * Math.PI / 180));
+	                cxt.stroke();
+	            }
+	            cxt.closePath();
+	        }
+	    };
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas" style="background: red;"></canvas>
+</body>
+
+</html>

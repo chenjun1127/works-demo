@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>绘制任意的贝塞尔曲线</title>
+    <style type="text/css">
+        *{padding:0;margin:0;}
+    </style>
+    <script>
+    window.onload = function() {
+        var myCanvas, cxt;
+        myCanvas = document.getElementById("myCanvas");
+        cxt = myCanvas.getContext("2d");
+        myCanvas.onmousedown = function(e) {
+            var starX = e.clientX;
+            var starY = e.clientY;
+
+            myCanvas.onmouseup = function(e) {
+                var endX = e.clientX;
+                var endY = e.clientY;
+                myCanvas.onmousemove = function(e) {
+                    cxt.clearRect(0, 0, 600, 600)
+                    var conX = e.clientX;
+                    var conY = e.clientY;
+                    cxt.beginPath();
+                    cxt.moveTo(starX, starY);
+                    cxt.quadraticCurveTo(conX, conY, endX, endY);
+                    cxt.stroke();
+                };
+            };
+        }
+    };
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="600" style="background: red;"></canvas>
+</body>
+
+</html>
