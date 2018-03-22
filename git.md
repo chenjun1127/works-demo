@@ -209,6 +209,6 @@ git reset --hard 37033b0
 ```
 然后，强制提交
 ```
-git push -f origin master
+git push -f origin master 
 ```
 
