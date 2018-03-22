@@ -185,3 +185,30 @@ git push origin master
 ```
 即可成功把本地的文件都上传到github上面去了。
 
+**git回滚到任意版本**
+
+先可以通过命可看分支的操作记录；
+```git
+git reflog
+```
+git reflog 可以查看所有分支的所有操作记录（包括commit和reset的操作），包括已经被删除的commit记录，git log则不能察看已经删除了的commit记录；
+可能会看到类似如下的信息：
+```git
+9ddd3f0 (HEAD -> master, origin/master) HEAD@{0}: reset: moving to 9ddd3f0
+37033b0 HEAD@{1}: reset: moving to HEAD
+37033b0 HEAD@{2}: commit: add a.txt
+9ddd3f0 (HEAD -> master, origin/master) HEAD@{3}: reset: moving to 9ddd3f0
+cf1fcc9 HEAD@{4}: reset: moving to cf1fcc9
+9ddd3f0 (HEAD -> master, origin/master) HEAD@{5}: reset: moving to 9ddd3f0
+4d09679 HEAD@{6}: pull: Fast-forward
+9ddd3f0 (HEAD -> master, origin/master) HEAD@{7}: reset: moving to 9ddd3f0
+```
+接下来，回退到制定的版本：
+```git
+git reset --hard 37033b0
+```
+然后，强制提交
+```
+git push -f origin master
+```
+
