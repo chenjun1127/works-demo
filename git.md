@@ -187,7 +187,7 @@ git push origin master
 
 **git回滚到任意版本**
 
-先可以通过命可看分支的操作记录；
+首先可以通过命可看分支的操作记录；
 ```git
 git reflog
 ```
@@ -203,7 +203,7 @@ cf1fcc9 HEAD@{4}: reset: moving to cf1fcc9
 4d09679 HEAD@{6}: pull: Fast-forward
 9ddd3f0 (HEAD -> master, origin/master) HEAD@{7}: reset: moving to 9ddd3f0
 ```
-接下来，回退到制定的版本：
+接下来，回退到指定的版本：
 ```git
 git reset --hard 37033b0
 ```
