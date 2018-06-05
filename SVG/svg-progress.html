@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SVG画圆形进度条</title>
+    <style type="text/css"> 
+
+    svg {
+        transform: rotate(-90deg);
+    }
+
+    @keyframes rt {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <svg width="600" height="600" viewBox="0 0 600 600">      
+        <circle class="a" cx="300" cy="300" r="150" style="fill:transparent;stroke:#333;stroke-width:10px;" />
+        <circle class="b" cx="300" cy="300" r="150" style="fill:transparent;stroke:red;stroke-width:10px;stroke-dasharray:942.4777px; stroke-dashoffset:942.4777px; animation:rt 2s ease-in both " />
+    </svg>
+	<script type="text/javascript">
+		var length = document.querySelector('.a').getTotalLength();
+		console.log(length);
+	</script>
+</body>
+
+</html>
