@@ -212,6 +212,7 @@ git reset --hard 37033b0
 git push -f origin master 
 ```
 **git冲突如何解决**
+
 推荐方法，当然还有还有方法
 
 git pull 出现冲突后丢弃本地冲突文件修改，采用远程文件覆盖本地文件
