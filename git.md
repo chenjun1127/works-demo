@@ -39,11 +39,11 @@ git commit -m "write a readme file"
 * git add -A  提交所有变化；
 * git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)；
 * git add .   提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件；
-* git rm -r --cached some-directory 删除缓冲
-* git reset --soft HEAD^  不删除工作空间改动代码，撤销commit，不撤销git add .;
-* git reset --mixed HEAD^ 不删除工作空间改动代码，撤销commit，并且撤销git add . 操作这个为默认参数，git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的;
-* git reset --hard HEAD^  删除工作空间改动代码，撤销commit，并且撤销git add . 恢复到了上一次的commit状态;
-* git commit --amend 如果commit注释写错了，只是想改一下注释，此时会进入默认vim编辑器，修改注释完毕后保存就好了;
+* git rm -r --cached some-directory 删除缓冲；
+* git reset --soft HEAD^  不删除工作空间改动代码，撤销commit，不撤销git add .；
+* git reset --mixed HEAD^ 不删除工作空间改动代码，撤销commit，并且撤销git add . 操作这个为默认参数，git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的；
+* git reset --hard HEAD^  删除工作空间改动代码，撤销commit，并且撤销git add . 恢复到了上一次的commit状态；
+* git commit --amend 如果commit注释写错了，只是想改一下注释，此时会进入默认vim编辑器，修改注释完毕后保存就好了；
 
 #### 三、分支
 
