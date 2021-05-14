@@ -45,6 +45,8 @@ git commit -m "write a readme file"
 * git reset --hard HEAD^  删除工作空间改动代码，撤销commit，并且撤销git add . 恢复到了上一次的commit状态；
 * git commit --amend 如果commit注释写错了，只是想改一下注释，此时会进入默认vim编辑器，修改注释完毕后保存就好了；
 
+注：HEAD^ 表示上一个版本，即上一次的commit，也可以写成HEAD~1，如果进行两次的commit，想要都撤回，可以使用HEAD~2
+
 #### 三、分支
 
 在你创建仓库的时候，master 是默认的。在其他分支上进行开发，完成后再将它们合并到主分支上。
