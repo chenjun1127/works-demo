@@ -3,35 +3,37 @@
  */
 
 class MyClass {
-    constructor() {
-        //....
-    }
-    get prpos() {
-        return 'getter'
-    }
-    set prpos(value) {
-        console.log('setter:' + value);
-    }
+  constructor() {
+    // 私有属性
+    this._props = 0;
+  }
+
+  get props() {
+    return this._props;
+  }
+  set props(value) {
+    console.log('setter:' + value);
+    this._props = value;
+  }
 }
 
 let inst = new MyClass();
 
-inst.prpos = 123; //setter: 123
-console.log(inst.prpos) // getter
-
+inst.props = 123; //setter: 123
+console.log(inst.props); // getter
 
 // 某个方法之前加上*号 就表示Generator
 class Foo {
-    constructor(...args) {
-            this.args = args;
-        }
-        *[Symbol.iterator]() {
-            for (let arg of this.args) {
-                yield arg;
-            }
-        }
+  constructor(...args) {
+    this.args = args;
+  }
+  *[Symbol.iterator]() {
+    for (let arg of this.args) {
+      yield arg;
+    }
+  }
 }
 
 for (let x of new Foo('hello', 'world')) {
-    console.log(x); // hello world
+  console.log(x); // hello world
 }
