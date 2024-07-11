@@ -1,0 +1,26 @@
+/**列表循环**/
+// 定义一个颜色变量
+$color-list: red, orange, yellow, green, blue;
+
+// 使用循环为每个颜色创建一个类
+@each $color in $color-list {
+  .color-#{$color} {
+    background-color: $color;
+    // 在这里可以添加更多样式
+  }
+}
+
+/**在 SCSS 中，@for 循环主要用于遍历整数范围，而不是列表。如果你想要遍历一个颜色列表，应该使用 @each 循环。不过，如果你确实需要使用 @for 循环，可以通过一些技巧来实现类似的效果。以下是一个使用 @for 循环的例子：*/
+
+// 定义一个颜色变量
+$color-list: red, orange, yellow, green, blue;
+$color-list-length: length($color-list);
+
+// 使用循环为每个颜色创建一个类
+@for $i from 1 through $color-list-length {
+  $color: nth($color-list, $i);
+  .color-#{$color} {
+    background-color: $color;
+    // 在这里可以添加更多样式
+  }
+}
