@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSL Color Picker</title>
+    <style>
+      #color-picker {
+        display: block;
+        margin: 50px auto;
+        cursor: crosshair;
+      }
+      #selected-color {
+        color: #fff;
+      }
+      p{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="color-picker" width="300" height="300"></canvas>
+    <p>Selected Color: <span id="selected-color">#000000</span></p>
+
+    <script>
+      const canvas = document.getElementById('color-picker');
+      const ctx = canvas.getContext('2d');
+      const radius = canvas.width / 2;
+      const imageData = ctx.createImageData(canvas.width, canvas.height);
+      const data = imageData.data;
+
+      function drawColorWheel() {
+        for (let y = 0; y < canvas.height; y++) {
+          for (let x = 0; x < canvas.width; x++) {
+            const dx = x - radius;
+            const dy = y - radius;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < radius) {
+              const angle = Math.atan2(dy, dx) + Math.PI / 2;
+              const hue = ((angle * 180) / Math.PI + 360) % 360; // Ensure hue is between 0 and 360
+              const saturation = distance / radius;
+              const [r, g, b] = hslToRgb(hue, saturation, 0.5);
+
+              const index = (y * canvas.width + x) * 4;
+              data[index] = r;
+              data[index + 1] = g;
+              data[index + 2] = b;
+              data[index + 3] = 255; // Alpha channel
+            }
+          }
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+      }
+
+      function hslToRgb(h, s, l) {
+        let r, g, b;
+
+        const c = (1 - Math.abs(2 * l - 1)) * s;
+        const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+        const m = l - c / 2;
+
+        if (h < 60) {
+          r = c;
+          g = x;
+          b = 0;
+        } else if (h < 120) {
+          r = x;
+          g = c;
+          b = 0;
+        } else if (h < 180) {
+          r = 0;
+          g = c;
+          b = x;
+        } else if (h < 240) {
+          r = 0;
+          g = x;
+          b = c;
+        } else if (h < 300) {
+          r = x;
+          g = 0;
+          b = c;
+        } else {
+          r = c;
+          g = 0;
+          b = x;
+        }
+
+        return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+      }
+
+      function rgbToHex(r, g, b) {
+        return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+      }
+
+      function mouseMove(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const dx = x - radius;
+        const dy = y - radius;
+        console.log(`xxxx=${x}`);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < radius) {
+          const index = (Math.floor(y) * canvas.width + Math.floor(x)) * 4;
+          const r = data[index];
+          const g = data[index + 1];
+          const b = data[index + 2];
+          const colorHex = rgbToHex(r, g, b);
+
+          document.getElementById('selected-color').innerText = colorHex;
+          document.getElementById('selected-color').style.background = colorHex;
+        }
+      }
+
+      canvas.addEventListener('mousedown', e => {
+        e.preventDefault();
+
+        document.onmouseup = e => {
+          document.onmouseup = null;
+          document.onmousemove = null;
+        };
+        document.onmousemove = e => {
+          e.preventDefault();
+
+          mouseMove(e);
+        };
+      });
+
+      drawColorWheel();
+    </script>
+  </body>
+</html>
